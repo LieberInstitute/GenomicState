@@ -37,6 +37,7 @@
 #'
 
 gencode_annotated_genes <- function(txdb) {
+    message(paste(Sys.time(), 'annotating the transcripts'))
     genes <- bumphunter::annotateTranscripts(txdb,
         by = 'gene',
         mappingInfo = list('column' = 'ENTREZID', 'keytype' = 'ENSEMBL',

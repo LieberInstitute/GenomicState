@@ -34,3 +34,4 @@ VignetteBuilder: knitr
 URL: https://github.com/LieberInstitute/GenomicState
 BugReports: https://github.com/LieberInstitute/GenomicState/issues
 biocViews: Coverage, Transcriptomics, Homo_sapiens, TxDb
+Remotes: lcolladotor/bumphunter@fix_namespace_genes
