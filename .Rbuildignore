@@ -1,0 +1,8 @@
+^GenomicState\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^data-raw$
+^\.travis\.yml$

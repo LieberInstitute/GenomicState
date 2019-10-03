@@ -1,0 +1,72 @@
+#' Create a Gencode TxDb object
+#'
+#' This function builds a transcript database (TxDb) object which you can then
+#' use to build a Gencode Genomic State object. This function will download
+#' the data from Gencode, import it into R, process it and build the TxDb
+#' object.
+#'
+#' @param version A `character(1)` with the Gencode version number.
+#' @param genome A `character(1)` with the human genome version number. Valid
+#' options are `'hg38'` or `'hg19'`.
+#' @param chrs A `character()` vector with the chromosome (contig) names to
+#' keep.
+#'
+#' @return A [GenomicFeatures::TxDb-class] object.
+#' @export
+#' @author Leonardo Collado-Torres
+#' @references Based on code for the `brainflowprobes` package at:
+#' <https://github.com/LieberInstitute/brainflowprobes/blob/master/data-raw/create_sysdata.R>
+#'
+#' @seealso [gencode_annotated_genes] [gencode_genomic_state]
+#'
+#' @examples
+#'
+#' ## Build a TxDb object for Gencode v31 chromosome 22
+#' txdb_v31_hg38_chr22 <- gencode_txdb(chrs = 'chr22')
+#'
+#' ## Explore the result
+#' txdb_v31_hg38_chr22
+#'
+
+gencode_txdb <- function(version = '31', genome = 'hg38',
+    chrs = paste0('chr', c(1:22, 'X', 'Y', 'M'))) {
+
+    genome <- tolower(genome)
+    stopifnot(genome %in% c('hg38', 'hg19'))
+
+    gtf_file <- paste0(
+        'ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/',
+        'release_', version, if(genome == 'hg19') '/GRCh37_mapping',
+        '/gencode.v', version, if(genome == 'hg19') 'lift37',
+        '.annotation.gtf.gz')
+    message(paste(Sys.time(), 'importing', gtf_file))
+    gencode_gtf <- rtracklayer::import(gtf_file)
+
+    ## Keep only the main chrs
+    message(paste(Sys.time(), 'keeping relevant chromosomes'))
+    gencode_gtf <- GenomeInfoDb::keepSeqlevels(gencode_gtf, chrs,
+        pruning.mode = 'coarse'
+    )
+
+    # Doesn't work because of the different seqlevels
+    # txdb <- makeTxDbFromGFF(
+    #     gtf_file,
+    #     organism = 'Homo sapiens',
+    #     chrominfo = Seqinfo(genome="hg19")
+    # )
+
+    message(paste(Sys.time(), 'preparing metadata'))
+    metadata <- GenomicFeatures:::.prepareGFFMetadata(
+        file = gtf_file,
+        dataSource = NA, organism = 'Homo sapiens',
+        taxonomyId = NA, miRBaseBuild = NA, metadata = NULL)
+
+    message(paste(Sys.time(), 'building the txdb object'))
+    gr <- GenomicFeatures:::.tidy_seqinfo(
+        gr = gencode_gtf,
+        circ_seqs = GenomicFeatures::DEFAULT_CIRC_SEQS,
+        chrominfo = GenomeInfoDb::Seqinfo(genome = genome)
+    )
+    txdb <- GenomicFeatures::makeTxDbFromGRanges(gr, metadata = metadata)
+    return(txdb)
+}
