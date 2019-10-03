@@ -20,9 +20,9 @@ keep.}
 A \link[GenomicFeatures:TxDb-class]{GenomicFeatures::TxDb} object.
 }
 \description{
-This function builds a transcript database (TxDb) object which you can then
-use to build a Gencode Genomic State object. This function will download
-the data from Gencode, import it into R, process it and build the TxDb
+This function builds a transcript database (\code{TxDb}) object which you can then
+use to build a Gencode \code{GenomicState} object. This function will download
+the data from Gencode, import it into R, process it and build the \code{TxDb}
 object.
 }
 \examples{
@@ -39,7 +39,7 @@ Based on code for the \code{brainflowprobes} package at:
 \url{https://github.com/LieberInstitute/brainflowprobes/blob/master/data-raw/create_sysdata.R}
 }
 \seealso{
-\link{gencode_annotated_genes} \link{gencode_genomic_state}
+\code{\link[=gencode_annotated_genes]{gencode_annotated_genes()}} \code{\link[=gencode_genomic_state]{gencode_genomic_state()}}
 }
 \author{
 Leonardo Collado-Torres

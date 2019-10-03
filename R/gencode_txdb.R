@@ -1,8 +1,8 @@
 #' Create a Gencode TxDb object
 #'
-#' This function builds a transcript database (TxDb) object which you can then
-#' use to build a Gencode Genomic State object. This function will download
-#' the data from Gencode, import it into R, process it and build the TxDb
+#' This function builds a transcript database (`TxDb`) object which you can then
+#' use to build a Gencode `GenomicState` object. This function will download
+#' the data from Gencode, import it into R, process it and build the `TxDb`
 #' object.
 #'
 #' @param version A `character(1)` with the Gencode version number.
@@ -17,7 +17,7 @@
 #' @references Based on code for the `brainflowprobes` package at:
 #' <https://github.com/LieberInstitute/brainflowprobes/blob/master/data-raw/create_sysdata.R>
 #'
-#' @seealso [gencode_annotated_genes] [gencode_genomic_state]
+#' @seealso [gencode_annotated_genes()] [gencode_genomic_state()]
 #'
 #' @examples
 #'

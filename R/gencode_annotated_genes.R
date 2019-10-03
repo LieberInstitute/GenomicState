@@ -1,7 +1,8 @@
 #' Annotation the genes for a given Gencode TxDb object
 #'
-#' Based on a `txdb` object built by [gencode_txdb()] this function annotates
-#' the genes. This information is then used by packages like `derfinderPlot`.
+#' Based on a `TxDb` object built by [gencode_txdb()] this function annotates
+#' the genes. This information is then used by packages like `derfinder` and
+#' `derfinderPlot`.
 #'
 #' @param txdb A [GenomicFeatures::TxDb-class] object built with
 #' [gencode_txdb()].
@@ -13,7 +14,7 @@
 #' @references Based on code for the `brainflowprobes` package at:
 #' <https://github.com/LieberInstitute/brainflowprobes/blob/master/data-raw/create_sysdata.R>
 #'
-#' @seealso [gencode_txdb] [gencode_genomic_state]
+#' @seealso [gencode_txdb()] [gencode_genomic_state()]
 #'
 #' @examples
 #'

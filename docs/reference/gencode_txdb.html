@@ -37,7 +37,7 @@
 
 <meta property="og:title" content="Create a Gencode TxDb object — gencode_txdb" />
 <meta property="og:description" content="This function builds a transcript database (TxDb) object which you can then
-use to build a Gencode Genomic State object. This function will download
+use to build a Gencode GenomicState object. This function will download
 the data from Gencode, import it into R, process it and build the TxDb
 object." />
 <meta name="twitter:card" content="summary" />
@@ -90,6 +90,9 @@ object." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -117,9 +120,9 @@ object." />
     </div>
 
     <div class="ref-description">
-    <p>This function builds a transcript database (TxDb) object which you can then
-use to build a Gencode Genomic State object. This function will download
-the data from Gencode, import it into R, process it and build the TxDb
+    <p>This function builds a transcript database (<code>TxDb</code>) object which you can then
+use to build a Gencode <code>GenomicState</code> object. This function will download
+the data from Gencode, import it into R, process it and build the <code>TxDb</code>
 object.</p>
     </div>
 
@@ -154,12 +157,12 @@ keep.</p></td>
 <a href='https://github.com/LieberInstitute/brainflowprobes/blob/master/data-raw/create_sysdata.R'>https://github.com/LieberInstitute/brainflowprobes/blob/master/data-raw/create_sysdata.R</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='gencode_annotated_genes.html'>gencode_annotated_genes</a> <a href='gencode_genomic_state.html'>gencode_genomic_state</a></p></div>
+    <div class='dont-index'><p><code><a href='gencode_annotated_genes.html'>gencode_annotated_genes()</a></code> <code><a href='gencode_genomic_state.html'>gencode_genomic_state()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Build a TxDb object for Gencode v31 chromosome 22</span>
-<span class='no'>txdb_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_txdb</span>(<span class='kw'>chrs</span> <span class='kw'>=</span> <span class='st'>'chr22'</span>)</div><div class='output co'>#&gt; <span class='message'>2019-10-03 12:34:20 importing ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/gencode.v31.annotation.gtf.gz</span></div><div class='output co'>#&gt; <span class='message'>2019-10-03 12:35:24 keeping relevant chromosomes</span></div><div class='output co'>#&gt; <span class='message'>2019-10-03 12:35:24 preparing metadata</span></div><div class='output co'>#&gt; <span class='message'>Prepare the 'metadata' data frame ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>2019-10-03 12:35:33 building the txdb object</span></div><div class='output co'>#&gt; <span class='warning'>Warning: The "phase" metadata column contains non-NA values for features of type</span>
+<span class='no'>txdb_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_txdb</span>(<span class='kw'>chrs</span> <span class='kw'>=</span> <span class='st'>'chr22'</span>)</div><div class='output co'>#&gt; <span class='message'>2019-10-03 12:48:09 importing ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/gencode.v31.annotation.gtf.gz</span></div><div class='output co'>#&gt; <span class='message'>2019-10-03 12:49:21 keeping relevant chromosomes</span></div><div class='output co'>#&gt; <span class='message'>2019-10-03 12:49:21 preparing metadata</span></div><div class='output co'>#&gt; <span class='message'>Prepare the 'metadata' data frame ... </span></div><div class='output co'>#&gt; <span class='message'>OK</span></div><div class='output co'>#&gt; <span class='message'>2019-10-03 12:49:30 building the txdb object</span></div><div class='output co'>#&gt; <span class='warning'>Warning: The "phase" metadata column contains non-NA values for features of type</span>
 #&gt; <span class='warning'>  stop_codon. This information was ignored.</span></div><div class='input'>
 <span class='co'>## Explore the result</span>
 <span class='no'>txdb_v31_hg38_chr22</span></div><div class='output co'>#&gt; TxDb object:
@@ -174,7 +177,7 @@ keep.</p></td>
 #&gt; # exon_nrow: 16375
 #&gt; # cds_nrow: 5844
 #&gt; # Db created by: GenomicFeatures package from Bioconductor
-#&gt; # Creation time: 2019-10-03 12:35:35 -0400 (Thu, 03 Oct 2019)
+#&gt; # Creation time: 2019-10-03 12:49:33 -0400 (Thu, 03 Oct 2019)
 #&gt; # GenomicFeatures version at creation time: 1.36.4
 #&gt; # RSQLite version at creation time: 2.1.2
 #&gt; # DBSCHEMAVERSION: 1.2</div><div class='input'>

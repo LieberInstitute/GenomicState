@@ -14,8 +14,8 @@ This package contains functions for building GenomicState objects
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/LieberInstitute/libdRSE}
-  \item Report bugs at \url{https://github.com/LieberInstitute/libdRSE/issues}
+  \item \url{https://github.com/LieberInstitute/GenomicState}
+  \item Report bugs at \url{https://github.com/LieberInstitute/GenomicState/issues}
 }
 
 }

@@ -15,8 +15,10 @@ A GenomicState object with the gene symbols as built using
 \code{\link[derfinder:makeGenomicState]{derfinder::makeGenomicState()}}.
 }
 \description{
-Based on a \code{txdb} object built by \code{\link[=gencode_txdb]{gencode_txdb()}} this function builds a
-\code{GenomicState`` object which you can then use with [derfinder::annotateRegions()]. This information is then used by packages like }derfinderPlot`.
+Based on a \code{TxDb} object built by \code{\link[=gencode_txdb]{gencode_txdb()}} this function builds a
+\code{GenomicState} object which you can then use with
+\code{\link[derfinder:annotateRegions]{derfinder::annotateRegions()}}. This information is then used by packages
+like \code{derfinderPlot}.
 }
 \details{
 Note that not all genes will have symbols as many will be \code{NA}.
@@ -46,7 +48,7 @@ Based on code for the \code{brainflowprobes} package at:
 \url{https://github.com/LieberInstitute/brainflowprobes/blob/master/data-raw/create_sysdata.R}
 }
 \seealso{
-\link{gencode_txdb} \link{gencode_annotated_genes}
+\code{\link[=gencode_txdb]{gencode_txdb()}} \code{\link[=gencode_annotated_genes]{gencode_annotated_genes()}}
 }
 \author{
 Leonardo Collado-Torres

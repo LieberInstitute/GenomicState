@@ -1,7 +1,7 @@
 #' Build a GenomicState object for Gencode TxDb objects
 #'
-#' Based on a `txdb` object built by [gencode_txdb()] this function builds a
-#' `GenomicState`` object which you can then use with
+#' Based on a `TxDb` object built by [gencode_txdb()] this function builds a
+#' `GenomicState` object which you can then use with
 #' [derfinder::annotateRegions()]. This information is then used by packages
 #' like `derfinderPlot`.
 #'
@@ -16,7 +16,7 @@
 #' @references Based on code for the `brainflowprobes` package at:
 #' <https://github.com/LieberInstitute/brainflowprobes/blob/master/data-raw/create_sysdata.R>
 #'
-#' @seealso [gencode_txdb] [gencode_annotated_genes]
+#' @seealso [gencode_txdb()] [gencode_annotated_genes()]
 #'
 #' @examples
 #'

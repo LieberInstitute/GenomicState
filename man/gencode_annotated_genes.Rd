@@ -15,8 +15,9 @@ The annotated genes resulting from
 \code{\link[bumphunter:annotateTranscripts]{bumphunter::annotateTranscripts()}}.
 }
 \description{
-Based on a \code{txdb} object built by \code{\link[=gencode_txdb]{gencode_txdb()}} this function annotates
-the genes. This information is then used by packages like \code{derfinderPlot}.
+Based on a \code{TxDb} object built by \code{\link[=gencode_txdb]{gencode_txdb()}} this function annotates
+the genes. This information is then used by packages like \code{derfinder} and
+\code{derfinderPlot}.
 }
 \examples{
 
@@ -43,7 +44,7 @@ Based on code for the \code{brainflowprobes} package at:
 \url{https://github.com/LieberInstitute/brainflowprobes/blob/master/data-raw/create_sysdata.R}
 }
 \seealso{
-\link{gencode_txdb} \link{gencode_genomic_state}
+\code{\link[=gencode_txdb]{gencode_txdb()}} \code{\link[=gencode_genomic_state]{gencode_genomic_state()}}
 }
 \author{
 Leonardo Collado-Torres.
