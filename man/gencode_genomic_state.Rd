@@ -32,7 +32,7 @@ Note that not all genes will have symbols as many will be \code{NA}.
 
 ## or read in the txdb object for hg38 chr22 from this package
 txdb_v31_hg38_chr22 <- AnnotationDbi::loadDb(
-    system.file('extdata', 'txdb_v31_hg38_chr22.db',
+    system.file('extdata', 'txdb_v31_hg38_chr22.sqlite',
         package = 'GenomicState')
 )
 
