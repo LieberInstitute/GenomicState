@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • GenomicState</title>
+<title>Locate local metadata outside of AnnotationHub — local_metadata • GenomicState</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Locate local metadata outside of AnnotationHub — local_metadata" />
+<meta property="og:description" content="Locate local metadata outside of AnnotationHub" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -107,60 +109,64 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Locate local metadata outside of AnnotationHub</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LieberInstitute/GenomicState/blob/master/R/local_metadata.R'><code>R/local_metadata.R</code></a></small>
+    <div class="hidden name"><code>local_metadata.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Locate local metadata outside of AnnotationHub</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>local_metadata</span>(<span class='kw'>local_path</span> <span class='kw'>=</span> <span class='st'>"/dcl01/lieber/ajaffe/lab/GenomicState/data-raw"</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="gencode_annotated_genes.html">gencode_annotated_genes()</a></code> </p>
-        </td>
-        <td><p>Annotation the genes for a given Gencode TxDb object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gencode_genomic_state.html">gencode_genomic_state()</a></code> </p>
-        </td>
-        <td><p>Build a GenomicState object for Gencode TxDb objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gencode_txdb.html">gencode_txdb()</a></code> <code><a href="gencode_txdb.html">gencode_source_url()</a></code> </p>
-        </td>
-        <td><p>Create a Gencode TxDb object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="local_metadata.html">local_metadata()</a></code> </p>
-        </td>
-        <td><p>Locate local metadata outside of AnnotationHub</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>local_path</th>
+      <td><p>A <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> pointing to where the data is stored
+locally</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The AnnotationHub metadata <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame()</a></code> for the data in this
+package with <code>RDataPath</code> updated to point to the <code>local_path</code>. It includes
+an addtional column called <code>loadCode</code> which you can evaluate with
+<code><a href='https://rdrr.io/r/base/eval.html'>eval(parse(text = entry))</a></code>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/AnnotationHubData/man/makeAnnotationHubMetadata.html'>AnnotationHubData::makeAnnotationHubMetadata()</a></code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'>## Get the local metadata</span>
+<span class='no'>meta</span> <span class='kw'>&lt;-</span> <span class='fu'>local_metadata</span>()
+
+<span class='co'>## Subset to the data of interest, lets say hg19 TxDb for v31</span>
+<span class='no'>interest</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span>(<span class='no'>meta</span>, <span class='no'>RDataClass</span> <span class='kw'>==</span> <span class='st'>'TxDb'</span> <span class='kw'>&amp;</span> <span class='no'>Tags</span> <span class='kw'>==</span> <span class='st'>'Gencode:v31:hg19'</span>)
+
+<span class='co'>## Next you can load the data</span>
+<span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.exists</a></span>(<span class='no'>interest</span>$<span class='no'>RDataPath</span>)) {
+    <span class='co'>## This only works at JHPCE</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/eval.html'>eval</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/parse.html'>parse</a></span>(<span class='kw'>text</span> <span class='kw'>=</span> <span class='no'>interest</span>$<span class='no'>loadCode</span>))
+}</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
+    <h2>Author</h2>
+    <p>Leonardo Collado-Torres</p>
   </div>
 </div>
 
