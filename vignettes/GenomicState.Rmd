@@ -1,8 +1,17 @@
 ---
-title: "GenomicState"
-output: rmarkdown::html_vignette
+title: "Introduction to GenomicState"
+author: 
+  - name: Leonardo Collado-Torres
+    affiliation:
+    - &libd Lieber Institute for Brain Development, Johns Hopkins Medical Campus
+    - &ccb Center for Computational Biology, Johns Hopkins University
+    email: lcolladotor@gmail.com
+date: "`r doc_date()`"
+package: "`r pkg_ver('sgejobs')`"
+output: 
+  BiocStyle::html_document
 vignette: >
-  %\VignetteIndexEntry{GenomicState}
+  %\VignetteIndexEntry{Introduction to GenomicState}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -51,7 +60,10 @@ bib <- c(
     derfinder = citation('derfinder')[1],
     AnnotationDbi = citation('AnnotationDbi'),
     IRanges = citation('IRanges'),
-    org.Hs.eg.db = citation('org.Hs.eg.db')
+    org.Hs.eg.db = citation('org.Hs.eg.db'),
+    glue = citation('glue'),
+    AnnotationHub = citation('AnnotationHub'),
+    AnnotationHubData = citation('AnnotationHubData')
 )
 ```
 
@@ -100,14 +112,146 @@ To get started, load the `r Githubpkg('LieberInstitute/GenomicState')` package.
 library('GenomicState')
 ```
 
+# AnnotationHub
+
+This is how you can query the data from `GenomicState` using `r citep(bib[['AnnotationHub']])`.
+
+```{r 'annotation_hub'}
+library('AnnotationHub')
+ah <- AnnotationHub()
+q <- query(ah, 'GenomicState')
+
+## Waiting for data to be there before finishing this part
+q
+```
+
+(This section is currently incomplete!)
+
+# Using the objects
+
+To show how we can use these objects, first we build those for Gencode version 31 on hg19 coordinates.
+
+```{r 'build_ex_objects'}
+## Note: should probably change the example so it doesn't need to be
+## computed...
+
+## Load the example TxDb object
+## or start from scratch with:
+## txdb_v31_hg38_chr22 <- gencode_txdb(version = '31', genome = 'hg38',
+##     chrs = 'chr22')
+# txdb_v31_hg38_chr22 <- AnnotationDbi::loadDb(
+#     system.file('extdata', 'txdb_v31_hg38_chr22.sqlite',
+#         package = 'GenomicState')
+# )
+
+## Build the TxDb object for chr21 for hg19
+txdb_v31_hg19_chr21 <- gencode_txdb(version = '31', genome = 'hg19',
+    chrs = 'chr21')
+
+## Build the GenomicState and annotated genes
+genes_v31_hg19_chr21 <- gencode_annotated_genes(txdb_v31_hg19_chr21)
+gs_v31_hg19_chr21 <- gencode_genomic_state(txdb_v31_hg19_chr21)
+```
+
+Next we load a series of related packages that use these objects.
+
+```{r 'load_derfinder', messages = FALSE, warnings = FALSE}
+## Load external packages
+library('derfinder')
+library('derfinderPlot')
+library('bumphunter')
+library('GenomicRanges')
+```
+
+Next we can prepare the needed for running `derfinderPlot::plotRegionCoverage()` where we use the `TxDb` object, the `GenomicState` and the `annotated genes` we prepared for Gencode v31 on hg19.
+
+```{r 'example_plot_prep'}
+## Some example regions from derfinder (set the chromosome lengths)
+regions <- genomeRegions$regions[1:2]
+seqlengths(regions) <- seqlengths(txdb_v31_hg19_chr21)[
+    names(seqlengths(regions))
+]
+
+## Annotate them
+nearestAnnotation <- matchGenes(x = regions, subject = genes_v31_hg19_chr21)
+annotatedRegions <- annotateRegions(regions = regions, 
+    genomicState = gs_v31_hg19_chr21$fullGenome, minoverlap = 1)
+
+## Obtain fullCov object
+fullCov <- list('chr21' = genomeDataRaw$coverage)
+regionCov <- getRegionCoverage(fullCov=fullCov, regions=regions)
+```
+
+And now we can make the example plot as shown below.
+
+```{r 'example_plot'}
+## now make the plot
+plotRegionCoverage(regions=regions, regionCoverage=regionCov, 
+    groupInfo=genomeInfo$pop, nearestAnnotation=nearestAnnotation, 
+    annotatedRegions=annotatedRegions, whichRegions=1:2,
+    txdb = txdb_v31_hg19_chr21)
+```
+
+
 
 # JHPCE
 
-TODO
+
+You can also access the data locally using the function `local_metadata()` which works at [JHPCE](https://jhpce.jhu.edu/) or anywhere where you have re-created the files from this package. This returns a `data.frame()` which you can subset. It also inclused the R code for loading the data which you can do using  `eval(parse(text = local_metadata()$loadCode))` as shown below.
+
+```{r 'local_metadata'}
+## Get the local metadata
+meta <- local_metadata()
+
+## Subset to the data of interest, lets say hg19 TxDb for v31
+interest <- subset(meta, RDataClass == 'TxDb' & Tags == 'Gencode:v31:hg19')
+
+## Next you can load the data
+if(file.exists(interest$RDataPath)) {
+    ## This only works at JHPCE
+    eval(parse(text = interest$loadCode))
+    
+    ## Explore the loaded object (would be gencode_v31_hg19_txdb in this case)
+    gencode_v31_hg19_txdb
+}
+```
 
 # Build objects
 
-TODO
+The objects provided by `GenomicState` through `r citep(bib[['AnnotationHub']])` were built using code like the one included below which is how the Gencode version 23 for hg19 files were built.
+
+```{r 'build_local', eval = FALSE}
+outdir <- 'gencode'
+dir.create(outdir, showWarnings = FALSE)
+ 
+## Build and save the TxDb object
+gencode_v23_hg19_txdb <- gencode_txdb('23', 'hg19')
+saveDb(gencode_v23_hg19_txdb,
+    file = file.path(outdir, 'gencode_v23_hg19_txdb.sqlite'))
+
+## Build and save the annotateTranscripts output
+gencode_v23_hg19_annotated_genes<- gencode_annotated_genes(
+    gencode_v23_hg19_txdb
+)
+save(gencode_v23_hg19_annotated_genes,
+    file = file.path(outdir, 'gencode_v23_hg19_annotated_genes.rda'))
+
+## Build and save the GenomicState
+gencode_v23_hg19_GenomicState <- gencode_genomic_state(
+    gencode_v23_hg19_txdb
+)
+save(gencode_v23_hg19_GenomicState,
+    file = file.path(outdir, 'gencode_v23_hg19_GenomicState.rda'))
+```
+
+For more details check the source files:
+
+```{r 'build_source'}
+## R commands for building the files:
+system.file('scripts', 'make-data_gencode_human.R', package = 'GenomicState')
+## The above file was created by this one:
+system.file('scripts', 'generate_make_data_gencode_human.R', package = 'GenomicState')
+```
 
 # Reproducibility
 
@@ -128,6 +272,9 @@ The `r Githubpkg('LieberInstitute/GenomicState')` package `r citep(bib[['Genomic
 * `r Biocpkg('AnnotationDbi')` `r citep(bib[['AnnotationDbi']])`
 * `r Biocpkg('IRanges')` `r citep(bib[['IRanges']])`
 * `r Biocpkg('org.Hs.eg.db')` `r citep(bib[['org.Hs.eg.db']])`
+* `r CRANpkg('glue')` `r citep(bib[['glue']])`
+* `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])`
+* `r Biocpkg('AnnotationHubData')` `r citep(bib[['AnnotationHubData']])`
     
     
 Code for creating the vignette

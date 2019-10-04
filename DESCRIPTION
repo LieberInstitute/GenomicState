@@ -2,7 +2,7 @@ Package: GenomicState
 Title: Build and access GenomicState objects for use with derfinder tools from
     sources like Gencode
 Version: 0.99.0
-Date: 2019-10-03
+Date: 2019-10-4
 Authors@R: 
     person("Leonardo", "Collado-Torres", role = c("aut", "cre"), 
     email = "lcolladotor@gmail.com", comment = c(ORCID = "0000-0003-2140-308X"))
@@ -20,7 +20,10 @@ Imports:
     derfinder,
     AnnotationDbi,
     IRanges,
-    org.Hs.eg.db
+    org.Hs.eg.db,
+    utils,
+    AnnotationHubData,
+    AnnotationHub
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Suggests: 
@@ -29,9 +32,11 @@ Suggests:
     BiocStyle,
     knitcitations,
     sessioninfo,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    glue,
+    derfinderPlot
 VignetteBuilder: knitr
 URL: https://github.com/LieberInstitute/GenomicState
 BugReports: https://github.com/LieberInstitute/GenomicState/issues
-biocViews: Coverage, Transcriptomics, Homo_sapiens, TxDb
+biocViews: Coverage, Transcriptomics, Homo_sapiens, TxDb, AnnotationHub
 Remotes: lcolladotor/bumphunter@fix_namespace_genes

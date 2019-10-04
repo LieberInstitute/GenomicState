@@ -2,4 +2,6 @@
 
 export(gencode_annotated_genes)
 export(gencode_genomic_state)
+export(gencode_source_url)
 export(gencode_txdb)
+export(local_metadata)

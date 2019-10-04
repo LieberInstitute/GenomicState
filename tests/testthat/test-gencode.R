@@ -7,6 +7,13 @@ genes_v31_hg38_chr22 <- gencode_annotated_genes(txdb_v31_hg38_chr22)
 gs_v31_hg38_chr22 <- gencode_genomic_state(txdb_v31_hg38_chr22)
 
 test_that("Gencode genomic states", {
+    expect_equal(gencode_source_url(version = '31', genome = 'hg19'),
+        'ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/GRCh37_mapping/gencode.v31lift37.annotation.gtf.gz'
+    )
+    expect_equal(gencode_source_url(version = '31', genome = 'hg38'),
+        'ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/gencode.v31.annotation.gtf.gz'
+    )
+
     expect_equivalent(txdb_v31_hg38_chr22, txdb_v31_hg38_chr22_disk)
     ## Dunno why chrM is not here
     expect_equal(

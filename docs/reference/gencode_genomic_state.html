@@ -162,12 +162,12 @@ like <code>derfinderPlot</code>.</p>
 
 <span class='co'>## or read in the txdb object for hg38 chr22 from this package</span>
 <span class='no'>txdb_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>AnnotationDbi</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationDbi/man/AnnotationDb-class.html'>loadDb</a></span>(
-    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>'extdata'</span>, <span class='st'>'txdb_v31_hg38_chr22.db'</span>,
+    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>'extdata'</span>, <span class='st'>'txdb_v31_hg38_chr22.sqlite'</span>,
         <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>'GenomicState'</span>)
 )
 
 <span class='co'>## Now build the GenomicState object</span>
-<span class='no'>gs_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_genomic_state</span>(<span class='no'>txdb_v31_hg38_chr22</span>)</div><div class='output co'>#&gt; <span class='message'>2019-10-03 12:47:54 making the GenomicState object</span></div><div class='output co'>#&gt; <span class='message'>extendedMapSeqlevels: sequence names mapped from NCBI to UCSC for species homo_sapiens</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:1 mapping between keys and columns</span></div><div class='output co'>#&gt; <span class='message'>2019-10-03 12:48:09 finding gene symbols</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:many mapping between keys and columns</span></div><div class='output co'>#&gt; <span class='message'>2019-10-03 12:48:09 adding gene symbols to the GenomicState</span></div><div class='input'>
+<span class='no'>gs_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_genomic_state</span>(<span class='no'>txdb_v31_hg38_chr22</span>)</div><div class='output co'>#&gt; <span class='message'>2019-10-04 13:30:08 making the GenomicState object</span></div><div class='output co'>#&gt; <span class='message'>extendedMapSeqlevels: sequence names mapped from NCBI to UCSC for species homo_sapiens</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:1 mapping between keys and columns</span></div><div class='output co'>#&gt; <span class='message'>2019-10-04 13:30:26 finding gene symbols</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:many mapping between keys and columns</span></div><div class='output co'>#&gt; <span class='message'>2019-10-04 13:30:26 adding gene symbols to the GenomicState</span></div><div class='input'>
 <span class='co'>## Explore the result</span>
 <span class='no'>gs_v31_hg38_chr22</span></div><div class='output co'>#&gt; $fullGenome
 #&gt; GRanges object with 13846 ranges and 5 metadata columns:

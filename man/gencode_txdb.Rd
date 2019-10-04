@@ -2,10 +2,13 @@
 % Please edit documentation in R/gencode_txdb.R
 \name{gencode_txdb}
 \alias{gencode_txdb}
+\alias{gencode_source_url}
 \title{Create a Gencode TxDb object}
 \usage{
-gencode_txdb(version = "31", genome = "hg38", chrs = paste0("chr",
-  c(1:22, "X", "Y", "M")))
+gencode_txdb(version = "31", genome = c("hg38", "hg19"),
+  chrs = paste0("chr", c(1:22, "X", "Y", "M")))
+
+gencode_source_url(version = "31", genome = c("hg38", "hg19"))
 }
 \arguments{
 \item{version}{A \code{character(1)} with the Gencode version number.}
@@ -18,6 +21,8 @@ keep.}
 }
 \value{
 A \link[GenomicFeatures:TxDb-class]{GenomicFeatures::TxDb} object.
+
+A \code{character(1)} with the URL for the GTF Gencode file of interest.
 }
 \description{
 This function builds a transcript database (\code{TxDb}) object which you can then
@@ -27,11 +32,23 @@ object.
 }
 \examples{
 
-## Build a TxDb object for Gencode v31 chromosome 22
-txdb_v31_hg38_chr22 <- gencode_txdb(chrs = 'chr22')
+\dontrun{
+    ## Start from scratch if you want:
+    txdb_v31_hg38_chr22 <- gencode_txdb(chrs = 'chr22')
+}
+
+## or read in the txdb object for hg38 chr22 from this package
+txdb_v31_hg38_chr22 <- AnnotationDbi::loadDb(
+    system.file('extdata', 'txdb_v31_hg38_chr22.sqlite',
+        package = 'GenomicState')
+)
 
 ## Explore the result
 txdb_v31_hg38_chr22
+
+
+## Locate the GTF file for Gencode version 31 for hg19
+gencode_source_url(version = '31', genome = 'hg19')
 
 }
 \references{

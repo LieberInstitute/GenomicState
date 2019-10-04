@@ -21,24 +21,30 @@
 #'
 #' @examples
 #'
-#' ## Build a TxDb object for Gencode v31 chromosome 22
-#' txdb_v31_hg38_chr22 <- gencode_txdb(chrs = 'chr22')
+#' \dontrun{
+#'     ## Start from scratch if you want:
+#'     txdb_v31_hg38_chr22 <- gencode_txdb(chrs = 'chr22')
+#' }
+#'
+#' ## or read in the txdb object for hg38 chr22 from this package
+#' txdb_v31_hg38_chr22 <- AnnotationDbi::loadDb(
+#'     system.file('extdata', 'txdb_v31_hg38_chr22.sqlite',
+#'         package = 'GenomicState')
+#' )
 #'
 #' ## Explore the result
 #' txdb_v31_hg38_chr22
 #'
 
-gencode_txdb <- function(version = '31', genome = 'hg38',
+gencode_txdb <- function(version = '31', genome = c('hg38', 'hg19'),
     chrs = paste0('chr', c(1:22, 'X', 'Y', 'M'))) {
 
-    genome <- tolower(genome)
-    stopifnot(genome %in% c('hg38', 'hg19'))
+    genome <- match.arg(genome)
 
-    gtf_file <- paste0(
-        'ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/',
-        'release_', version, if(genome == 'hg19') '/GRCh37_mapping',
-        '/gencode.v', version, if(genome == 'hg19') 'lift37',
-        '.annotation.gtf.gz')
+    ## Locate file
+    gtf_file <- gencode_source_url(version = version, genome = genome)
+
+    ## Import the data
     message(paste(Sys.time(), 'importing', gtf_file))
     gencode_gtf <- rtracklayer::import(gtf_file)
 
@@ -69,4 +75,27 @@ gencode_txdb <- function(version = '31', genome = 'hg38',
     )
     txdb <- GenomicFeatures::makeTxDbFromGRanges(gr, metadata = metadata)
     return(txdb)
+}
+
+
+#' @export
+#' @rdname gencode_txdb
+#' @inheritParams gencode_txdb
+#' @return A `character(1)` with the URL for the GTF Gencode file of interest.
+#'
+#' @examples
+#'
+#' ## Locate the GTF file for Gencode version 31 for hg19
+#' gencode_source_url(version = '31', genome = 'hg19')
+#'
+
+gencode_source_url <- function(version = '31', genome = c('hg38', 'hg19')) {
+    genome <- match.arg(genome)
+    source_url <- paste0(
+        'ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/',
+        'release_', version, if(genome == 'hg19') '/GRCh37_mapping',
+        '/gencode.v', version, if(genome == 'hg19') 'lift37',
+        '.annotation.gtf.gz')
+
+    return(source_url)
 }
