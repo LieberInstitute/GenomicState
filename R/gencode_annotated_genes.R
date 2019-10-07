@@ -18,8 +18,8 @@
 #'
 #' @examples
 #'
+#' ## Start from scratch if you want:
 #' \dontrun{
-#'     ## Start from scratch if you want:
 #'     txdb_v31_hg19_chr21 <- gencode_txdb('31', 'hg19', chrs = 'chr21')
 #' }
 #'

@@ -6,7 +6,7 @@
 \title{Create a Gencode TxDb object}
 \usage{
 gencode_txdb(version = "31", genome = c("hg38", "hg19"),
-  chrs = paste0("chr", c(1:22, "X", "Y", "M")))
+  chrs = paste0("chr", c(seq_len(22), "X", "Y", "M")))
 
 gencode_source_url(version = "31", genome = c("hg38", "hg19"))
 }
@@ -32,8 +32,8 @@ object.
 }
 \examples{
 
+## Start from scratch if you want:
 \dontrun{
-    ## Start from scratch if you want:
     txdb_v31_hg19_chr21 <- gencode_txdb('31', 'hg19', chrs = 'chr21')
 }
 

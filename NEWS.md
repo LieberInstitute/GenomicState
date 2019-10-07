@@ -1,3 +1,10 @@
+# GenomicState 0.99.2
+
+* Addressed issues reported at http://bioconductor.org/spb_reports/GenomicState_buildreport_20191007121957.html
+* Added the function `GenomicStateHub()` which will work once the data is
+uploaded to `AnnotationHub`.
+* Edited the vignette links.
+
 # GenomicState 0.99.1
 
 * Fixed some minor bugs.

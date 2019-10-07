@@ -35,6 +35,9 @@ interest
 if(file.exists(interest$RDataPath)) {
     ## This only works at JHPCE
     eval(parse(text = interest$loadCode))
+
+    ## Explore the loaded object (would be gencode_v31_hg19_txdb in this case)
+    gencode_v31_hg19_txdb
 }
 
 }

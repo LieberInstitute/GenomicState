@@ -21,8 +21,8 @@
 #'
 #' @examples
 #'
+#' ## Start from scratch if you want:
 #' \dontrun{
-#'     ## Start from scratch if you want:
 #'     txdb_v31_hg19_chr21 <- gencode_txdb('31', 'hg19', chrs = 'chr21')
 #' }
 #'
@@ -37,7 +37,7 @@
 #'
 
 gencode_txdb <- function(version = '31', genome = c('hg38', 'hg19'),
-    chrs = paste0('chr', c(1:22, 'X', 'Y', 'M'))) {
+    chrs = paste0('chr', c(seq_len(22), 'X', 'Y', 'M'))) {
 
     genome <- match.arg(genome)
 

@@ -21,8 +21,8 @@ the genes. This information is then used by packages like \code{derfinder} and
 }
 \examples{
 
+## Start from scratch if you want:
 \dontrun{
-    ## Start from scratch if you want:
     txdb_v31_hg19_chr21 <- gencode_txdb('31', 'hg19', chrs = 'chr21')
 }
 
