@@ -1,3 +1,7 @@
+# GenomicState 0.99.1
+
+* Fixed some minor bugs.
+
 # GenomicState 0.99.0
 
 * Added a `NEWS.md` file to track changes to the package.
