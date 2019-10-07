@@ -166,29 +166,29 @@ keep.</p></td>
     <pre class="examples"><div class='input'>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
     <span class='co'>## Start from scratch if you want:</span>
-    <span class='no'>txdb_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_txdb</span>(<span class='kw'>chrs</span> <span class='kw'>=</span> <span class='st'>'chr22'</span>)
+    <span class='no'>txdb_v31_hg19_chr21</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_txdb</span>(<span class='st'>'31'</span>, <span class='st'>'hg19'</span>, <span class='kw'>chrs</span> <span class='kw'>=</span> <span class='st'>'chr21'</span>)
 }
 
-<span class='co'>## or read in the txdb object for hg38 chr22 from this package</span>
-<span class='no'>txdb_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>AnnotationDbi</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationDbi/man/AnnotationDb-class.html'>loadDb</a></span>(
-    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>'extdata'</span>, <span class='st'>'txdb_v31_hg38_chr22.sqlite'</span>,
+<span class='co'>## or read in the txdb object for hg19 chr21 from this package</span>
+<span class='no'>txdb_v31_hg19_chr21</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>AnnotationDbi</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationDbi/man/AnnotationDb-class.html'>loadDb</a></span>(
+    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>'extdata'</span>, <span class='st'>'txdb_v31_hg19_chr21.sqlite'</span>,
         <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>'GenomicState'</span>)
 )
 
 <span class='co'>## Explore the result</span>
-<span class='no'>txdb_v31_hg38_chr22</span></div><div class='output co'>#&gt; TxDb object:
+<span class='no'>txdb_v31_hg19_chr21</span></div><div class='output co'>#&gt; TxDb object:
 #&gt; # Db type: TxDb
 #&gt; # Supporting package: GenomicFeatures
-#&gt; # Data source: ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/gencode.v31.annotation.gtf.gz
+#&gt; # Data source: ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/GRCh37_mapping/gencode.v31lift37.annotation.gtf.gz
 #&gt; # Organism: Homo sapiens
 #&gt; # Taxonomy ID: 9606
 #&gt; # miRBase build ID: NA
-#&gt; # Genome: hg38
-#&gt; # transcript_nrow: 4910
-#&gt; # exon_nrow: 16375
-#&gt; # cds_nrow: 5844
+#&gt; # Genome: hg19
+#&gt; # transcript_nrow: 2813
+#&gt; # exon_nrow: 8525
+#&gt; # cds_nrow: 2576
 #&gt; # Db created by: GenomicFeatures package from Bioconductor
-#&gt; # Creation time: 2019-10-03 10:59:24 -0400 (Thu, 03 Oct 2019)
+#&gt; # Creation time: 2019-10-07 09:29:35 -0400 (Mon, 07 Oct 2019)
 #&gt; # GenomicFeatures version at creation time: 1.36.4
 #&gt; # RSQLite version at creation time: 2.1.2
 #&gt; # DBSCHEMAVERSION: 1.2</div><div class='input'>

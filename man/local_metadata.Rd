@@ -28,6 +28,9 @@ meta <- local_metadata()
 ## Subset to the data of interest, lets say hg19 TxDb for v31
 interest <- subset(meta, RDataClass == 'TxDb' & Tags == 'Gencode:v31:hg19')
 
+## Inspect the result
+interest
+
 ## Next you can load the data
 if(file.exists(interest$RDataPath)) {
     ## This only works at JHPCE

@@ -157,79 +157,79 @@ like <code>derfinderPlot</code>.</p>
     <pre class="examples"><div class='input'>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
     <span class='co'>## Start from scratch if you want:</span>
-    <span class='no'>txdb_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gencode_txdb.html'>gencode_txdb</a></span>(<span class='kw'>chrs</span> <span class='kw'>=</span> <span class='st'>'chr22'</span>)
+    <span class='no'>txdb_v31_hg19_chr21</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gencode_txdb.html'>gencode_txdb</a></span>(<span class='st'>'31'</span>, <span class='st'>'hg19'</span>, <span class='kw'>chrs</span> <span class='kw'>=</span> <span class='st'>'chr21'</span>)
 }
 
-<span class='co'>## or read in the txdb object for hg38 chr22 from this package</span>
-<span class='no'>txdb_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>AnnotationDbi</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationDbi/man/AnnotationDb-class.html'>loadDb</a></span>(
-    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>'extdata'</span>, <span class='st'>'txdb_v31_hg38_chr22.sqlite'</span>,
+<span class='co'>## or read in the txdb object for hg19 chr21 from this package</span>
+<span class='no'>txdb_v31_hg19_chr21</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>AnnotationDbi</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationDbi/man/AnnotationDb-class.html'>loadDb</a></span>(
+    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>'extdata'</span>, <span class='st'>'txdb_v31_hg19_chr21.sqlite'</span>,
         <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>'GenomicState'</span>)
 )
 
 <span class='co'>## Now build the GenomicState object</span>
-<span class='no'>gs_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_genomic_state</span>(<span class='no'>txdb_v31_hg38_chr22</span>)</div><div class='output co'>#&gt; <span class='message'>2019-10-04 13:30:08 making the GenomicState object</span></div><div class='output co'>#&gt; <span class='message'>extendedMapSeqlevels: sequence names mapped from NCBI to UCSC for species homo_sapiens</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:1 mapping between keys and columns</span></div><div class='output co'>#&gt; <span class='message'>2019-10-04 13:30:26 finding gene symbols</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:many mapping between keys and columns</span></div><div class='output co'>#&gt; <span class='message'>2019-10-04 13:30:26 adding gene symbols to the GenomicState</span></div><div class='input'>
+<span class='no'>gs_v31_hg19_chr21</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_genomic_state</span>(<span class='no'>txdb_v31_hg19_chr21</span>)</div><div class='output co'>#&gt; <span class='message'>2019-10-07 09:48:34 making the GenomicState object</span></div><div class='output co'>#&gt; <span class='message'>extendedMapSeqlevels: sequence names mapped from NCBI to UCSC for species homo_sapiens</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:1 mapping between keys and columns</span></div><div class='output co'>#&gt; <span class='message'>2019-10-07 09:48:45 finding gene symbols</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:many mapping between keys and columns</span></div><div class='output co'>#&gt; <span class='message'>2019-10-07 09:48:45 adding gene symbols to the GenomicState</span></div><div class='input'>
 <span class='co'>## Explore the result</span>
-<span class='no'>gs_v31_hg38_chr22</span></div><div class='output co'>#&gt; $fullGenome
-#&gt; GRanges object with 13846 ranges and 5 metadata columns:
-#&gt;         seqnames            ranges strand |   theRegion         tx_id
-#&gt;            &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;IntegerList&gt;
-#&gt;       1    chr22 11066418-11066515      + |        exon             1
-#&gt;       2    chr22 11066516-11067984      + |      intron             1
-#&gt;       3    chr22 11067985-11068174      + |        exon             1
-#&gt;       4    chr22 11124337-11124379      + |        exon             2
-#&gt;       5    chr22 11124380-11124507      + |      intron             2
-#&gt;     ...      ...               ...    ... .         ...           ...
-#&gt;   13842    chr22 50733299-50735824      * |  intergenic          &lt;NA&gt;
-#&gt;   13843    chr22 50738140-50738195      * |  intergenic          &lt;NA&gt;
-#&gt;   13844    chr22 50745335-50754674      * |  intergenic          &lt;NA&gt;
-#&gt;   13845    chr22 50755435-50756947      * |  intergenic          &lt;NA&gt;
-#&gt;   13846    chr22 50801310-50818468      * |  intergenic          &lt;NA&gt;
-#&gt;                   tx_name          gene          symbol
-#&gt;           &lt;CharacterList&gt; &lt;IntegerList&gt; &lt;CharacterList&gt;
-#&gt;       1 ENST00000624155.2          1260            &lt;NA&gt;
-#&gt;       2 ENST00000624155.2          1260            &lt;NA&gt;
-#&gt;       3 ENST00000624155.2          1260            &lt;NA&gt;
-#&gt;       4 ENST00000422332.1           648            &lt;NA&gt;
-#&gt;       5 ENST00000422332.1           648            &lt;NA&gt;
-#&gt;     ...               ...           ...             ...
-#&gt;   13842              &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
-#&gt;   13843              &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
-#&gt;   13844              &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
-#&gt;   13845              &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
-#&gt;   13846              &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
+<span class='no'>gs_v31_hg19_chr21</span></div><div class='output co'>#&gt; $fullGenome
+#&gt; GRanges object with 7871 ranges and 5 metadata columns:
+#&gt;        seqnames            ranges strand |   theRegion         tx_id
+#&gt;           &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;IntegerList&gt;
+#&gt;      1    chr21   9492380-9492817      + |        exon             1
+#&gt;      2    chr21   9590294-9590395      + |        exon             2
+#&gt;      3    chr21   9647910-9648694      + |        exon           3,4
+#&gt;      4    chr21   9648695-9650108      + |      intron           3,4
+#&gt;      5    chr21   9650109-9650168      + |        exon           3,4
+#&gt;    ...      ...               ...    ... .         ...           ...
+#&gt;   7867    chr21 47865683-47878803      * |  intergenic          &lt;NA&gt;
+#&gt;   7868    chr21 47989929-48018516      * |  intergenic          &lt;NA&gt;
+#&gt;   7869    chr21 48025122-48055506      * |  intergenic          &lt;NA&gt;
+#&gt;   7870    chr21 48085037-48110675      * |  intergenic          &lt;NA&gt;
+#&gt;   7871    chr21 48111139-48129895      * |  intergenic          &lt;NA&gt;
+#&gt;                                        tx_name          gene          symbol
+#&gt;                                &lt;CharacterList&gt; &lt;IntegerList&gt; &lt;CharacterList&gt;
+#&gt;      1                     ENST00000625020.1_1           776            &lt;NA&gt;
+#&gt;      2                     ENST00000625098.1_1           754            &lt;NA&gt;
+#&gt;      3 ENST00000623794.3_1,ENST00000624813.1_1           766    LOC101930100
+#&gt;      4 ENST00000623794.3_1,ENST00000624813.1_1           766    LOC101930100
+#&gt;      5 ENST00000623794.3_1,ENST00000624813.1_1           766    LOC101930100
+#&gt;    ...                                     ...           ...             ...
+#&gt;   7867                                    &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
+#&gt;   7868                                    &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
+#&gt;   7869                                    &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
+#&gt;   7870                                    &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
+#&gt;   7871                                    &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
 #&gt;   -------
-#&gt;   seqinfo: 24 sequences from hg38 genome
+#&gt;   seqinfo: 1 sequence from hg19 genome
 #&gt; 
 #&gt; $codingGenome
-#&gt; GRanges object with 18576 ranges and 5 metadata columns:
+#&gt; GRanges object with 10361 ranges and 5 metadata columns:
 #&gt;         seqnames            ranges strand |   theRegion         tx_id
 #&gt;            &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;IntegerList&gt;
-#&gt;       1    chr22 11064418-11066417      + |    promoter             1
-#&gt;       2    chr22 11066418-11066515      + |        exon             1
-#&gt;       3    chr22 11066516-11066617      + |    promoter             1
-#&gt;       4    chr22 11066618-11067984      + |      intron             1
-#&gt;       5    chr22 11067985-11068174      + |        exon             1
+#&gt;       1    chr21   9490380-9492379      + |    promoter             1
+#&gt;       2    chr21   9492380-9492817      + |        exon             1
+#&gt;       3    chr21   9588294-9590293      + |    promoter             2
+#&gt;       4    chr21   9590294-9590395      + |        exon             2
+#&gt;       5    chr21   9590396-9590493      + |    promoter             2
 #&gt;     ...      ...               ...    ... .         ...           ...
-#&gt;   18572    chr22 50630174-50667803      * |  intergenic          &lt;NA&gt;
-#&gt;   18573    chr22 50670004-50670713      * |  intergenic          &lt;NA&gt;
-#&gt;   18574    chr22 50733299-50735824      * |  intergenic          &lt;NA&gt;
-#&gt;   18575    chr22 50745521-50754674      * |  intergenic          &lt;NA&gt;
-#&gt;   18576    chr22 50801310-50818468      * |  intergenic          &lt;NA&gt;
-#&gt;                   tx_name          gene          symbol
-#&gt;           &lt;CharacterList&gt; &lt;IntegerList&gt; &lt;CharacterList&gt;
-#&gt;       1 ENST00000624155.2          1260            &lt;NA&gt;
-#&gt;       2 ENST00000624155.2          1260            &lt;NA&gt;
-#&gt;       3 ENST00000624155.2          1260            &lt;NA&gt;
-#&gt;       4 ENST00000624155.2          1260            &lt;NA&gt;
-#&gt;       5 ENST00000624155.2          1260            &lt;NA&gt;
-#&gt;     ...               ...           ...             ...
-#&gt;   18572              &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
-#&gt;   18573              &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
-#&gt;   18574              &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
-#&gt;   18575              &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
-#&gt;   18576              &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
+#&gt;   10357    chr21 47865683-47876803      * |  intergenic          &lt;NA&gt;
+#&gt;   10358    chr21 47989929-48018516      * |  intergenic          &lt;NA&gt;
+#&gt;   10359    chr21 48027122-48053506      * |  intergenic          &lt;NA&gt;
+#&gt;   10360    chr21 48085037-48108675      * |  intergenic          &lt;NA&gt;
+#&gt;   10361    chr21 48111139-48129895      * |  intergenic          &lt;NA&gt;
+#&gt;                     tx_name          gene          symbol
+#&gt;             &lt;CharacterList&gt; &lt;IntegerList&gt; &lt;CharacterList&gt;
+#&gt;       1 ENST00000625020.1_1           776            &lt;NA&gt;
+#&gt;       2 ENST00000625020.1_1           776            &lt;NA&gt;
+#&gt;       3 ENST00000625098.1_1           754            &lt;NA&gt;
+#&gt;       4 ENST00000625098.1_1           754            &lt;NA&gt;
+#&gt;       5 ENST00000625098.1_1           754            &lt;NA&gt;
+#&gt;     ...                 ...           ...             ...
+#&gt;   10357                &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
+#&gt;   10358                &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
+#&gt;   10359                &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
+#&gt;   10360                &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
+#&gt;   10361                &lt;NA&gt;          &lt;NA&gt;            &lt;NA&gt;
 #&gt;   -------
-#&gt;   seqinfo: 24 sequences from hg38 genome
+#&gt;   seqinfo: 1 sequence from hg19 genome
 #&gt; </div><div class='input'>
 </div></pre>
   </div>

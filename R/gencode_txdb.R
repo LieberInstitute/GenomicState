@@ -23,17 +23,17 @@
 #'
 #' \dontrun{
 #'     ## Start from scratch if you want:
-#'     txdb_v31_hg38_chr22 <- gencode_txdb(chrs = 'chr22')
+#'     txdb_v31_hg19_chr21 <- gencode_txdb('31', 'hg19', chrs = 'chr21')
 #' }
 #'
-#' ## or read in the txdb object for hg38 chr22 from this package
-#' txdb_v31_hg38_chr22 <- AnnotationDbi::loadDb(
-#'     system.file('extdata', 'txdb_v31_hg38_chr22.sqlite',
+#' ## or read in the txdb object for hg19 chr21 from this package
+#' txdb_v31_hg19_chr21 <- AnnotationDbi::loadDb(
+#'     system.file('extdata', 'txdb_v31_hg19_chr21.sqlite',
 #'         package = 'GenomicState')
 #' )
 #'
 #' ## Explore the result
-#' txdb_v31_hg38_chr22
+#' txdb_v31_hg19_chr21
 #'
 
 gencode_txdb <- function(version = '31', genome = c('hg38', 'hg19'),
@@ -73,6 +73,9 @@ gencode_txdb <- function(version = '31', genome = c('hg38', 'hg19'),
         circ_seqs = GenomicFeatures::DEFAULT_CIRC_SEQS,
         chrominfo = GenomeInfoDb::Seqinfo(genome = genome)
     )
+
+    ## Prune again since GenomeInfoDb::Seqinfo() will return many seqlevels
+    gr <- GenomeInfoDb::keepSeqlevels(gr, chrs, pruning.mode = 'coarse')
     txdb <- GenomicFeatures::makeTxDbFromGRanges(gr, metadata = metadata)
     return(txdb)
 }

@@ -20,13 +20,17 @@
 #' ## Subset to the data of interest, lets say hg19 TxDb for v31
 #' interest <- subset(meta, RDataClass == 'TxDb' & Tags == 'Gencode:v31:hg19')
 #'
+#' ## Inspect the result
+#' interest
+#'
 #' ## Next you can load the data
 #' if(file.exists(interest$RDataPath)) {
 #'     ## This only works at JHPCE
 #'     eval(parse(text = interest$loadCode))
 #' }
 #'
-local_metadata <- function(local_path = '/dcl01/lieber/ajaffe/lab/GenomicState/data-raw') {
+local_metadata <- function(
+    local_path = '/dcl01/lieber/ajaffe/lab/GenomicState/data-raw') {
 
     ## Locate and read AnnotationHub csv files
     csv_files <- dir(system.file('extdata', package = 'GenomicState'),
@@ -36,12 +40,14 @@ local_metadata <- function(local_path = '/dcl01/lieber/ajaffe/lab/GenomicState/d
         row.names = NULL))
 
     ## Replace the RDataPath
-    meta$RDataPath <- gsub('GenomicState', local_path, meta$RDataPath)
+    meta$RDataPath <- file.path(local_path, gsub('GenomicState/', '',
+        meta$RDataPath))
 
     meta$loadCode <- paste0(
         gsub('\\.rda|\\.sqlite', '', basename(meta$RDataPath)),
         ' <- ',
-        ifelse(meta$DispatchClass == 'SQLiteFile', 'AnnotationDbi::loadDb', 'load'),
+        ifelse(meta$DispatchClass == 'SQLiteFile', 'AnnotationDbi::loadDb',
+            'load'),
         '("',
         meta$RDataPath,
         '")'

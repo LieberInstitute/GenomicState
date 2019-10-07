@@ -7,7 +7,7 @@ author:
     - &ccb Center for Computational Biology, Johns Hopkins University
     email: lcolladotor@gmail.com
 date: "`r doc_date()`"
-package: "`r pkg_ver('sgejobs')`"
+package: "`r pkg_ver('GenomicState')`"
 output: 
   BiocStyle::html_document
 vignette: >
@@ -132,21 +132,14 @@ q
 To show how we can use these objects, first we build those for Gencode version 31 on hg19 coordinates.
 
 ```{r 'build_ex_objects'}
-## Note: should probably change the example so it doesn't need to be
-## computed...
-
 ## Load the example TxDb object
 ## or start from scratch with:
-## txdb_v31_hg38_chr22 <- gencode_txdb(version = '31', genome = 'hg38',
-##     chrs = 'chr22')
-# txdb_v31_hg38_chr22 <- AnnotationDbi::loadDb(
-#     system.file('extdata', 'txdb_v31_hg38_chr22.sqlite',
-#         package = 'GenomicState')
-# )
-
-## Build the TxDb object for chr21 for hg19
-txdb_v31_hg19_chr21 <- gencode_txdb(version = '31', genome = 'hg19',
-    chrs = 'chr21')
+## txdb_v31_hg19_chr21 <- gencode_txdb(version = '31', genome = 'hg19',
+##     chrs = 'chr21')
+txdb_v31_hg19_chr21 <- AnnotationDbi::loadDb(
+    system.file('extdata', 'txdb_v31_hg19_chr21.sqlite',
+        package = 'GenomicState')
+)
 
 ## Build the GenomicState and annotated genes
 genes_v31_hg19_chr21 <- gencode_annotated_genes(txdb_v31_hg19_chr21)

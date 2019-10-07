@@ -152,12 +152,12 @@ the genes. This information is then used by packages like <code>derfinder</code>
     <pre class="examples"><div class='input'>
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
     <span class='co'>## Start from scratch if you want:</span>
-    <span class='no'>txdb_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gencode_txdb.html'>gencode_txdb</a></span>(<span class='kw'>chrs</span> <span class='kw'>=</span> <span class='st'>'chr22'</span>)
+    <span class='no'>txdb_v31_hg19_chr21</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gencode_txdb.html'>gencode_txdb</a></span>(<span class='st'>'31'</span>, <span class='st'>'hg19'</span>, <span class='kw'>chrs</span> <span class='kw'>=</span> <span class='st'>'chr21'</span>)
 }
 
-<span class='co'>## or read in the txdb object for hg38 chr22 from this package</span>
-<span class='no'>txdb_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>AnnotationDbi</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationDbi/man/AnnotationDb-class.html'>loadDb</a></span>(
-    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>'extdata'</span>, <span class='st'>'txdb_v31_hg38_chr22.sqlite'</span>,
+<span class='co'>## or read in the txdb object for hg19 chr21 from this package</span>
+<span class='no'>txdb_v31_hg19_chr21</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>AnnotationDbi</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationDbi/man/AnnotationDb-class.html'>loadDb</a></span>(
+    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>'extdata'</span>, <span class='st'>'txdb_v31_hg19_chr21.sqlite'</span>,
         <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>'GenomicState'</span>)
 )</div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicFeatures</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: BiocGenerics</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: parallel</span></div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘BiocGenerics’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:parallel’:</span>
@@ -182,63 +182,63 @@ the genes. This information is then used by packages like <code>derfinder</code>
 #&gt; <span class='message'>    'browseVignettes()'. To cite Bioconductor, see</span>
 #&gt; <span class='message'>    'citation("Biobase")', and for packages 'citation("pkgname")'.</span></div><div class='input'>
 <span class='co'>## Obtain the annotated genes for the Gencode TxDb object</span>
-<span class='no'>genes_v31_hg38_chr22</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_annotated_genes</span>(<span class='no'>txdb_v31_hg38_chr22</span>)</div><div class='output co'>#&gt; <span class='message'>2019-10-04 13:29:46 annotating the transcripts</span></div><div class='output co'>#&gt; <span class='message'>No annotationPackage supplied. Trying org.Hs.eg.db.</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: org.Hs.eg.db</span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; <span class='message'>Getting TSS and TSE.</span></div><div class='output co'>#&gt; <span class='message'>Getting CSS and CSE.</span></div><div class='output co'>#&gt; <span class='message'>Getting exons.</span></div><div class='output co'>#&gt; <span class='message'>Annotating genes.</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:many mapping between keys and columns</span></div><div class='input'>
+<span class='no'>genes_v31_hg19_chr21</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_annotated_genes</span>(<span class='no'>txdb_v31_hg19_chr21</span>)</div><div class='output co'>#&gt; <span class='message'>2019-10-07 09:48:13 annotating the transcripts</span></div><div class='output co'>#&gt; <span class='message'>No annotationPackage supplied. Trying org.Hs.eg.db.</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: org.Hs.eg.db</span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; <span class='message'>Getting TSS and TSE.</span></div><div class='output co'>#&gt; <span class='message'>Getting CSS and CSE.</span></div><div class='output co'>#&gt; <span class='message'>Getting exons.</span></div><div class='output co'>#&gt; <span class='message'>Annotating genes.</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:many mapping between keys and columns</span></div><div class='input'>
 <span class='co'>## Explore the result</span>
-<span class='no'>genes_v31_hg38_chr22</span></div><div class='output co'>#&gt; GRanges object with 1384 ranges and 8 metadata columns:
-#&gt;          seqnames            ranges strand |       CSS       CSE
-#&gt;             &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt; &lt;integer&gt;
-#&gt;      [1]    chr22 50600793-50613981      + |  50600819  50610779
-#&gt;      [2]    chr22 17734138-17774770      - |  17735580  17773689
-#&gt;      [3]    chr22 50525752-50530032      - |  50525770  50529709
-#&gt;      [4]    chr22 50508224-50524780      + |  50508338  50523375
-#&gt;      [5]    chr22 20241415-20283246      - |  20241711  20268092
-#&gt;      ...      ...               ...    ... .       ...       ...
-#&gt;   [1380]    chr22 31490150-31491022      + |      &lt;NA&gt;      &lt;NA&gt;
-#&gt;   [1381]    chr22 23510154-23512662      + |      &lt;NA&gt;      &lt;NA&gt;
-#&gt;   [1382]    chr22 29767091-29768096      - |      &lt;NA&gt;      &lt;NA&gt;
-#&gt;   [1383]    chr22 16725072-16747761      + |      &lt;NA&gt;      &lt;NA&gt;
-#&gt;   [1384]    chr22 38886837-38903794      + |      &lt;NA&gt;      &lt;NA&gt;
-#&gt;                          Tx          Geneid     Gene
-#&gt;                 &lt;character&gt;           &lt;Rle&gt;    &lt;Rle&gt;
-#&gt;      [1] ENSG00000008735.14 ENSG00000008735 MAPK8IP2
-#&gt;      [2] ENSG00000015475.18 ENSG00000015475      BID
-#&gt;      [3] ENSG00000025708.14 ENSG00000025708     TYMP
-#&gt;      [4] ENSG00000025770.19 ENSG00000025770   NCAPH2
-#&gt;      [5] ENSG00000040608.14 ENSG00000040608    RTN4R
-#&gt;      ...                ...             ...      ...
-#&gt;   [1380]  ENSG00000287817.1 ENSG00000287817     &lt;NA&gt;
-#&gt;   [1381]  ENSG00000287864.1 ENSG00000287864     &lt;NA&gt;
-#&gt;   [1382]  ENSG00000287967.1 ENSG00000287967     &lt;NA&gt;
-#&gt;   [1383]  ENSG00000288024.1 ENSG00000288024     &lt;NA&gt;
-#&gt;   [1384]  ENSG00000288106.1 ENSG00000288106     &lt;NA&gt;
-#&gt;                                                                                                                                                                             Refseq
-#&gt;                                                                                                                                                                              &lt;Rle&gt;
-#&gt;      [1]                                                     NM_012324 NM_016431 NM_139124 NP_036456 XM_011530679 XM_011530680 XM_011530681 XP_011528981 XP_011528982 XP_011528983
-#&gt;      [2]       NM_001196 NM_001244567 NM_001244569 NM_001244570 NM_001244572 NM_197966 NM_197967 NP_001187 NP_001231496 NP_001231498 NP_001231499 NP_001231501 NP_932070 NP_932071
-#&gt;      [3]                                               NM_001113755 NM_001113756 NM_001257988 NM_001257989 NM_001953 NP_001107227 NP_001107228 NP_001244917 NP_001244918 NP_001944
-#&gt;      [4] NM_001185011 NM_014551 NM_152299 NP_001171940 NP_055366 NP_689512 XM_005261912 XM_011530685 XM_017028793 XP_005261969 XP_011528987 XP_016884282 XR_001755232 XR_001755233
-#&gt;      [5]                                                                                                                                                       NM_023004 NP_075380
-#&gt;      ...                                                                                                                                                                       ...
-#&gt;   [1380]                                                                                                                                                                      &lt;NA&gt;
-#&gt;   [1381]                                                                                                                                                                      &lt;NA&gt;
-#&gt;   [1382]                                                                                                                                                                      &lt;NA&gt;
-#&gt;   [1383]                                                                                                                                                                      &lt;NA&gt;
-#&gt;   [1384]                                                                                                                                                                      &lt;NA&gt;
-#&gt;             Nexons                                                     Exons
-#&gt;          &lt;integer&gt;                                             &lt;IRangesList&gt;
-#&gt;      [1]        12 50600793-50600883,50601789-50601894,50603133-50603498,...
-#&gt;      [2]         9 17734138-17735591,17738017-17738229,17739349-17741194,...
-#&gt;      [3]         5 50525752-50525918,50526001-50526476,50526576-50526738,...
-#&gt;      [4]        20 50508224-50508445,50515720-50515774,50516447-50516548,...
-#&gt;      [5]         8 20241415-20243110,20243406-20243684,20267609-20267689,...
-#&gt;      ...       ...                                                       ...
-#&gt;   [1380]         1                                         31490150-31491022
-#&gt;   [1381]         2                       23510154-23510197,23511740-23512662
-#&gt;   [1382]         3     29767091-29767164,29767264-29767712,29767843-29768096
-#&gt;   [1383]         3     16725072-16725240,16745351-16745479,16747055-16747761
-#&gt;   [1384]         2                       38886837-38887007,38901047-38903794
+<span class='no'>genes_v31_hg19_chr21</span></div><div class='output co'>#&gt; GRanges object with 823 ranges and 8 metadata columns:
+#&gt;         seqnames            ranges strand |       CSS       CSE
+#&gt;            &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt; &lt;integer&gt;
+#&gt;     [1]    chr21 43218385-43299591      - |  43221400  43299480
+#&gt;     [2]    chr21 45719934-45747259      + |  45719989  45746745
+#&gt;     [3]    chr21 33245333-33416946      + |  33245988  33416425
+#&gt;     [4]    chr21 47401651-47424964      + |  47401765  47423927
+#&gt;     [5]    chr21 34696734-34732170      + |  34697361  34727855
+#&gt;     ...      ...               ...    ... .       ...       ...
+#&gt;   [819]    chr21 45188201-45191547      + |      &lt;NA&gt;      &lt;NA&gt;
+#&gt;   [820]    chr21 25229397-25261466      + |      &lt;NA&gt;      &lt;NA&gt;
+#&gt;   [821]    chr21 38709684-38739160      - |      &lt;NA&gt;      &lt;NA&gt;
+#&gt;   [822]    chr21 42108244-42126814      + |      &lt;NA&gt;      &lt;NA&gt;
+#&gt;   [823]    chr21 25076577-25081662      + |      &lt;NA&gt;      &lt;NA&gt;
+#&gt;                           Tx          Geneid   Gene
+#&gt;                  &lt;character&gt;           &lt;Rle&gt;  &lt;Rle&gt;
+#&gt;     [1] ENSG00000141956.13_3 ENSG00000141956 PRDM15
+#&gt;     [2] ENSG00000141959.17_2 ENSG00000141959   PFKL
+#&gt;     [3]  ENSG00000142149.9_4 ENSG00000142149   HUNK
+#&gt;     [4] ENSG00000142156.14_2 ENSG00000142156 COL6A1
+#&gt;     [5] ENSG00000142166.13_4 ENSG00000142166 IFNAR1
+#&gt;     ...                  ...             ...    ...
+#&gt;   [819]  ENSG00000287507.1_1 ENSG00000287507   &lt;NA&gt;
+#&gt;   [820]  ENSG00000287612.1_1 ENSG00000287612   &lt;NA&gt;
+#&gt;   [821]  ENSG00000287637.1_1 ENSG00000287637   &lt;NA&gt;
+#&gt;   [822]  ENSG00000288069.1_1 ENSG00000288069   &lt;NA&gt;
+#&gt;   [823]  ENSG00000288094.1_1 ENSG00000288094   &lt;NA&gt;
+#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Refseq
+#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                               &lt;Rle&gt;
+#&gt;     [1] NM_001040424 NM_001282934 NM_022115 NP_001035514 NP_001269863 NP_071398 NR_104257 NR_104258 NR_104260 NR_135464 XM_006724039 XM_006724040 XM_011529674 XM_011529675 XM_011529676 XM_011529677 XM_011529678 XM_011529679 XM_011529681 XM_011529683 XM_017028425 XM_017028426 XP_006724102 XP_006724103 XP_011527976 XP_011527977 XP_011527978 XP_011527979 XP_011527980 XP_011527981 XP_011527983 XP_011527985 XP_016883914 XP_016883915 XR_001754886 XR_001754887 XR_937542
+#&gt;     [2]                                                                                                                                                                                     NM_001002021 NM_002626 NP_001002021 NP_002617 XM_005261135 XM_005261137 XM_006724011 XM_011529603 XM_017028368 XM_017028369 XM_017028370 XM_017028372 XM_024452085 XP_005261192 XP_005261194 XP_006724074 XP_011527905 XP_016883857 XP_016883858 XP_016883859 XP_016883861 XP_024307853
+#&gt;     [3]                                                                                                                                                                                                                                                                                                                                                                                                                               NM_014586 NP_055401 XM_011529537 XP_011527839
+#&gt;     [4]                                                                                                                                                                                                                                                                                                                                                                                                                                                         NM_001848 NP_001839
+#&gt;     [5]                                                                                                                                                                                                                                                                                                                                                                                                     NM_000629 NP_000620 XM_005260964 XM_011529552 XP_005261021 XP_011527854
+#&gt;     ...                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ...
+#&gt;   [819]                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &lt;NA&gt;
+#&gt;   [820]                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &lt;NA&gt;
+#&gt;   [821]                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &lt;NA&gt;
+#&gt;   [822]                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &lt;NA&gt;
+#&gt;   [823]                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &lt;NA&gt;
+#&gt;            Nexons                                                     Exons
+#&gt;         &lt;integer&gt;                                             &lt;IRangesList&gt;
+#&gt;     [1]        32 43218385-43221882,43222872-43223278,43224694-43224883,...
+#&gt;     [2]        20 45719934-45720073,45724158-45724338,45725077-45725300,...
+#&gt;     [3]        12 33245333-33246248,33296780-33297072,33312477-33312532,...
+#&gt;     [4]        35 47401651-47401861,47402548-47402677,47404183-47404383,...
+#&gt;     [5]        13 34696734-34696943,34697209-34697436,34707830-34707953,...
+#&gt;     ...       ...                                                       ...
+#&gt;   [819]         3     45188201-45188277,45189155-45189271,45190985-45191547
+#&gt;   [820]         4 25229397-25229860,25231273-25231484,25233548-25233655,...
+#&gt;   [821]         2                       38709684-38711756,38738974-38739160
+#&gt;   [822]         2                       42108244-42108309,42125644-42126814
+#&gt;   [823]         3     25076577-25076893,25077415-25077672,25080924-25081662
 #&gt;   -------
-#&gt;   seqinfo: 455 sequences (1 circular) from hg38 genome</div><div class='input'>
+#&gt;   seqinfo: 1 sequence from hg19 genome</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
