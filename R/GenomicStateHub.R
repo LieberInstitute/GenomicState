@@ -9,9 +9,9 @@
 #' @param filetype A `character()` with either `TxDb`, `AnnotatedGenes` or
 #' `GenomicState`.
 #' @param ... Arguments passed to
-#' `[AnnotationHub][AnnotationHub::AnnotationHub-objects]`.
+#' [AnnotationHub][AnnotationHub::AnnotationHub-objects].
 #'
-#' @return The `[AnnotationHub][AnnotationHub::AnnotationHub-objects]` query
+#' @return The [AnnotationHub][AnnotationHub::AnnotationHub-objects] query
 #' for the file you requested.
 #' @author Leonardo Collado-Torres
 #' @seealso [gencode_txdb()] [gencode_annotated_genes()]

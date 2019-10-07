@@ -17,10 +17,10 @@ options are \code{'hg38'} or \code{'hg19'}.}
 \code{GenomicState}.}
 
 \item{...}{Arguments passed to
-\code{[AnnotationHub][AnnotationHub::AnnotationHub-objects]}.}
+\link[AnnotationHub:AnnotationHub-objects]{AnnotationHub}.}
 }
 \value{
-The \code{[AnnotationHub][AnnotationHub::AnnotationHub-objects]} query
+The \link[AnnotationHub:AnnotationHub-objects]{AnnotationHub} query
 for the file you requested.
 }
 \description{
