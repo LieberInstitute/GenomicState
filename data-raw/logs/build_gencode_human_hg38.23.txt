@@ -5,12 +5,12 @@ Loading LIBD module for rmate/1.5.9
 Loading LIBD module for ruby/2.6.4p104
 Loading conda_R/3.6
 **** Job starts ****
-Thu Oct  3 19:27:14 EDT 2019
+Mon Oct  7 09:57:21 EDT 2019
 **** JHPCE info ****
 User: lcollado
-Job id: 170246
+Job id: 186126
 Job name: build_gencode_human_hg38
-Hostname: compute-100.cm.cluster
+Hostname: compute-093.cm.cluster
 Task id: 23
 Unloading conda_R/3.6
 Loading conda_R/3.6
@@ -65,14 +65,14 @@ The following object is masked from ‘package:base’:
 
     expand.grid
 
-2019-10-03 19:27:18 importing ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_23/gencode.v23.annotation.gtf.gz
+2019-10-07 09:57:26 importing ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_23/gencode.v23.annotation.gtf.gz
 trying URL 'ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_23/gencode.v23.annotation.gtf.gz'
 Content type 'unknown' length 38449390 bytes (36.7 MB)
 ==================================================
-2019-10-03 19:28:40 keeping relevant chromosomes
-2019-10-03 19:28:40 preparing metadata
+2019-10-07 09:58:57 keeping relevant chromosomes
+2019-10-07 09:58:57 preparing metadata
 Prepare the 'metadata' data frame ... OK
-2019-10-03 19:28:52 building the txdb object
+2019-10-07 09:59:11 building the txdb object
 Warning message:
 In .get_cds_IDX(mcols0$type, mcols0$phase) :
   The "phase" metadata column contains non-NA values for features of type
@@ -89,11 +89,11 @@ TxDb object:
 # exon_nrow: 676228
 # cds_nrow: 270026
 # Db created by: GenomicFeatures package from Bioconductor
-# Creation time: 2019-10-03 19:30:05 -0400 (Thu, 03 Oct 2019)
+# Creation time: 2019-10-07 10:00:22 -0400 (Mon, 07 Oct 2019)
 # GenomicFeatures version at creation time: 1.36.4
 # RSQLite version at creation time: 2.1.2
 # DBSCHEMAVERSION: 1.2
-2019-10-03 19:30:07 annotating the transcripts
+2019-10-07 10:00:23 annotating the transcripts
 No annotationPackage supplied. Trying org.Hs.eg.db.
 Loading required package: org.Hs.eg.db
 
@@ -102,16 +102,16 @@ Getting CSS and CSE.
 Getting exons.
 Annotating genes.
 'select()' returned 1:many mapping between keys and columns
-2019-10-03 19:30:45 making the GenomicState object
+2019-10-07 10:01:01 making the GenomicState object
 extendedMapSeqlevels: sequence names mapped from NCBI to UCSC for species homo_sapiens
 'select()' returned 1:1 mapping between keys and columns
-2019-10-03 19:36:59 finding gene symbols
+2019-10-07 10:07:14 finding gene symbols
 'select()' returned 1:many mapping between keys and columns
-2019-10-03 19:37:04 adding gene symbols to the GenomicState
+2019-10-07 10:07:19 adding gene symbols to the GenomicState
 [1] "Reproducibility information:"
-[1] "2019-10-03 19:37:21 EDT"
+[1] "2019-10-07 10:07:35 EDT"
    user  system elapsed 
-566.847  26.225 606.057 
+566.710  25.123 613.629 
 ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value                                      
  version  R version 3.6.1 Patched (2019-09-06 r77160)
@@ -122,7 +122,7 @@ extendedMapSeqlevels: sequence names mapped from NCBI to UCSC for species homo_s
  collate  en_US.UTF-8                                
  ctype    en_US.UTF-8                                
  tz       US/Eastern                                 
- date     2019-10-03                                 
+ date     2019-10-07                                 
 
 ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────
  package              * version   date       lib source                                       
@@ -166,7 +166,7 @@ extendedMapSeqlevels: sequence names mapped from NCBI to UCSC for species homo_s
  GenomicFeatures        1.36.4    2019-07-10 [1] Bioconductor                                 
  GenomicFiles           1.20.0    2019-05-02 [1] Bioconductor                                 
  GenomicRanges          1.36.1    2019-09-06 [1] Bioconductor                                 
- GenomicState         * 0.99.0    2019-10-03 [1] Github (LieberInstitute/GenomicState@e6e508e)
+ GenomicState         * 0.99.0    2019-10-07 [1] Github (LieberInstitute/GenomicState@82be536)
  ggplot2                3.2.1     2019-08-10 [1] CRAN (R 3.6.1)                               
  glue                   1.3.1     2019-03-12 [1] CRAN (R 3.6.1)                               
  gridExtra              2.3       2017-09-09 [2] CRAN (R 3.6.1)                               
@@ -235,4 +235,4 @@ extendedMapSeqlevels: sequence names mapped from NCBI to UCSC for species homo_s
 [2] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-3.6/R/3.6/lib64/R/site-library
 [3] /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-3.6/R/3.6/lib64/R/library
 **** Job ends ****
-Thu Oct  3 19:37:22 EDT 2019
+Mon Oct  7 10:07:37 EDT 2019
