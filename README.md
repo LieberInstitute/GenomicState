@@ -52,18 +52,18 @@ citation('GenomicState')
 #> 
 #>   Leonardo Collado-Torres (2019). GenomicState: Build and access
 #>   GenomicState objects for use with derfinder tools from sources
-#>   like Gencode. R package version 0.99.0.
-#>   https://github.com/LieberInstitute/libdRSE
+#>   like Gencode. R package version 0.99.2.
+#>   https://github.com/LieberInstitute/GenomicState
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
-#>     title = {GenomicState: Build and access GenomicState objects for use with derfinder tools from
-#> sources like Gencode},
+#>     title = {GenomicState: Build and access GenomicState objects for use with derfinder
+#> tools from sources like Gencode},
 #>     author = {Leonardo Collado-Torres},
 #>     year = {2019},
-#>     note = {R package version 0.99.0},
-#>     url = {https://github.com/LieberInstitute/libdRSE},
+#>     note = {R package version 0.99.2},
+#>     url = {https://github.com/LieberInstitute/GenomicState},
 #>   }
 ```
 

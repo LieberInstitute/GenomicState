@@ -17,6 +17,7 @@
 #' @seealso [gencode_txdb()] [gencode_annotated_genes()]
 #' [gencode_genomic_state()]
 #'
+#' @export
 #' @examples
 #'
 #' ## Query AnnotationHub for the GenomicState object for Gencode v31 on

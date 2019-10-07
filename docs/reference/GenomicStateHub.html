@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Locate local metadata outside of AnnotationHub — local_metadata • GenomicState</title>
+<title>Access GenomicState objects through AnnotationHub — GenomicStateHub • GenomicState</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,11 @@
 
 
 
-<meta property="og:title" content="Locate local metadata outside of AnnotationHub — local_metadata" />
-<meta property="og:description" content="Locate local metadata outside of AnnotationHub" />
+<meta property="og:title" content="Access GenomicState objects through AnnotationHub — GenomicStateHub" />
+<meta property="og:description" content="This function uses AnnotationHub to obtain the objects provided by this
+package. These are: the TxDb object made with gencode_txdb(), the
+annotated genes object made with gencode_annotated_genes() or the
+GenomicState object made with gencode_genomic_state()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,88 +114,68 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Locate local metadata outside of AnnotationHub</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LieberInstitute/GenomicState/blob/master/R/local_metadata.R'><code>R/local_metadata.R</code></a></small>
-    <div class="hidden name"><code>local_metadata.Rd</code></div>
+    <h1>Access GenomicState objects through AnnotationHub</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LieberInstitute/GenomicState/blob/master/R/GenomicStateHub.R'><code>R/GenomicStateHub.R</code></a></small>
+    <div class="hidden name"><code>GenomicStateHub.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Locate local metadata outside of AnnotationHub</p>
+    <p>This function uses <code>AnnotationHub</code> to obtain the objects provided by this
+package. These are: the <code>TxDb</code> object made with <code><a href='gencode_txdb.html'>gencode_txdb()</a></code>, the
+annotated genes object made with <code><a href='gencode_annotated_genes.html'>gencode_annotated_genes()</a></code> or the
+GenomicState object made with <code><a href='gencode_genomic_state.html'>gencode_genomic_state()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>local_metadata</span>(<span class='kw'>local_path</span> <span class='kw'>=</span> <span class='st'>"/dcl01/lieber/ajaffe/lab/GenomicState/data-raw"</span>)</pre>
+    <pre class="usage"><span class='fu'>GenomicStateHub</span>(<span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"31"</span>, <span class='kw'>genome</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hg38"</span>, <span class='st'>"hg19"</span>),
+  <span class='kw'>filetype</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"TxDb"</span>, <span class='st'>"AnnotatedGenes"</span>, <span class='st'>"GenomicState"</span>), <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>local_path</th>
-      <td><p>A <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> pointing to where the data is stored
-locally</p></td>
+      <th>version</th>
+      <td><p>A <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> with the Gencode version number.</p></td>
+    </tr>
+    <tr>
+      <th>genome</th>
+      <td><p>A <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> with the human genome version number. Valid
+options are <code>'hg38'</code> or <code>'hg19'</code>.</p></td>
+    </tr>
+    <tr>
+      <th>filetype</th>
+      <td><p>A <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code> with either <code>TxDb</code>, <code>AnnotatedGenes</code> or
+<code>GenomicState</code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Arguments passed to
+<code>[AnnotationHub][AnnotationHub::AnnotationHub-objects]</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The AnnotationHub metadata <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame()</a></code> for the data in this
-package with <code>RDataPath</code> updated to point to the <code>local_path</code>. It includes
-an addtional column called <code>loadCode</code> which you can evaluate with
-<code><a href='https://rdrr.io/r/base/eval.html'>eval(parse(text = entry))</a></code>.</p>
+    <p>The <code>[AnnotationHub][AnnotationHub::AnnotationHub-objects]</code> query
+for the file you requested.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/AnnotationHubData/man/makeAnnotationHubMetadata.html'>AnnotationHubData::makeAnnotationHubMetadata()</a></code></p></div>
+    <div class='dont-index'><p><code><a href='gencode_txdb.html'>gencode_txdb()</a></code> <code><a href='gencode_annotated_genes.html'>gencode_annotated_genes()</a></code>
+<code><a href='gencode_genomic_state.html'>gencode_genomic_state()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>## Get the local metadata</span>
-<span class='no'>meta</span> <span class='kw'>&lt;-</span> <span class='fu'>local_metadata</span>()
+<span class='co'>## Query AnnotationHub for the GenomicState object for Gencode v31 on</span>
+<span class='co'>## hg19 coordinates</span>
+<span class='no'>hub_gs_gencode_v31_hg19</span> <span class='kw'>&lt;-</span> <span class='fu'>GenomicStateHub</span>(<span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>'31'</span>, <span class='kw'>genome</span> <span class='kw'>=</span> <span class='st'>'hg19'</span>,
+    <span class='kw'>filetype</span> <span class='kw'>=</span> <span class='st'>'GenomicState'</span>)</div><div class='output co'>#&gt; <span class='message'>Using temporary cache /tmp/RtmpjelSFl/BiocFileCache</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2019-05-02</span></div><div class='output co'>#&gt; <span class='message'>Using temporary cache /tmp/RtmpjelSFl/BiocFileCache</span></div><div class='output co'>#&gt; <span class='message'>Using temporary cache /tmp/RtmpjelSFl/BiocFileCache</span></div><div class='input'><span class='no'>hub_gs_gencode_v31_hg19</span></div><div class='output co'>#&gt; AnnotationHub with 0 records
+#&gt; # snapshotDate(): 2019-05-02 </div><div class='input'>
 
-<span class='co'>## Subset to the data of interest, lets say hg19 TxDb for v31</span>
-<span class='no'>interest</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span>(<span class='no'>meta</span>, <span class='no'>RDataClass</span> <span class='kw'>==</span> <span class='st'>'TxDb'</span> <span class='kw'>&amp;</span> <span class='no'>Tags</span> <span class='kw'>==</span> <span class='st'>'Gencode:v31:hg19'</span>)
-
-<span class='co'>## Inspect the result</span>
-<span class='no'>interest</span></div><div class='output co'>#&gt;                                       Title
-#&gt; 49 TxDb for Gencode v31 on hg19 coordinates
-#&gt;                                                                                                                                                            Description
-#&gt; 49 Gencode v31 TxDb object on hg19 coordinates. This is useful for packages such as derfinder and derfinderPlot. For more information, check the GenomicState package.
-#&gt;    BiocVersion Genome SourceType
-#&gt; 49         3.1 GRCh37        GTF
-#&gt;                                                                                                                SourceUrl
-#&gt; 49 ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/GRCh37_mapping/gencode.v31lift37.annotation.gtf.gz
-#&gt;    SourceVersion      Species TaxonomyId Coordinate_1_based DataProvider
-#&gt; 49   Oct 03 2019 Homo sapiens       9606               TRUE      GENCODE
-#&gt;                                         Maintainer RDataClass DispatchClass
-#&gt; 49 Leonardo Collado-Torres &lt;lcolladotor@gmail.com&gt;       TxDb    SQLiteFile
-#&gt;                                                                              RDataPath
-#&gt; 49 /dcl01/lieber/ajaffe/lab/GenomicState/data-raw/gencode/gencode_v31_hg19_txdb.sqlite
-#&gt;                Tags
-#&gt; 49 Gencode:v31:hg19
-#&gt;                                                                                                                                 loadCode
-#&gt; 49 gencode_v31_hg19_txdb &lt;- AnnotationDbi::loadDb("/dcl01/lieber/ajaffe/lab/GenomicState/data-raw/gencode/gencode_v31_hg19_txdb.sqlite")</div><div class='input'>
-<span class='co'>## Next you can load the data</span>
-<span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/files.html'>file.exists</a></span>(<span class='no'>interest</span>$<span class='no'>RDataPath</span>)) {
-    <span class='co'>## This only works at JHPCE</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/eval.html'>eval</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/parse.html'>parse</a></span>(<span class='kw'>text</span> <span class='kw'>=</span> <span class='no'>interest</span>$<span class='no'>loadCode</span>))
-
-    <span class='co'>## Explore the loaded object (would be gencode_v31_hg19_txdb in this case)</span>
-    <span class='no'>gencode_v31_hg19_txdb</span>
-}</div><div class='output co'>#&gt; TxDb object:
-#&gt; # Db type: TxDb
-#&gt; # Supporting package: GenomicFeatures
-#&gt; # Data source: ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/GRCh37_mapping/gencode.v31lift37.annotation.gtf.gz
-#&gt; # Organism: Homo sapiens
-#&gt; # Taxonomy ID: 9606
-#&gt; # miRBase build ID: NA
-#&gt; # Genome: hg19
-#&gt; # transcript_nrow: 228416
-#&gt; # exon_nrow: 749183
-#&gt; # cds_nrow: 275087
-#&gt; # Db created by: GenomicFeatures package from Bioconductor
-#&gt; # Creation time: 2019-10-07 10:01:08 -0400 (Mon, 07 Oct 2019)
-#&gt; # GenomicFeatures version at creation time: 1.36.4
-#&gt; # RSQLite version at creation time: 2.1.2
-#&gt; # DBSCHEMAVERSION: 1.2</div><div class='input'>
-</div></pre>
+<span class='co'>## Check the metadata</span>
+<span class='fu'>mcols</span>(<span class='no'>hub_gs_gencode_v31_hg19</span>)</div><div class='output co'>#&gt; DataFrame with 0 rows and 15 columns</div><div class='input'>
+<span class='co'>## Access the file through AnnoationHub</span>
+<span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>hub_gs_gencode_v31_hg19</span>) <span class='kw'>==</span> <span class='fl'>1</span>) {
+    <span class='no'>gs_gencode_v31_hg19</span> <span class='kw'>&lt;-</span> <span class='no'>hub_gs_gencode_v31_hg19</span><span class='kw'>[[</span><span class='fl'>1</span>]]
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
