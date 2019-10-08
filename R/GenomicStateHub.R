@@ -8,16 +8,17 @@
 #' @inheritParams gencode_txdb
 #' @param filetype A `character()` with either `TxDb`, `AnnotatedGenes` or
 #' `GenomicState`.
-#' @param ... Arguments passed to
-#' [AnnotationHub()][AnnotationHub::AnnotationHub-objects].
+#' @param ... Arguments passed to 
+#' [AnnotationHub-class][AnnotationHub::AnnotationHub-class].
 #'
-#' @return The [AnnotationHub()][AnnotationHub::AnnotationHub-objects] query
+#' @return The [AnnotationHub-class][AnnotationHub::AnnotationHub-class] query
 #' for the file you requested.
 #' @author Leonardo Collado-Torres
 #' @seealso [gencode_txdb()] [gencode_annotated_genes()]
 #' [gencode_genomic_state()]
 #'
 #' @export
+#' @import AnnotationHub
 #' @examples
 #'
 #' ## Query AnnotationHub for the GenomicState object for Gencode v31 on
@@ -53,6 +54,6 @@ GenomicStateHub <- function(version = '31', genome = c('hg38', 'hg19'),
 
     ## Query AnnotationHub
     ah <- AnnotationHub::AnnotationHub(...)
-    q <- query(ah, pattern = c(tags, title))
+    q <- AnnotationHub::query(ah, pattern = c(tags, title))
     return(q)
 }

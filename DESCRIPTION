@@ -1,7 +1,7 @@
 Package: GenomicState
 Title: Build and access GenomicState objects for use with derfinder tools from
     sources like Gencode
-Version: 0.99.3
+Version: 0.99.4
 Date: 2019-10-8
 Authors@R: 
     person("Leonardo", "Collado-Torres", role = c("aut", "cre"), 
@@ -39,6 +39,6 @@ Suggests:
 VignetteBuilder: knitr
 URL: https://github.com/LieberInstitute/GenomicState
 BugReports: https://github.com/LieberInstitute/GenomicState/issues
-biocViews: Homo_sapiens, TxDb, AnnotationHub
+biocViews: Homo_sapiens, TxDb, AnnotationHub, AnnotationData
 Depends: 
     AnnotationHub
