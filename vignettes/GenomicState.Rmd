@@ -117,25 +117,27 @@ library('GenomicState')
 
 # AnnotationHub
 
-This is how you can query the data from `GenomicState` using `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])`.
+Using the `GencodeStateHub()` function you can query and download the data from `r Biocpkg('GenomicState')` using `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])`.
 
 ```{r 'annotation_hub'}
 ## Query AnnotationHub for the GenomicState object for Gencode v31 on
 ## hg19 coordinates
-hub_gs_gencode_v31_hg19 <- GenomicStateHub(version = '31', genome = 'hg19',
+hub_query_gs_gencode_v31_hg19 <- GenomicStateHub(version = '31',
+    genome = 'hg19',
     filetype = 'GenomicState')
-hub_gs_gencode_v31_hg19
+hub_query_gs_gencode_v31_hg19
+
 
 ## Check the metadata
-mcols(hub_gs_gencode_v31_hg19)
+mcols(hub_query_gs_gencode_v31_hg19)
 
 ## Access the file through AnnotationHub
-if(length(hub_gs_gencode_v31_hg19) == 1) {
-    gs_gencode_v31_hg19 <- hub_gs_gencode_v31_hg19[[1]]
+if(length(hub_query_gs_gencode_v31_hg19) == 1) {
+    hub_gs_gencode_v31_hg19 <- hub_query_gs_gencode_v31_hg19[[1]]
+
+    hub_gs_gencode_v31_hg19
 }
 ```
-
-(This section is currently incomplete!)
 
 # Using the objects
 
@@ -156,7 +158,41 @@ genes_v31_hg19_chr21 <- gencode_annotated_genes(txdb_v31_hg19_chr21)
 gs_v31_hg19_chr21 <- gencode_genomic_state(txdb_v31_hg19_chr21)
 ```
 
-Next we load a series of related packages that use these objects.
+You can alternatively use the files hosted in `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])` which will be faster in general.
+
+```{r}
+## Create the AnnotationHub object once and re-use it to speed up things
+ah <- AnnotationHub::AnnotationHub()
+
+## Find the TxDb object for hg19 Gencode version 31
+hub_query_txdb_gencode_v31_hg19 <- GenomicStateHub(version = '31',
+    genome = 'hg19',
+    filetype = 'TxDb', ah = ah)
+hub_query_txdb_gencode_v31_hg19
+
+## Now the Annotated Genes for hg19 Gencode v31
+hub_query_genes_gencode_v31_hg19 <- GenomicStateHub(version = '31',
+    genome = 'hg19',
+    filetype = 'AnnotatedGenes', ah = ah)
+hub_query_genes_gencode_v31_hg19
+
+## And finally the GenomicState for hg19 Gencode v31
+hub_query_gs_gencode_v31_hg19 <- GenomicStateHub(version = '31',
+    genome = 'hg19',
+    filetype = 'GenomicState', ah = ah)
+hub_query_gs_gencode_v31_hg19
+
+## If you want to access the files use the double bracket AnnotationHub syntax
+## to retrieve the R objects from the web.
+if(FALSE) {
+    hub_txdb_gencode_v31_hg19 <- hub_query_txdb_gencode_v31_hg19[[1]]
+    hub_genes_gencode_v31_hg19 <- hub_query_genes_gencode_v31_hg19[[1]]
+    hub_gs_gencode_v31_hg19 <- hub_query_gs_gencode_v31_hg19[[1]]
+}
+```
+
+
+Next we load a series of related packages that use the objects we created with `r Biocpkg('GenomicState')` or downloaded from `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])`.
 
 ```{r 'load_derfinder', messages = FALSE, warnings = FALSE}
 ## Load external packages
