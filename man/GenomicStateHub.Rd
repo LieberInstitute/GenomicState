@@ -5,7 +5,8 @@
 \title{Access GenomicState objects through AnnotationHub}
 \usage{
 GenomicStateHub(version = "31", genome = c("hg38", "hg19"),
-  filetype = c("TxDb", "AnnotatedGenes", "GenomicState"), ...)
+  filetype = c("TxDb", "AnnotatedGenes", "GenomicState"),
+  ah = AnnotationHub::AnnotationHub())
 }
 \arguments{
 \item{version}{A \code{character(1)} with the Gencode version number.}
@@ -16,7 +17,7 @@ options are \code{'hg38'} or \code{'hg19'}.}
 \item{filetype}{A \code{character()} with either \code{TxDb}, \code{AnnotatedGenes} or
 \code{GenomicState}.}
 
-\item{...}{Arguments passed to
+\item{ah}{An \code{AnnotationHub} object
 \link[AnnotationHub:AnnotationHub-class]{AnnotationHub-class}.}
 }
 \value{
@@ -33,17 +34,20 @@ GenomicState object made with \code{\link[=gencode_genomic_state]{gencode_genomi
 
 ## Query AnnotationHub for the GenomicState object for Gencode v31 on
 ## hg19 coordinates
-hub_gs_gencode_v31_hg19 <- GenomicStateHub(version = '31', genome = 'hg19',
+hub_query_gs_gencode_v31_hg19 <- GenomicStateHub(version = '31',
+    genome = 'hg19',
     filetype = 'GenomicState')
-hub_gs_gencode_v31_hg19
+hub_query_gs_gencode_v31_hg19
 
 
 ## Check the metadata
-mcols(hub_gs_gencode_v31_hg19)
+mcols(hub_query_gs_gencode_v31_hg19)
 
-## Access the file through AnnoationHub
-if(length(hub_gs_gencode_v31_hg19) == 1) {
-    gs_gencode_v31_hg19 <- hub_gs_gencode_v31_hg19[[1]]
+## Access the file through AnnotationHub
+if(length(hub_query_gs_gencode_v31_hg19) == 1) {
+    hub_gs_gencode_v31_hg19 <- hub_query_gs_gencode_v31_hg19[[1]]
+
+    hub_gs_gencode_v31_hg19
 }
 
 }

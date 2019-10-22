@@ -31,12 +31,10 @@ Get the latest stable `R` release from
 the following code:
 
 ``` r
-## If needed:
-if (!requireNamespace("remotes", quietly = TRUE))
-   install.packages("remotes")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
 
-## Install with:
-remotes::install_github('LieberInstitute/GenomicState')
+BiocManager::install("GenomicState")
 ```
 
 # Citation
@@ -52,17 +50,17 @@ citation('GenomicState')
 #> 
 #>   Leonardo Collado-Torres (2019). GenomicState: Build and access
 #>   GenomicState objects for use with derfinder tools from sources
-#>   like Gencode. R package version 0.99.2.
+#>   like Gencode. R package version 0.99.5.
 #>   https://github.com/LieberInstitute/GenomicState
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
-#>     title = {GenomicState: Build and access GenomicState objects for use with derfinder
-#> tools from sources like Gencode},
+#>     title = {GenomicState: Build and access GenomicState objects for use with derfinder tools from
+#> sources like Gencode},
 #>     author = {Leonardo Collado-Torres},
 #>     year = {2019},
-#>     note = {R package version 0.99.2},
+#>     note = {R package version 0.99.5},
 #>     url = {https://github.com/LieberInstitute/GenomicState},
 #>   }
 ```

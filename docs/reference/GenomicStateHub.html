@@ -72,7 +72,7 @@ GenomicState object made with gencode_genomic_state()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GenomicState</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.5</span>
       </span>
     </div>
 
@@ -127,7 +127,8 @@ GenomicState object made with <code><a href='gencode_genomic_state.html'>gencode
     </div>
 
     <pre class="usage"><span class='fu'>GenomicStateHub</span>(<span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"31"</span>, <span class='kw'>genome</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hg38"</span>, <span class='st'>"hg19"</span>),
-  <span class='kw'>filetype</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"TxDb"</span>, <span class='st'>"AnnotatedGenes"</span>, <span class='st'>"GenomicState"</span>), <span class='no'>...</span>)</pre>
+  <span class='kw'>filetype</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"TxDb"</span>, <span class='st'>"AnnotatedGenes"</span>, <span class='st'>"GenomicState"</span>),
+  <span class='kw'>ah</span> <span class='kw'>=</span> <span class='kw pkg'>AnnotationHub</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationHub/man/AnnotationHub-class.html'>AnnotationHub</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -147,15 +148,15 @@ options are <code>'hg38'</code> or <code>'hg19'</code>.</p></td>
 <code>GenomicState</code>.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Arguments passed to
-AnnotationHub().</p></td>
+      <th>ah</th>
+      <td><p>An <code>AnnotationHub</code> object
+<a href='https://rdrr.io/pkg/AnnotationHub/man/AnnotationHub-class.html'>AnnotationHub-class</a>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The AnnotationHub() query
+    <p>The <a href='https://rdrr.io/pkg/AnnotationHub/man/AnnotationHub-class.html'>AnnotationHub-class</a> query
 for the file you requested.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -166,15 +167,18 @@ for the file you requested.</p>
     <pre class="examples"><div class='input'>
 <span class='co'>## Query AnnotationHub for the GenomicState object for Gencode v31 on</span>
 <span class='co'>## hg19 coordinates</span>
-<span class='no'>hub_gs_gencode_v31_hg19</span> <span class='kw'>&lt;-</span> <span class='fu'>GenomicStateHub</span>(<span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>'31'</span>, <span class='kw'>genome</span> <span class='kw'>=</span> <span class='st'>'hg19'</span>,
-    <span class='kw'>filetype</span> <span class='kw'>=</span> <span class='st'>'GenomicState'</span>)</div><div class='output co'>#&gt; <span class='message'>Using temporary cache /tmp/Rtmp3S3bUf/BiocFileCache</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2019-05-02</span></div><div class='output co'>#&gt; <span class='message'>Using temporary cache /tmp/Rtmp3S3bUf/BiocFileCache</span></div><div class='output co'>#&gt; <span class='message'>Using temporary cache /tmp/Rtmp3S3bUf/BiocFileCache</span></div><div class='input'><span class='no'>hub_gs_gencode_v31_hg19</span></div><div class='output co'>#&gt; AnnotationHub with 0 records
+<span class='no'>hub_query_gs_gencode_v31_hg19</span> <span class='kw'>&lt;-</span> <span class='fu'>GenomicStateHub</span>(<span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>'31'</span>,
+    <span class='kw'>genome</span> <span class='kw'>=</span> <span class='st'>'hg19'</span>,
+    <span class='kw'>filetype</span> <span class='kw'>=</span> <span class='st'>'GenomicState'</span>)</div><div class='output co'>#&gt; <span class='message'>Using temporary cache /tmp/RtmpI1yYFZ/BiocFileCache</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2019-05-02</span></div><div class='output co'>#&gt; <span class='message'>Using temporary cache /tmp/RtmpI1yYFZ/BiocFileCache</span></div><div class='output co'>#&gt; <span class='message'>Using temporary cache /tmp/RtmpI1yYFZ/BiocFileCache</span></div><div class='input'><span class='no'>hub_query_gs_gencode_v31_hg19</span></div><div class='output co'>#&gt; AnnotationHub with 0 records
 #&gt; # snapshotDate(): 2019-05-02 </div><div class='input'>
 
 <span class='co'>## Check the metadata</span>
-<span class='fu'>mcols</span>(<span class='no'>hub_gs_gencode_v31_hg19</span>)</div><div class='output co'>#&gt; DataFrame with 0 rows and 15 columns</div><div class='input'>
-<span class='co'>## Access the file through AnnoationHub</span>
-<span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>hub_gs_gencode_v31_hg19</span>) <span class='kw'>==</span> <span class='fl'>1</span>) {
-    <span class='no'>gs_gencode_v31_hg19</span> <span class='kw'>&lt;-</span> <span class='no'>hub_gs_gencode_v31_hg19</span><span class='kw'>[[</span><span class='fl'>1</span>]]
+<span class='fu'>mcols</span>(<span class='no'>hub_query_gs_gencode_v31_hg19</span>)</div><div class='output co'>#&gt; DataFrame with 0 rows and 15 columns</div><div class='input'>
+<span class='co'>## Access the file through AnnotationHub</span>
+<span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>hub_query_gs_gencode_v31_hg19</span>) <span class='kw'>==</span> <span class='fl'>1</span>) {
+    <span class='no'>hub_gs_gencode_v31_hg19</span> <span class='kw'>&lt;-</span> <span class='no'>hub_query_gs_gencode_v31_hg19</span><span class='kw'>[[</span><span class='fl'>1</span>]]
+
+    <span class='no'>hub_gs_gencode_v31_hg19</span>
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

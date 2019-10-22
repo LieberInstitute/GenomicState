@@ -1,3 +1,8 @@
+# GenomicState 0.99.5
+
+* The data is now live through `AnnotationHub::AnnotationHub()` and thus through
+`GenomicStateHub()`. The documentation now reflects this change.
+
 # GenomicState 0.99.2
 
 * Addressed issues reported at http://bioconductor.org/spb_reports/GenomicState_buildreport_20191007121957.html
