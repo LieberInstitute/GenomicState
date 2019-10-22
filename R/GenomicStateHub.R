@@ -19,6 +19,7 @@
 #'
 #' @export
 #' @import AnnotationHub
+#' @importFrom methods is
 #' @examples
 #'
 #' ## Query AnnotationHub for the GenomicState object for Gencode v31 on
@@ -48,7 +49,7 @@ GenomicStateHub <- function(version = '31', genome = c('hg38', 'hg19'),
     version <- as.character(version)
     genome <- match.arg(genome)
     filetype <- match.arg(filetype)
-    stopifnot(is(ah, 'AnnotationHub'))
+    stopifnot(methods::is(ah, 'AnnotationHub'))
 
     ## Build the query
     if(filetype == 'AnnotatedGenes') filetype <- 'Annotated genes'

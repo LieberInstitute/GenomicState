@@ -1,7 +1,7 @@
 Package: GenomicState
 Title: Build and access GenomicState objects for use with derfinder tools from
     sources like Gencode
-Version: 0.99.6
+Version: 0.99.7
 Date: 2019-10-22
 Authors@R: 
     person("Leonardo", "Collado-Torres", role = c("aut", "cre"), 
@@ -21,7 +21,8 @@ Imports:
     AnnotationDbi,
     IRanges,
     org.Hs.eg.db,
-    utils
+    utils,
+    methods
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Suggests: 
