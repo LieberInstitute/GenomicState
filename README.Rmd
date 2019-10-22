@@ -26,12 +26,10 @@ This package provides functions for building `GenomicState` objects from diverse
 Get the latest stable `R` release from [CRAN](http://cran.r-project.org/). Then install `GenomicState` using the following code:
 
 ```{r, eval = FALSE}
-## If needed:
-if (!requireNamespace("remotes", quietly = TRUE))
-   install.packages("remotes")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
 
-## Install with:
-remotes::install_github('LieberInstitute/GenomicState')
+BiocManager::install("GenomicState")
 ```
 
 
