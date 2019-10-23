@@ -228,7 +228,7 @@ And now we can make the example plot as shown below.
 plotRegionCoverage(regions=regions, regionCoverage=regionCov, 
     groupInfo=genomeInfo$pop, nearestAnnotation=nearestAnnotation, 
     annotatedRegions=annotatedRegions, whichRegions=1:2,
-    txdb = txdb_v31_hg19_chr21)
+    txdb = txdb_v31_hg19_chr21, verbose = FALSE)
 ```
 
 
