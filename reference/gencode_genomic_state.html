@@ -171,9 +171,70 @@ like <code>derfinderPlot</code>.</p>
 )
 
 <span class='co'>## Now build the GenomicState object</span>
-<span class='no'>gs_v31_hg19_chr21</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_genomic_state</span>(<span class='no'>txdb_v31_hg19_chr21</span>)</div><div class='output co'>#&gt; <span class='message'>2020-04-21 17:51:43 making the GenomicState object</span></div><div class='output co'>#&gt; <span class='error'>Error in derfinder::makeGenomicState(txdb): read failed on /Library/Frameworks/R.framework/Versions/4.0/Resources/library/derfinder/R/derfinder.rdb</span></div><div class='input'>
+<span class='no'>gs_v31_hg19_chr21</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_genomic_state</span>(<span class='no'>txdb_v31_hg19_chr21</span>)</div><div class='output co'>#&gt; <span class='message'>2020-04-21 22:49:58 making the GenomicState object</span></div><div class='output co'>#&gt; <span class='message'>extendedMapSeqlevels: sequence names mapped from NCBI to UCSC for species homo_sapiens</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:1 mapping between keys and columns</span></div><div class='output co'>#&gt; <span class='message'>2020-04-21 22:50:08 finding gene symbols</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:many mapping between keys and columns</span></div><div class='output co'>#&gt; <span class='message'>2020-04-21 22:50:08 adding gene symbols to the GenomicState</span></div><div class='input'>
 <span class='co'>## Explore the result</span>
-<span class='no'>gs_v31_hg19_chr21</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'gs_v31_hg19_chr21' not found</span></div></pre>
+<span class='no'>gs_v31_hg19_chr21</span></div><div class='output co'>#&gt; $fullGenome
+#&gt; GRanges object with 7871 ranges and 5 metadata columns:
+#&gt;        seqnames            ranges strand |   theRegion         tx_id
+#&gt;           &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;IntegerList&gt;
+#&gt;      1    chr21   9492380-9492817      + |        exon             1
+#&gt;      2    chr21   9590294-9590395      + |        exon             2
+#&gt;      3    chr21   9647910-9648694      + |        exon           3,4
+#&gt;      4    chr21   9648695-9650108      + |      intron           3,4
+#&gt;      5    chr21   9650109-9650168      + |        exon           3,4
+#&gt;    ...      ...               ...    ... .         ...           ...
+#&gt;   7867    chr21 47865683-47878803      * |  intergenic              
+#&gt;   7868    chr21 47989929-48018516      * |  intergenic              
+#&gt;   7869    chr21 48025122-48055506      * |  intergenic              
+#&gt;   7870    chr21 48085037-48110675      * |  intergenic              
+#&gt;   7871    chr21 48111139-48129895      * |  intergenic              
+#&gt;                                        tx_name          gene          symbol
+#&gt;                                &lt;CharacterList&gt; &lt;IntegerList&gt; &lt;CharacterList&gt;
+#&gt;      1                     ENST00000625020.1_1           776              NA
+#&gt;      2                     ENST00000625098.1_1           754              NA
+#&gt;      3 ENST00000623794.3_1,ENST00000624813.1_1           766    LOC101930100
+#&gt;      4 ENST00000623794.3_1,ENST00000624813.1_1           766    LOC101930100
+#&gt;      5 ENST00000623794.3_1,ENST00000624813.1_1           766    LOC101930100
+#&gt;    ...                                     ...           ...             ...
+#&gt;   7867                                                                      
+#&gt;   7868                                                                      
+#&gt;   7869                                                                      
+#&gt;   7870                                                                      
+#&gt;   7871                                                                      
+#&gt;   -------
+#&gt;   seqinfo: 1 sequence from hg19 genome
+#&gt; 
+#&gt; $codingGenome
+#&gt; GRanges object with 10361 ranges and 5 metadata columns:
+#&gt;         seqnames            ranges strand |   theRegion         tx_id
+#&gt;            &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;IntegerList&gt;
+#&gt;       1    chr21   9490380-9492379      + |    promoter             1
+#&gt;       2    chr21   9492380-9492817      + |        exon             1
+#&gt;       3    chr21   9588294-9590293      + |    promoter             2
+#&gt;       4    chr21   9590294-9590395      + |        exon             2
+#&gt;       5    chr21   9590396-9590493      + |    promoter             2
+#&gt;     ...      ...               ...    ... .         ...           ...
+#&gt;   10357    chr21 47865683-47876803      * |  intergenic              
+#&gt;   10358    chr21 47989929-48018516      * |  intergenic              
+#&gt;   10359    chr21 48027122-48053506      * |  intergenic              
+#&gt;   10360    chr21 48085037-48108675      * |  intergenic              
+#&gt;   10361    chr21 48111139-48129895      * |  intergenic              
+#&gt;                     tx_name          gene          symbol
+#&gt;             &lt;CharacterList&gt; &lt;IntegerList&gt; &lt;CharacterList&gt;
+#&gt;       1 ENST00000625020.1_1           776              NA
+#&gt;       2 ENST00000625020.1_1           776              NA
+#&gt;       3 ENST00000625098.1_1           754              NA
+#&gt;       4 ENST00000625098.1_1           754              NA
+#&gt;       5 ENST00000625098.1_1           754              NA
+#&gt;     ...                 ...           ...             ...
+#&gt;   10357                                                  
+#&gt;   10358                                                  
+#&gt;   10359                                                  
+#&gt;   10360                                                  
+#&gt;   10361                                                  
+#&gt;   -------
+#&gt;   seqinfo: 1 sequence from hg19 genome
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

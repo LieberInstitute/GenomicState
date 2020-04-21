@@ -177,7 +177,7 @@ for the file you requested.</p>
     <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"31"</span>,
     <span class='kw'>genome</span> <span class='kw'>=</span> <span class='st'>"hg19"</span>,
     <span class='kw'>filetype</span> <span class='kw'>=</span> <span class='st'>"GenomicState"</span>
-)</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2020-03-31</span></div><div class='input'><span class='no'>hub_query_gs_gencode_v31_hg19</span></div><div class='output co'>#&gt; AnnotationHub with 1 record
+)</div><div class='output co'>#&gt; <span class='message'>using temporary cache /tmp/RtmpWRWVjX/BiocFileCache</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2020-03-31</span></div><div class='input'><span class='no'>hub_query_gs_gencode_v31_hg19</span></div><div class='output co'>#&gt; AnnotationHub with 1 record
 #&gt; # snapshotDate(): 2020-03-31
 #&gt; # names(): AH75184
 #&gt; # $dataprovider: GENCODE
@@ -225,8 +225,10 @@ for the file you requested.</p>
     <span class='no'>hub_gs_gencode_v31_hg19</span> <span class='kw'>&lt;-</span> <span class='no'>hub_query_gs_gencode_v31_hg19</span><span class='kw'>[[</span><span class='fl'>1</span>]]
 
     <span class='no'>hub_gs_gencode_v31_hg19</span>
-}</div><div class='output co'>#&gt; <span class='message'>loading from cache</span></div><div class='output co'>#&gt; $fullGenome
-#&gt; GRanges object with 659263 ranges and 5 metadata columns:
+}</div><div class='output co'>#&gt; <span class='message'>downloading 1 resources</span></div><div class='output co'>#&gt; <span class='message'>retrieving 1 resource</span></div><div class='output co'>#&gt; <span class='message'>loading from cache</span></div><div class='output co'>#&gt; $fullGenome</div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: stats4</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘S4Vectors’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    expand.grid</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: IRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; GRanges object with 659263 ranges and 5 metadata columns:
 #&gt;          seqnames            ranges strand |   theRegion         tx_id
 #&gt;             &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;IntegerList&gt;
 #&gt;        1     chr1       11869-12227      + |        exon           1,2
