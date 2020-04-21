@@ -111,6 +111,9 @@ jobs:
           remotes::install_cran("BiocManager")
           BiocManager::install("BiocCheck")
 
+          ## Temporary given the dependency on derfinder 1.21.7
+          remotes::install_bioc('[username:password@devel/derfinder')
+
           ## Copy all the installed packages to a location where BiocCheck
           ## will find them later. This is needed when running biocdocker
           ## with the shared volume.
@@ -126,6 +129,9 @@ jobs:
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
         run: |
+          ## Temporary given the dependency on derfinder 1.21.7
+          remotes::install_bioc('[username:password@devel/derfinder')
+
           rcmdcheck::rcmdcheck(
               args = c("--no-build-vignettes", "--no-manual", "--timings"),
               build_args = c("--no-manual", "--no-resave-data"),
@@ -325,6 +331,9 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
           if (!requireNamespace("BiocCheck", quietly = TRUE)) BiocManager::install("BiocCheck")
+
+          ## Temporary given the dependency on derfinder 1.21.7
+          remotes::install_bioc('[username:password@devel/derfinder')
         shell: Rscript {0}
 
       - name: Check
