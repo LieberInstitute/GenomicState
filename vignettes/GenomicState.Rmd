@@ -166,7 +166,7 @@ gs_v31_hg19_chr21 <- gencode_genomic_state(txdb_v31_hg19_chr21)
 
 You can alternatively use the files hosted in `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])` which will be faster in general.
 
-```{r}
+```{r 'obtain_annotation_hub'}
 ## Create the AnnotationHub object once and re-use it to speed up things
 ah <- AnnotationHub::AnnotationHub()
 

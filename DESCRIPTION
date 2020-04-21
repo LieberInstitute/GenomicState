@@ -1,7 +1,7 @@
 Package: GenomicState
 Title: Build and access GenomicState objects for use with derfinder tools from
     sources like Gencode
-Version: 0.99.10
+Version: 0.99.11
 Date: 2020-04-21
 Authors@R: 
     person("Leonardo", "Collado-Torres", role = c("aut", "cre"), 
@@ -17,7 +17,7 @@ Imports:
     GenomeInfoDb,
     rtracklayer,
     bumphunter,
-    derfinder,
+    derfinder (>= 1.21.7),
     AnnotationDbi,
     IRanges,
     org.Hs.eg.db,

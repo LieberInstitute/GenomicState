@@ -1,3 +1,13 @@
+# GenomicState 0.99.11
+
+BUG FIXES
+
+* GenomicState now requires derfinder version 1.21.7 or newer to fix a bug
+on `derfinder::makeGenomicState()` introduced by the change in R 4.0 on the
+default behavior of `data.frame(stringsAsFactors = FALSE)` which used to be
+`TRUE`. This error didn't break `derfinder` but was breaking
+`gencode_genomic_state()`.
+
 # GenomicState 0.99.10
 
 SIGNIFICANT USER-VISIBLE CHANGES
