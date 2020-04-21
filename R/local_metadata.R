@@ -18,40 +18,43 @@
 #' meta <- local_metadata()
 #'
 #' ## Subset to the data of interest, lets say hg19 TxDb for v31
-#' interest <- subset(meta, RDataClass == 'TxDb' & Tags == 'Gencode:v31:hg19')
+#' interest <- subset(meta, RDataClass == "TxDb" & Tags == "Gencode:v31:hg19")
 #'
 #' ## Inspect the result
 #' interest
 #'
 #' ## Next you can load the data
-#' if(file.exists(interest$RDataPath)) {
+#' if (file.exists(interest$RDataPath)) {
 #'     ## This only works at JHPCE
 #'     eval(parse(text = interest$loadCode))
 #'
 #'     ## Explore the loaded object (would be gencode_v31_hg19_txdb in this case)
 #'     gencode_v31_hg19_txdb
 #' }
-#'
-
 local_metadata <- function(
-    local_path = '/dcl01/lieber/ajaffe/lab/GenomicState/data-raw') {
+    local_path = "/dcl01/lieber/ajaffe/lab/GenomicState/data-raw") {
 
     ## Locate and read AnnotationHub csv files
-    csv_files <- dir(system.file('extdata', package = 'GenomicState'),
-        pattern = '^metadata.*\\.csv$', full.names = TRUE)
+    csv_files <- dir(system.file("extdata", package = "GenomicState"),
+        pattern = "^metadata.*\\.csv$", full.names = TRUE
+    )
     meta <- do.call(rbind, lapply(csv_files, utils::read.csv,
         stringsAsFactors = FALSE,
-        row.names = NULL))
+        row.names = NULL
+    ))
 
     ## Replace the RDataPath
-    meta$RDataPath <- file.path(local_path, gsub('GenomicState/', '',
-        meta$RDataPath))
+    meta$RDataPath <- file.path(local_path, gsub(
+        "GenomicState/", "",
+        meta$RDataPath
+    ))
 
     meta$loadCode <- paste0(
-        gsub('\\.rda|\\.sqlite', '', basename(meta$RDataPath)),
-        ' <- ',
-        ifelse(meta$DispatchClass == 'SQLiteFile', 'AnnotationDbi::loadDb',
-            'load'),
+        gsub("\\.rda|\\.sqlite", "", basename(meta$RDataPath)),
+        " <- ",
+        ifelse(meta$DispatchClass == "SQLiteFile", "AnnotationDbi::loadDb",
+            "load"
+        ),
         '("',
         meta$RDataPath,
         '")'

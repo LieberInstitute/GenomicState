@@ -1,9 +1,22 @@
+# GenomicState 0.99.10
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+* Documentation website is now available at
+http://LieberInstitute.github.io/GenomicState/. It gets updated with every
+commit on the master branch (bioc-devel) using GitHub Actions and pkgdown.
+
+
 # GenomicState 0.99.5
+
+SIGNIFICANT USER-VISIBLE CHANGES
 
 * The data is now live through `AnnotationHub::AnnotationHub()` and thus through
 `GenomicStateHub()`. The documentation now reflects this change.
 
 # GenomicState 0.99.2
+
+SIGNIFICANT USER-VISIBLE CHANGES
 
 * Addressed issues reported at http://bioconductor.org/spb_reports/GenomicState_buildreport_20191007121957.html
 * Added the function `GenomicStateHub()` which will work once the data is
@@ -12,9 +25,13 @@ uploaded to `AnnotationHub`.
 
 # GenomicState 0.99.1
 
+BUG FIXES
+
 * Fixed some minor bugs.
 
 # GenomicState 0.99.0
+
+NEW FEATURES
 
 * Added a `NEWS.md` file to track changes to the package.
 * Added the functions `gencode_txdb()`, `gencode_annotated_genes()` and

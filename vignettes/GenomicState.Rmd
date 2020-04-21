@@ -25,46 +25,48 @@ knitr::opts_chunk$set(
 
 ```{r vignetteSetup, echo=FALSE, message=FALSE, warning = FALSE}
 ## For links
-library('BiocStyle')
+library("BiocStyle")
 
 ## Track time spent on making the vignette
 startTime <- Sys.time()
 
 ## Bib setup
-library('knitcitations')
+library("knitcitations")
 
 ## Load knitcitations with a clean bibliography
 cleanbib()
-cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
+cite_options(hyperlink = "to.doc", citation_format = "text", style = "html")
 # Note links won't show for now due to the following issue
 # https://github.com/cboettig/knitcitations/issues/63
 
 ## Write bibliography information
 bib <- c(
     R = citation(),
-    BiocStyle = citation('BiocStyle'),
-    GenomeInfoDb = RefManageR::BibEntry(bibtype = 'manual',
-        key = 'GenomeInfoDb',
-        author = 'Sonali Arora and Martin Morgan and Marc Carlson and H. Pagès',
+    BiocStyle = citation("BiocStyle"),
+    GenomeInfoDb = RefManageR::BibEntry(
+        bibtype = "manual",
+        key = "GenomeInfoDb",
+        author = "Sonali Arora and Martin Morgan and Marc Carlson and H. Pagès",
         title = "GenomeInfoDb: Utilities for manipulating chromosome and other 'seqname' identifiers",
-        year = 2017, doi = '10.18129/B9.bioc.GenomeInfoDb'),
-    knitcitations = citation('knitcitations'),
-    knitr = citation('knitr')[3],
-    GenomicState = citation('GenomicState')[1],
-    rmarkdown = citation('rmarkdown'),
-    rtracklayer = citation('rtracklayer')[1],
-    sessioninfo = citation('sessioninfo'),
-    testthat = citation('testthat'),
-    GenomicFeatures = citation('GenomicFeatures'),
-    bumpunter = citation('bumphunter')[1],
-    derfinder = citation('derfinder')[1],
-    AnnotationDbi = citation('AnnotationDbi'),
-    IRanges = citation('IRanges'),
-    org.Hs.eg.db = citation('org.Hs.eg.db'),
-    glue = citation('glue'),
-    AnnotationHub = citation('AnnotationHub'),
-    AnnotationHubData = citation('AnnotationHubData'),
-    GenomicRanges = citation('GenomicRanges')
+        year = 2017, doi = "10.18129/B9.bioc.GenomeInfoDb"
+    ),
+    knitcitations = citation("knitcitations"),
+    knitr = citation("knitr")[3],
+    GenomicState = citation("GenomicState")[1],
+    rmarkdown = citation("rmarkdown")[1],
+    rtracklayer = citation("rtracklayer")[1],
+    sessioninfo = citation("sessioninfo"),
+    testthat = citation("testthat"),
+    GenomicFeatures = citation("GenomicFeatures"),
+    bumphunter = citation("bumphunter")[1],
+    derfinder = citation("derfinder")[1],
+    AnnotationDbi = citation("AnnotationDbi"),
+    IRanges = citation("IRanges"),
+    org.Hs.eg.db = citation("org.Hs.eg.db"),
+    glue = citation("glue"),
+    AnnotationHub = citation("AnnotationHub"),
+    AnnotationHubData = citation("AnnotationHubData"),
+    GenomicRanges = citation("GenomicRanges")
 )
 ```
 
@@ -72,11 +74,12 @@ bib <- c(
 
 ## Install `r Biocpkg('GenomicState')`
 
-`R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. `r Biocpkg('GenomicState')` is a `R` package available via GitHub. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install `r Biocpkg('GenomicState')` by using the following commands in your `R` session:
+`R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. `r Biocpkg('GenomicState')` is a `R` package available via Bioconductor. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install `r Biocpkg('GenomicState')` by using the following commands in your `R` session:
 
 ```{r 'install', eval = FALSE}
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+      install.packages("BiocManager")
+  }
 
 BiocManager::install("GenomicState")
 
@@ -100,7 +103,7 @@ We hope that `r Biocpkg('GenomicState')` will be useful for your research. Pleas
 
 ```{r 'citation'}
 ## Citation info
-citation('GenomicState')
+citation("GenomicState")
 ```
 
 # Overview
@@ -112,7 +115,7 @@ To get started, load the `r Biocpkg('GenomicState')` package.
 
 
 ```{r setup, message = FALSE, warning = FALSE}
-library('GenomicState')
+library("GenomicState")
 ```
 
 # AnnotationHub
@@ -122,9 +125,11 @@ Using the `GencodeStateHub()` function you can query and download the data from 
 ```{r 'annotation_hub'}
 ## Query AnnotationHub for the GenomicState object for Gencode v31 on
 ## hg19 coordinates
-hub_query_gs_gencode_v31_hg19 <- GenomicStateHub(version = '31',
-    genome = 'hg19',
-    filetype = 'GenomicState')
+hub_query_gs_gencode_v31_hg19 <- GenomicStateHub(
+    version = "31",
+    genome = "hg19",
+    filetype = "GenomicState"
+)
 hub_query_gs_gencode_v31_hg19
 
 
@@ -132,7 +137,7 @@ hub_query_gs_gencode_v31_hg19
 mcols(hub_query_gs_gencode_v31_hg19)
 
 ## Access the file through AnnotationHub
-if(length(hub_query_gs_gencode_v31_hg19) == 1) {
+if (length(hub_query_gs_gencode_v31_hg19) == 1) {
     hub_gs_gencode_v31_hg19 <- hub_query_gs_gencode_v31_hg19[[1]]
 
     hub_gs_gencode_v31_hg19
@@ -149,8 +154,9 @@ To show how we can use these objects, first we build those for Gencode version 3
 ## txdb_v31_hg19_chr21 <- gencode_txdb(version = '31', genome = 'hg19',
 ##     chrs = 'chr21')
 txdb_v31_hg19_chr21 <- AnnotationDbi::loadDb(
-    system.file('extdata', 'txdb_v31_hg19_chr21.sqlite',
-        package = 'GenomicState')
+    system.file("extdata", "txdb_v31_hg19_chr21.sqlite",
+        package = "GenomicState"
+    )
 )
 
 ## Build the GenomicState and annotated genes
@@ -165,26 +171,32 @@ You can alternatively use the files hosted in `r Biocpkg('AnnotationHub')` `r ci
 ah <- AnnotationHub::AnnotationHub()
 
 ## Find the TxDb object for hg19 Gencode version 31
-hub_query_txdb_gencode_v31_hg19 <- GenomicStateHub(version = '31',
-    genome = 'hg19',
-    filetype = 'TxDb', ah = ah)
+hub_query_txdb_gencode_v31_hg19 <- GenomicStateHub(
+    version = "31",
+    genome = "hg19",
+    filetype = "TxDb", ah = ah
+)
 hub_query_txdb_gencode_v31_hg19
 
 ## Now the Annotated Genes for hg19 Gencode v31
-hub_query_genes_gencode_v31_hg19 <- GenomicStateHub(version = '31',
-    genome = 'hg19',
-    filetype = 'AnnotatedGenes', ah = ah)
+hub_query_genes_gencode_v31_hg19 <- GenomicStateHub(
+    version = "31",
+    genome = "hg19",
+    filetype = "AnnotatedGenes", ah = ah
+)
 hub_query_genes_gencode_v31_hg19
 
 ## And finally the GenomicState for hg19 Gencode v31
-hub_query_gs_gencode_v31_hg19 <- GenomicStateHub(version = '31',
-    genome = 'hg19',
-    filetype = 'GenomicState', ah = ah)
+hub_query_gs_gencode_v31_hg19 <- GenomicStateHub(
+    version = "31",
+    genome = "hg19",
+    filetype = "GenomicState", ah = ah
+)
 hub_query_gs_gencode_v31_hg19
 
 ## If you want to access the files use the double bracket AnnotationHub syntax
 ## to retrieve the R objects from the web.
-if(FALSE) {
+if (FALSE) {
     hub_txdb_gencode_v31_hg19 <- hub_query_txdb_gencode_v31_hg19[[1]]
     hub_genes_gencode_v31_hg19 <- hub_query_genes_gencode_v31_hg19[[1]]
     hub_gs_gencode_v31_hg19 <- hub_query_gs_gencode_v31_hg19[[1]]
@@ -196,10 +208,10 @@ Next we load a series of related packages that use the objects we created with `
 
 ```{r 'load_derfinder', messages = FALSE, warnings = FALSE}
 ## Load external packages
-library('derfinder')
-library('derfinderPlot')
-library('bumphunter')
-library('GenomicRanges')
+library("derfinder")
+library("derfinderPlot")
+library("bumphunter")
+library("GenomicRanges")
 ```
 
 Next we can prepare the needed for running `derfinderPlot::plotRegionCoverage()` where we use the `TxDb` object, the `GenomicState` and the `annotated genes` we prepared for Gencode v31 on hg19.
@@ -213,22 +225,26 @@ seqlengths(regions) <- seqlengths(txdb_v31_hg19_chr21)[
 
 ## Annotate them
 nearestAnnotation <- matchGenes(x = regions, subject = genes_v31_hg19_chr21)
-annotatedRegions <- annotateRegions(regions = regions, 
-    genomicState = gs_v31_hg19_chr21$fullGenome, minoverlap = 1)
+annotatedRegions <- annotateRegions(
+    regions = regions,
+    genomicState = gs_v31_hg19_chr21$fullGenome, minoverlap = 1
+)
 
 ## Obtain fullCov object
-fullCov <- list('chr21' = genomeDataRaw$coverage)
-regionCov <- getRegionCoverage(fullCov=fullCov, regions=regions)
+fullCov <- list("chr21" = genomeDataRaw$coverage)
+regionCov <- getRegionCoverage(fullCov = fullCov, regions = regions)
 ```
 
 And now we can make the example plot as shown below.
 
 ```{r 'example_plot'}
 ## now make the plot
-plotRegionCoverage(regions=regions, regionCoverage=regionCov, 
-    groupInfo=genomeInfo$pop, nearestAnnotation=nearestAnnotation, 
-    annotatedRegions=annotatedRegions, whichRegions=1:2,
-    txdb = txdb_v31_hg19_chr21, verbose = FALSE)
+plotRegionCoverage(
+    regions = regions, regionCoverage = regionCov,
+    groupInfo = genomeInfo$pop, nearestAnnotation = nearestAnnotation,
+    annotatedRegions = annotatedRegions, whichRegions = 1:2,
+    txdb = txdb_v31_hg19_chr21, verbose = FALSE
+)
 ```
 
 
@@ -243,13 +259,13 @@ You can also access the data locally using the function `local_metadata()` which
 meta <- local_metadata()
 
 ## Subset to the data of interest, lets say hg19 TxDb for v31
-interest <- subset(meta, RDataClass == 'TxDb' & Tags == 'Gencode:v31:hg19')
+interest <- subset(meta, RDataClass == "TxDb" & Tags == "Gencode:v31:hg19")
 
 ## Next you can load the data
-if(file.exists(interest$RDataPath)) {
+if (file.exists(interest$RDataPath)) {
     ## This only works at JHPCE
     eval(parse(text = interest$loadCode))
-    
+
     ## Explore the loaded object (would be gencode_v31_hg19_txdb in this case)
     gencode_v31_hg19_txdb
 }
@@ -260,38 +276,43 @@ if(file.exists(interest$RDataPath)) {
 The objects provided by `GenomicState` through `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])` were built using code like the one included below which is how the Gencode version 23 for hg19 files were built.
 
 ```{r 'build_local', eval = FALSE}
-outdir <- 'gencode'
+outdir <- "gencode"
 dir.create(outdir, showWarnings = FALSE)
- 
+
 ## Build and save the TxDb object
-gencode_v23_hg19_txdb <- gencode_txdb('23', 'hg19')
+gencode_v23_hg19_txdb <- gencode_txdb("23", "hg19")
 saveDb(gencode_v23_hg19_txdb,
-    file = file.path(outdir, 'gencode_v23_hg19_txdb.sqlite'))
+    file = file.path(outdir, "gencode_v23_hg19_txdb.sqlite")
+)
 
 ## Build and save the annotateTranscripts output
-gencode_v23_hg19_annotated_genes<- gencode_annotated_genes(
+gencode_v23_hg19_annotated_genes <- gencode_annotated_genes(
     gencode_v23_hg19_txdb
 )
 save(gencode_v23_hg19_annotated_genes,
-    file = file.path(outdir, 'gencode_v23_hg19_annotated_genes.rda'))
+    file = file.path(outdir, "gencode_v23_hg19_annotated_genes.rda")
+)
 
 ## Build and save the GenomicState
 gencode_v23_hg19_GenomicState <- gencode_genomic_state(
     gencode_v23_hg19_txdb
 )
 save(gencode_v23_hg19_GenomicState,
-    file = file.path(outdir, 'gencode_v23_hg19_GenomicState.rda'))
+    file = file.path(outdir, "gencode_v23_hg19_GenomicState.rda")
+)
 ```
 
 For more details check the source files:
 
 ```{r 'build_source'}
 ## R commands for building the files:
-system.file('scripts', 'make-data_gencode_human.R',
-    package = 'GenomicState')
+system.file("scripts", "make-data_gencode_human.R",
+    package = "GenomicState"
+)
 ## The above file was created by this one:
-system.file('scripts', 'generate_make_data_gencode_human.R',
-    package = 'GenomicState')
+system.file("scripts", "generate_make_data_gencode_human.R",
+    package = "GenomicState"
+)
 ```
 
 # Reproducibility
@@ -322,12 +343,12 @@ Code for creating the vignette
 
 ```{r createVignette, eval=FALSE}
 ## Create the vignette
-library('rmarkdown')
-system.time(render('GenomicState.Rmd'))
+library("rmarkdown")
+system.time(render("GenomicState.Rmd"))
 
 ## Extract the R code
-library('knitr')
-knit('GenomicState.Rmd', tangle = TRUE)
+library("knitr")
+knit("GenomicState.Rmd", tangle = TRUE)
 ```
 
 
@@ -343,14 +364,14 @@ Wallclock time spent generating the vignette.
 ```{r reproduce2, echo=FALSE}
 ## Processing time in seconds
 totalTime <- diff(c(startTime, Sys.time()))
-round(totalTime, digits=3)
+round(totalTime, digits = 3)
 ```
 
 `R` session information.
 
 ```{r reproduce3, echo=FALSE}
 ## Session info
-library('sessioninfo')
+library("sessioninfo")
 options(width = 120)
 session_info()
 ```

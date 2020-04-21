@@ -5,8 +5,11 @@
 \alias{gencode_source_url}
 \title{Create a Gencode TxDb object}
 \usage{
-gencode_txdb(version = "31", genome = c("hg38", "hg19"),
-  chrs = paste0("chr", c(seq_len(22), "X", "Y", "M")))
+gencode_txdb(
+  version = "31",
+  genome = c("hg38", "hg19"),
+  chrs = paste0("chr", c(seq_len(22), "X", "Y", "M"))
+)
 
 gencode_source_url(version = "31", genome = c("hg38", "hg19"))
 }
@@ -34,22 +37,21 @@ object.
 
 ## Start from scratch if you want:
 \dontrun{
-    txdb_v31_hg19_chr21 <- gencode_txdb('31', 'hg19', chrs = 'chr21')
+txdb_v31_hg19_chr21 <- gencode_txdb("31", "hg19", chrs = "chr21")
 }
 
 ## or read in the txdb object for hg19 chr21 from this package
 txdb_v31_hg19_chr21 <- AnnotationDbi::loadDb(
-    system.file('extdata', 'txdb_v31_hg19_chr21.sqlite',
-        package = 'GenomicState')
+    system.file("extdata", "txdb_v31_hg19_chr21.sqlite",
+        package = "GenomicState"
+    )
 )
 
 ## Explore the result
 txdb_v31_hg19_chr21
 
-
 ## Locate the GTF file for Gencode version 31 for hg19
-gencode_source_url(version = '31', genome = 'hg19')
-
+gencode_source_url(version = "31", genome = "hg19")
 }
 \references{
 Based on code for the \code{brainflowprobes} package at:

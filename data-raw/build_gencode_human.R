@@ -1,18 +1,18 @@
-library('sgejobs')
-library('sessioninfo')
+library("sgejobs")
+library("sessioninfo")
 
-unlink('build_gencode_human.sh')
+unlink("build_gencode_human.sh")
 job_loop(
-    loops = list(genome = c('hg19', 'hg38')),
-    name = 'build_gencode_human',
+    loops = list(genome = c("hg19", "hg38")),
+    name = "build_gencode_human",
     task_num = 1,
     create_shell = TRUE,
-    queue = 'bluejay',
-    email = 'a'
+    queue = "bluejay",
+    email = "a"
 )
 
 ## Update the number of tasks to match the version numbers
-array_submit('build_gencode_human.sh', task_ids = '23-32', submit = FALSE, restore = FALSE)
+array_submit("build_gencode_human.sh", task_ids = "23-32", submit = FALSE, restore = FALSE)
 
 # ## Write the script to run
 # cat(
@@ -51,15 +51,15 @@ array_submit('build_gencode_human.sh', task_ids = '23-32', submit = FALSE, resto
 # )
 
 ## Update the script to run
-script <- readLines('build_gencode_human.sh')
-script[grepl('Rscript', script)] <- "Rscript -e \"library('GenomicState'); library('AnnotationDbi'); library('sessioninfo'); dir.create('gencode', showWarnings = FALSE); gencode_v\\${SGE_TASK_ID}_${genome}_txdb <- gencode_txdb('\\${SGE_TASK_ID}', '${genome}'); saveDb(gencode_v\\${SGE_TASK_ID}_${genome}_txdb, file = '~/gencode_v\\${SGE_TASK_ID}_${genome}_txdb.sqlite'); system('mv ~/gencode_v\\${SGE_TASK_ID}_${genome}_txdb.sqlite gencode/gencode_v\\${SGE_TASK_ID}_${genome}_txdb.sqlite'); gencode_v\\${SGE_TASK_ID}_${genome}_annotated_genes<- gencode_annotated_genes(gencode_v\\${SGE_TASK_ID}_${genome}_txdb); save(gencode_v\\${SGE_TASK_ID}_${genome}_annotated_genes, file = 'gencode/gencode_v\\${SGE_TASK_ID}_${genome}_annotated_genes.rda'); gencode_v\\${SGE_TASK_ID}_${genome}_GenomicState <- gencode_genomic_state(gencode_v\\${SGE_TASK_ID}_${genome}_txdb); save(gencode_v\\${SGE_TASK_ID}_${genome}_GenomicState, file = 'gencode/gencode_v\\${SGE_TASK_ID}_${genome}_GenomicState.rda'); print('Reproducibility information:'); Sys.time(); proc.time(); options(width = 120); session_info()\""
-writeLines(script, 'build_gencode_human.sh')
+script <- readLines("build_gencode_human.sh")
+script[grepl("Rscript", script)] <- "Rscript -e \"library('GenomicState'); library('AnnotationDbi'); library('sessioninfo'); dir.create('gencode', showWarnings = FALSE); gencode_v\\${SGE_TASK_ID}_${genome}_txdb <- gencode_txdb('\\${SGE_TASK_ID}', '${genome}'); saveDb(gencode_v\\${SGE_TASK_ID}_${genome}_txdb, file = '~/gencode_v\\${SGE_TASK_ID}_${genome}_txdb.sqlite'); system('mv ~/gencode_v\\${SGE_TASK_ID}_${genome}_txdb.sqlite gencode/gencode_v\\${SGE_TASK_ID}_${genome}_txdb.sqlite'); gencode_v\\${SGE_TASK_ID}_${genome}_annotated_genes<- gencode_annotated_genes(gencode_v\\${SGE_TASK_ID}_${genome}_txdb); save(gencode_v\\${SGE_TASK_ID}_${genome}_annotated_genes, file = 'gencode/gencode_v\\${SGE_TASK_ID}_${genome}_annotated_genes.rda'); gencode_v\\${SGE_TASK_ID}_${genome}_GenomicState <- gencode_genomic_state(gencode_v\\${SGE_TASK_ID}_${genome}_txdb); save(gencode_v\\${SGE_TASK_ID}_${genome}_GenomicState, file = 'gencode/gencode_v\\${SGE_TASK_ID}_${genome}_GenomicState.rda'); print('Reproducibility information:'); Sys.time(); proc.time(); options(width = 120); session_info()\""
+writeLines(script, "build_gencode_human.sh")
 
 ## Now run with: sh build_gencode_human.sh
-system('sh build_gencode_human.sh')
+system("sh build_gencode_human.sh")
 
 ## Reproducibility information
-print('Reproducibility information:')
+print("Reproducibility information:")
 Sys.time()
 proc.time()
 options(width = 120)

@@ -1,8 +1,8 @@
 Package: GenomicState
 Title: Build and access GenomicState objects for use with derfinder tools from
     sources like Gencode
-Version: 0.99.9
-Date: 2019-10-24
+Version: 0.99.10
+Date: 2020-04-21
 Authors@R: 
     person("Leonardo", "Collado-Torres", role = c("aut", "cre"), 
     email = "lcolladotor@gmail.com", comment = c(ORCID = "0000-0003-2140-308X"))
@@ -24,7 +24,7 @@ Imports:
     utils,
     methods
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 Suggests: 
     knitr,
     rmarkdown,
@@ -36,10 +36,11 @@ Suggests:
     derfinderPlot,
     AnnotationHubData,
     RefManageR,
-    GenomicRanges
+    GenomicRanges,
+    covr
 VignetteBuilder: knitr
 URL: https://github.com/LieberInstitute/GenomicState
-BugReports: https://github.com/LieberInstitute/GenomicState/issues
+BugReports: https://support.bioconductor.org/t/GenomicState
 biocViews: Homo_sapiens, TxDb, AnnotationHub, AnnotationData
 Depends: 
     AnnotationHub

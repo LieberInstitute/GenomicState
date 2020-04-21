@@ -4,8 +4,7 @@
 \alias{local_metadata}
 \title{Locate local metadata outside of AnnotationHub}
 \usage{
-
-  local_metadata(local_path = "/dcl01/lieber/ajaffe/lab/GenomicState/data-raw")
+local_metadata(local_path = "/dcl01/lieber/ajaffe/lab/GenomicState/data-raw")
 }
 \arguments{
 \item{local_path}{A \code{character(1)} pointing to where the data is stored
@@ -26,20 +25,19 @@ Locate local metadata outside of AnnotationHub
 meta <- local_metadata()
 
 ## Subset to the data of interest, lets say hg19 TxDb for v31
-interest <- subset(meta, RDataClass == 'TxDb' & Tags == 'Gencode:v31:hg19')
+interest <- subset(meta, RDataClass == "TxDb" & Tags == "Gencode:v31:hg19")
 
 ## Inspect the result
 interest
 
 ## Next you can load the data
-if(file.exists(interest$RDataPath)) {
+if (file.exists(interest$RDataPath)) {
     ## This only works at JHPCE
     eval(parse(text = interest$loadCode))
 
     ## Explore the loaded object (would be gencode_v31_hg19_txdb in this case)
     gencode_v31_hg19_txdb
 }
-
 }
 \seealso{
 \code{\link[AnnotationHubData:makeAnnotationHubMetadata]{AnnotationHubData::makeAnnotationHubMetadata()}}

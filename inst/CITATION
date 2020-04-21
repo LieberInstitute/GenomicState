@@ -1,0 +1,19 @@
+pkgVer <- function(pkg) {
+    if (!exists("meta") || is.null(meta)) meta <- packageDescription(pkg)
+    ver <- meta$Version
+    paste0('https://github.com/LieberInstitute/', pkg, ' - R package version ', ver)
+}
+
+c(
+
+    bibentry(bibtype="manual",
+        title = "Build and access GenomicState objects for use with derfinder tools from sources like Gencode",
+        author = personList(
+            as.person("Leonardo Collado-Torres")
+        ),
+        year = format(Sys.Date(), "%Y"),
+        url = "http://www.bioconductor.org/packages/GenomicState",
+        note = pkgVer('GenomicState'),
+        doi = '10.18129/B9.bioc.GenomicState'
+    )
+)

@@ -15,12 +15,12 @@ This package contains functions for building GenomicState objects
 Useful links:
 \itemize{
   \item \url{https://github.com/LieberInstitute/GenomicState}
-  \item Report bugs at \url{https://github.com/LieberInstitute/GenomicState/issues}
+  \item Report bugs at \url{https://support.bioconductor.org/t/GenomicState}
 }
 
 }
 \author{
-\strong{Maintainer}: Leonardo Collado-Torres \email{lcolladotor@gmail.com} (0000-0003-2140-308X)
+\strong{Maintainer}: Leonardo Collado-Torres \email{lcolladotor@gmail.com} (\href{https://orcid.org/0000-0003-2140-308X}{ORCID})
 
 }
 \keyword{internal}

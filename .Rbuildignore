@@ -6,3 +6,6 @@
 ^pkgdown$
 ^data-raw$
 ^\.travis\.yml$
+dev
+^\.github$
+^codecov\.yml$

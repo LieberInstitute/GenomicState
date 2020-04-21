@@ -4,9 +4,12 @@
 \alias{GenomicStateHub}
 \title{Access GenomicState objects through AnnotationHub}
 \usage{
-GenomicStateHub(version = "31", genome = c("hg38", "hg19"),
+GenomicStateHub(
+  version = "31",
+  genome = c("hg38", "hg19"),
   filetype = c("TxDb", "AnnotatedGenes", "GenomicState"),
-  ah = AnnotationHub::AnnotationHub())
+  ah = AnnotationHub::AnnotationHub()
+)
 }
 \arguments{
 \item{version}{A \code{character(1)} with the Gencode version number.}
@@ -34,9 +37,11 @@ GenomicState object made with \code{\link[=gencode_genomic_state]{gencode_genomi
 
 ## Query AnnotationHub for the GenomicState object for Gencode v31 on
 ## hg19 coordinates
-hub_query_gs_gencode_v31_hg19 <- GenomicStateHub(version = '31',
-    genome = 'hg19',
-    filetype = 'GenomicState')
+hub_query_gs_gencode_v31_hg19 <- GenomicStateHub(
+    version = "31",
+    genome = "hg19",
+    filetype = "GenomicState"
+)
 hub_query_gs_gencode_v31_hg19
 
 
@@ -44,12 +49,11 @@ hub_query_gs_gencode_v31_hg19
 mcols(hub_query_gs_gencode_v31_hg19)
 
 ## Access the file through AnnotationHub
-if(length(hub_query_gs_gencode_v31_hg19) == 1) {
+if (length(hub_query_gs_gencode_v31_hg19) == 1) {
     hub_gs_gencode_v31_hg19 <- hub_query_gs_gencode_v31_hg19[[1]]
 
     hub_gs_gencode_v31_hg19
 }
-
 }
 \seealso{
 \code{\link[=gencode_txdb]{gencode_txdb()}} \code{\link[=gencode_annotated_genes]{gencode_annotated_genes()}}

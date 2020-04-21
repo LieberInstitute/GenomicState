@@ -20,13 +20,14 @@
 #'
 #' ## Start from scratch if you want:
 #' \dontrun{
-#'     txdb_v31_hg19_chr21 <- gencode_txdb('31', 'hg19', chrs = 'chr21')
+#' txdb_v31_hg19_chr21 <- gencode_txdb("31", "hg19", chrs = "chr21")
 #' }
 #'
 #' ## or read in the txdb object for hg19 chr21 from this package
 #' txdb_v31_hg19_chr21 <- AnnotationDbi::loadDb(
-#'     system.file('extdata', 'txdb_v31_hg19_chr21.sqlite',
-#'         package = 'GenomicState')
+#'     system.file("extdata", "txdb_v31_hg19_chr21.sqlite",
+#'         package = "GenomicState"
+#'     )
 #' )
 #'
 #' ## Obtain the annotated genes for the Gencode TxDb object
@@ -34,14 +35,14 @@
 #'
 #' ## Explore the result
 #' genes_v31_hg19_chr21
-#'
-
 gencode_annotated_genes <- function(txdb) {
-    message(paste(Sys.time(), 'annotating the transcripts'))
+    message(paste(Sys.time(), "annotating the transcripts"))
     genes <- bumphunter::annotateTranscripts(txdb,
-        by = 'gene',
-        mappingInfo = list('column' = 'ENTREZID', 'keytype' = 'ENSEMBL',
-            'multiVals' = 'first'),
+        by = "gene",
+        mappingInfo = list(
+            "column" = "ENTREZID", "keytype" = "ENSEMBL",
+            "multiVals" = "first"
+        ),
         simplifyGeneID = TRUE
     )
     return(genes)

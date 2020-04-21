@@ -27,13 +27,14 @@ Note that not all genes will have symbols as many will be \code{NA}.
 
 ## Start from scratch if you want:
 \dontrun{
-    txdb_v31_hg19_chr21 <- gencode_txdb('31', 'hg19', chrs = 'chr21')
+txdb_v31_hg19_chr21 <- gencode_txdb("31", "hg19", chrs = "chr21")
 }
 
 ## or read in the txdb object for hg19 chr21 from this package
 txdb_v31_hg19_chr21 <- AnnotationDbi::loadDb(
-    system.file('extdata', 'txdb_v31_hg19_chr21.sqlite',
-        package = 'GenomicState')
+    system.file("extdata", "txdb_v31_hg19_chr21.sqlite",
+        package = "GenomicState"
+    )
 )
 
 ## Now build the GenomicState object
@@ -41,7 +42,6 @@ gs_v31_hg19_chr21 <- gencode_genomic_state(txdb_v31_hg19_chr21)
 
 ## Explore the result
 gs_v31_hg19_chr21
-
 }
 \references{
 Based on code for the \code{brainflowprobes} package at:

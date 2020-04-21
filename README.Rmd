@@ -14,34 +14,51 @@ knitr::opts_chunk$set(
 
 # GenomicState
 
-[![Travis-CI build status](https://travis-ci.org/LieberInstitute/GenomicState.svg?branch=master)](https://travis-ci.org/LieberInstitute/GenomicState)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/LieberInstitute/GenomicState?branch=master&svg=true)](https://ci.appveyor.com/project/LieberInstitute/GenomicState)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Codecov test coverage](https://codecov.io/gh/LieberInstitute/GenomicState/branch/master/graphs/badge.svg)](https://codecov.io/gh/LieberInstitute/GenomicState?branch=master)
+<!-- badges: start -->
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![BioC status](http://bioconductor.org/images/shields/availability/all.svg)](http://bioconductor.org/packages/release/data/annotation/html/GenomicState.html#archives)
+[![Codecov test coverage](https://codecov.io/gh/LieberInstitute/GenomicState/branch/master/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/GenomicState?branch=master)
+[![R build status](https://github.com/LieberInstitute/GenomicState/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/GenomicState/actions)
+<!-- badges: end -->
 
-This package provides functions for building `GenomicState` objects from diverse annotation sources such as [`Gencode`](https://www.gencodegenes.org/human/releases.html). It also provides a way to load pre-computed `GenomicState` objects if you are working at [JHPCE](https://jhpce.jhu.edu/). These `GenomicState` objects are normally created using [derfinder::makeGenomicState()](https://rdrr.io/bioc/derfinder/man/makeGenomicState.html) and can be used for annotating regions with [derfinder::annotateRegions()](https://rdrr.io/bioc/derfinder/man/annotateRegions.html) which are in turn used by [derfinderPlot::plotRegionCoverage()](https://rdrr.io/bioc/derfinderPlot/man/plotRegionCoverage.html).
+This package provides functions for building `GenomicState` objects from diverse annotation sources such as [`Gencode`](https://www.gencodegenes.org/human/releases.html). It also provides a way to load pre-computed `GenomicState` objects if you are working at [JHPCE](https://jhpce.jhu.edu/). These `GenomicState` objects are normally created using [derfinder::makeGenomicState()](http://lcolladotor.github.io/derfinder/reference/makeGenomicState.html) and can be used for annotating regions with [derfinder::annotateRegions()](http://lcolladotor.github.io/derfinder/reference/annotateRegions.html) which are in turn used by [derfinderPlot::plotRegionCoverage()](http://leekgroup.github.io/derfinderPlot/reference/plotRegionCoverage.html).
 
-# Installation instructions
+## Documentation
 
-Get the latest stable `R` release from [CRAN](http://cran.r-project.org/). Then install `GenomicState` using the following code:
+For more information about `GenomicState` check the vignettes [through Bioconductor](http://bioconductor.org/packages/GenomicState) or at the [documentation website](http://lieberinstitute.github.io/GenomicState).
 
-```{r, eval = FALSE}
+## Installation instructions
+
+Get the latest stable `R` release from [CRAN](http://cran.r-project.org/). Then install `GenomicState` using from [Bioconductor](http://bioconductor.org/) the following code:
+
+```{r 'install', eval = FALSE}
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
 BiocManager::install("GenomicState")
 ```
 
-
-# Citation
+## Citation
 
 Below is the citation output from using `citation('GenomicState')` in R. Please 
 run this yourself to check for any updates on how to cite __GenomicState__.
 
-```{r 'citation'}
-citation('GenomicState')
+```{r 'citation', eval = requireNamespace('GenomicState')}
+print(citation('GenomicState'), bibtex = TRUE)
 ```
 
-# Testing
+Please note that the `GenomicState` was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.
 
-Testing on Bioc-devel is feasible thanks to [R Travis](http://docs.travis-ci.com/user/languages/r/).
+## Code of Conduct
+  
+Please note that the derfinderPlot project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+
+## Development tools
+
+* Continuous code testing is possible thanks to [GitHub actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)  through `r BiocStyle::CRANpkg('usethis')`, `r BiocStyle::CRANpkg('remotes')`, `r BiocStyle::Githubpkg('r-hub/sysreqs')` and `r BiocStyle::CRANpkg('rcmdcheck')` customized to use [Bioconductor's docker containers](https://www.bioconductor.org/help/docker/) and `r BiocStyle::Biocpkg('BiocCheck')`.
+* Code coverage assessment is possible thanks to [codecov](https://codecov.io/gh) and `r BiocStyle::CRANpkg('covr')`.
+* The [documentation website](http://lieberinstitute.github.io/GenomicState) is automatically updated thanks to `r BiocStyle::CRANpkg('pkgdown')`.
+* The code is styled automatically thanks to `r BiocStyle::CRANpkg('styler')`.
+* The documentation is formatted thanks to `r BiocStyle::CRANpkg('devtools')` and `r BiocStyle::CRANpkg('roxygen2')`.
+
+For more details, check the `dev` directory.
