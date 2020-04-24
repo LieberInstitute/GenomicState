@@ -331,10 +331,6 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
           if (!requireNamespace("BiocCheck", quietly = TRUE)) BiocManager::install("BiocCheck")
-
-          ## Temporary given the dependency on derfinder 1.21.7
-          remotes::install_cran('git2r')
-          remotes::install_bioc('[username:password@devel/derfinder')
         shell: Rscript {0}
 
       - name: Check
