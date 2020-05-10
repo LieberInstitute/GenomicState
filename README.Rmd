@@ -19,6 +19,8 @@ knitr::opts_chunk$set(
 [![BioC status](http://bioconductor.org/images/shields/availability/all.svg)](http://bioconductor.org/packages/release/data/annotation/html/GenomicState.html#archives)
 [![Codecov test coverage](https://codecov.io/gh/LieberInstitute/GenomicState/branch/master/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/GenomicState?branch=master)
 [![R build status](https://github.com/LieberInstitute/GenomicState/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/GenomicState/actions)
+[![Support site activity, last 6 months: tagged questions/avg. answers per question/avg. comments per question/accepted answers, or 0 if no tagged posts.](http://www.bioconductor.org/shields/posts/GenomicState.svg)](https://support.bioconductor.org/t/GenomicState/)
+[![GitHub issues](https://img.shields.io/github/issues/LieberInstitute/GenomicState)](https://github.com/LieberInstitute/GenomicState/issues)
 <!-- badges: end -->
 
 This package provides functions for building `GenomicState` objects from diverse annotation sources such as [`Gencode`](https://www.gencodegenes.org/human/releases.html). It also provides a way to load pre-computed `GenomicState` objects if you are working at [JHPCE](https://jhpce.jhu.edu/). These `GenomicState` objects are normally created using [derfinder::makeGenomicState()](http://lcolladotor.github.io/derfinder/reference/makeGenomicState.html) and can be used for annotating regions with [derfinder::annotateRegions()](http://lcolladotor.github.io/derfinder/reference/annotateRegions.html) which are in turn used by [derfinderPlot::plotRegionCoverage()](http://leekgroup.github.io/derfinderPlot/reference/plotRegionCoverage.html).
