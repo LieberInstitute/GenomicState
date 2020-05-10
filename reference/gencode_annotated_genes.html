@@ -74,7 +74,7 @@ derfinderPlot." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GenomicState</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.12</span>
       </span>
     </div>
 
@@ -172,7 +172,7 @@ the genes. This information is then used by packages like <code>derfinder</code>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    cache</span></div><div class='input'>
 <span class='co'>## Obtain the annotated genes for the Gencode TxDb object</span>
-<span class='no'>genes_v31_hg19_chr21</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_annotated_genes</span>(<span class='no'>txdb_v31_hg19_chr21</span>)</div><div class='output co'>#&gt; <span class='message'>2020-04-27 15:03:40 annotating the transcripts</span></div><div class='output co'>#&gt; <span class='message'>No annotationPackage supplied. Trying org.Hs.eg.db.</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: org.Hs.eg.db</span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; <span class='message'>Getting TSS and TSE.</span></div><div class='output co'>#&gt; <span class='message'>Getting CSS and CSE.</span></div><div class='output co'>#&gt; <span class='message'>Getting exons.</span></div><div class='output co'>#&gt; <span class='message'>Annotating genes.</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:many mapping between keys and columns</span></div><div class='input'>
+<span class='no'>genes_v31_hg19_chr21</span> <span class='kw'>&lt;-</span> <span class='fu'>gencode_annotated_genes</span>(<span class='no'>txdb_v31_hg19_chr21</span>)</div><div class='output co'>#&gt; <span class='message'>2020-05-10 17:57:09 annotating the transcripts</span></div><div class='output co'>#&gt; <span class='message'>No annotationPackage supplied. Trying org.Hs.eg.db.</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: org.Hs.eg.db</span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; <span class='message'>Getting TSS and TSE.</span></div><div class='output co'>#&gt; <span class='message'>Getting CSS and CSE.</span></div><div class='output co'>#&gt; <span class='message'>Getting exons.</span></div><div class='output co'>#&gt; <span class='message'>Annotating genes.</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:many mapping between keys and columns</span></div><div class='input'>
 <span class='co'>## Explore the result</span>
 <span class='no'>genes_v31_hg19_chr21</span></div><div class='output co'>#&gt; GRanges object with 823 ranges and 8 metadata columns:
 #&gt;         seqnames            ranges strand |       CSS       CSE
