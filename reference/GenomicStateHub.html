@@ -177,8 +177,8 @@ for the file you requested.</p>
     <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"31"</span>,
     <span class='kw'>genome</span> <span class='kw'>=</span> <span class='st'>"hg19"</span>,
     <span class='kw'>filetype</span> <span class='kw'>=</span> <span class='st'>"GenomicState"</span>
-)</div><div class='output co'>#&gt; <span class='message'>using temporary cache /tmp/RtmpeMeuz5/BiocFileCache</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2020-05-01</span></div><div class='input'><span class='no'>hub_query_gs_gencode_v31_hg19</span></div><div class='output co'>#&gt; AnnotationHub with 1 record
-#&gt; # snapshotDate(): 2020-05-01
+)</div><div class='output co'>#&gt; <span class='message'>using temporary cache /tmp/RtmpGEqOhp/BiocFileCache</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2020-05-23</span></div><div class='input'><span class='no'>hub_query_gs_gencode_v31_hg19</span></div><div class='output co'>#&gt; AnnotationHub with 1 record
+#&gt; # snapshotDate(): 2020-05-23
 #&gt; # names(): AH75184
 #&gt; # $dataprovider: GENCODE
 #&gt; # $species: Homo sapiens
@@ -196,30 +196,18 @@ for the file you requested.</p>
 
 <span class='co'>## Check the metadata</span>
 <span class='fu'>mcols</span>(<span class='no'>hub_query_gs_gencode_v31_hg19</span>)</div><div class='output co'>#&gt; DataFrame with 1 row and 15 columns
-#&gt;                                                    title dataprovider
-#&gt;                                              &lt;character&gt;  &lt;character&gt;
-#&gt; AH75184 GenomicState for Gencode v31 on hg19 coordinates      GENCODE
-#&gt;              species taxonomyid      genome
-#&gt;          &lt;character&gt;  &lt;integer&gt; &lt;character&gt;
-#&gt; AH75184 Homo sapiens       9606      GRCh37
-#&gt;                                                                                                                                                                                                     description
-#&gt;                                                                                                                                                                                                     &lt;character&gt;
-#&gt; AH75184 Gencode v31 GenomicState from derfinder::makeGenomicState() on hg19 coordinates. This is useful for packages such as derfinder and derfinderPlot. For more information, check the GenomicState package.
-#&gt;         coordinate_1_based                                      maintainer
-#&gt;                  &lt;integer&gt;                                     &lt;character&gt;
-#&gt; AH75184                  1 Leonardo Collado-Torres &lt;lcolladotor@gmail.com&gt;
+#&gt;                          title dataprovider      species taxonomyid      genome
+#&gt;                    &lt;character&gt;  &lt;character&gt;  &lt;character&gt;  &lt;integer&gt; &lt;character&gt;
+#&gt; AH75184 GenomicState for Gen..      GENCODE Homo sapiens       9606      GRCh37
+#&gt;                    description coordinate_1_based             maintainer
+#&gt;                    &lt;character&gt;          &lt;integer&gt;            &lt;character&gt;
+#&gt; AH75184 Gencode v31 GenomicS..                  1 Leonardo Collado-Tor..
 #&gt;         rdatadateadded preparerclass                          tags  rdataclass
 #&gt;            &lt;character&gt;   &lt;character&gt;                        &lt;list&gt; &lt;character&gt;
 #&gt; AH75184     2019-10-22  GenomicState Gencode,GenomicState,hg19,...        list
-#&gt;                                                      rdatapath
-#&gt;                                                    &lt;character&gt;
-#&gt; AH75184 GenomicState/gencode/gencode_v31_hg19_GenomicState.rda
-#&gt;                                                                                                                     sourceurl
-#&gt;                                                                                                                   &lt;character&gt;
-#&gt; AH75184 ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_31/GRCh37_mapping/gencode.v31lift37.annotation.gtf.gz
-#&gt;          sourcetype
-#&gt;         &lt;character&gt;
-#&gt; AH75184         GTF</div><div class='input'>
+#&gt;                      rdatapath              sourceurl  sourcetype
+#&gt;                    &lt;character&gt;            &lt;character&gt; &lt;character&gt;
+#&gt; AH75184 GenomicState/gencode.. ftp://ftp.ebi.ac.uk/..         GTF</div><div class='input'>
 <span class='co'>## Access the file through AnnotationHub</span>
 <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>hub_query_gs_gencode_v31_hg19</span>) <span class='kw'>==</span> <span class='fl'>1</span>) {
     <span class='no'>hub_gs_gencode_v31_hg19</span> <span class='kw'>&lt;-</span> <span class='no'>hub_query_gs_gencode_v31_hg19</span><span class='kw'>[[</span><span class='fl'>1</span>]]
