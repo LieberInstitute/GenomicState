@@ -6,9 +6,9 @@ output: github_document
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/"
+    collapse = TRUE,
+    comment = "#>",
+    fig.path = "man/figures/"
 )
 ```
 
@@ -34,8 +34,9 @@ For more information about `GenomicState` check the vignettes [through Bioconduc
 Get the latest stable `R` release from [CRAN](http://cran.r-project.org/). Then install `GenomicState` using from [Bioconductor](http://bioconductor.org/) the following code:
 
 ```{r 'install', eval = FALSE}
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+      install.packages("BiocManager")
+  }
 
 BiocManager::install("GenomicState")
 ```
@@ -46,7 +47,7 @@ Below is the citation output from using `citation('GenomicState')` in R. Please
 run this yourself to check for any updates on how to cite __GenomicState__.
 
 ```{r 'citation', eval = requireNamespace('GenomicState')}
-print(citation('GenomicState'), bibtex = TRUE)
+print(citation("GenomicState"), bibtex = TRUE)
 ```
 
 Please note that the `GenomicState` was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.
@@ -64,3 +65,5 @@ Please note that the derfinderPlot project is released with a [Contributor Code 
 * The documentation is formatted thanks to `r BiocStyle::CRANpkg('devtools')` and `r BiocStyle::CRANpkg('roxygen2')`.
 
 For more details, check the `dev` directory.
+
+This package was developed using `r BiocStyle::Biocpkg('biocthis')`.

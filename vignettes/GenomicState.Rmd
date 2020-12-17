@@ -31,13 +31,7 @@ library("BiocStyle")
 startTime <- Sys.time()
 
 ## Bib setup
-library("knitcitations")
-
-## Load knitcitations with a clean bibliography
-cleanbib()
-cite_options(hyperlink = "to.doc", citation_format = "text", style = "html")
-# Note links won't show for now due to the following issue
-# https://github.com/cboettig/knitcitations/issues/63
+library("RefManageR")
 
 ## Write bibliography information
 bib <- c(
@@ -50,9 +44,9 @@ bib <- c(
         title = "GenomeInfoDb: Utilities for manipulating chromosome and other 'seqname' identifiers",
         year = 2017, doi = "10.18129/B9.bioc.GenomeInfoDb"
     ),
-    knitcitations = citation("knitcitations"),
     knitr = citation("knitr")[3],
     GenomicState = citation("GenomicState")[1],
+    RefManageR = citation("RefManageR")[1],
     rmarkdown = citation("rmarkdown")[1],
     rtracklayer = citation("rtracklayer")[1],
     sessioninfo = citation("sessioninfo"),
@@ -89,7 +83,7 @@ BiocManager::valid()
 
 ## Required knowledge
 
-`r Biocpkg('GenomicState')` is based on many other packages and in particular in those that have implemented the infrastructure needed for dealing with annotation data. That is, packages like `r Biocpkg('rtracklayer')` that allow you to import the data. A `r Biocpkg('GenomicState')` user is not expected to deal with those packages directly but will need to be familiar with `r Biocpkg('derfinder')` and `r Biocpkg('derfinderPlot')` to understand the results `r Biocpkg('GenomicState')` generates. Furthermore, it'll be useful for the user to know the syntax of `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])` in order to query and load the data provided by this package.
+`r Biocpkg('GenomicState')` is based on many other packages and in particular in those that have implemented the infrastructure needed for dealing with annotation data. That is, packages like `r Biocpkg('rtracklayer')` that allow you to import the data. A `r Biocpkg('GenomicState')` user is not expected to deal with those packages directly but will need to be familiar with `r Biocpkg('derfinder')` and `r Biocpkg('derfinderPlot')` to understand the results `r Biocpkg('GenomicState')` generates. Furthermore, it'll be useful for the user to know the syntax of `r Biocpkg('AnnotationHub')` `r Citep(bib[['AnnotationHub']])` in order to query and load the data provided by this package.
 
 If you are asking yourself the question "Where do I start using Bioconductor?" you might be interested in [this blog post](http://lcolladotor.github.io/2014/10/16/startbioc/#.VkOKbq6rRuU).
 
@@ -120,7 +114,7 @@ library("GenomicState")
 
 # AnnotationHub
 
-Using the `GencodeStateHub()` function you can query and download the data from `r Biocpkg('GenomicState')` using `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])`.
+Using the `GencodeStateHub()` function you can query and download the data from `r Biocpkg('GenomicState')` using `r Biocpkg('AnnotationHub')` `r Citep(bib[['AnnotationHub']])`.
 
 ```{r 'annotation_hub'}
 ## Query AnnotationHub for the GenomicState object for Gencode v31 on
@@ -164,7 +158,7 @@ genes_v31_hg19_chr21 <- gencode_annotated_genes(txdb_v31_hg19_chr21)
 gs_v31_hg19_chr21 <- gencode_genomic_state(txdb_v31_hg19_chr21)
 ```
 
-You can alternatively use the files hosted in `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])` which will be faster in general.
+You can alternatively use the files hosted in `r Biocpkg('AnnotationHub')` `r Citep(bib[['AnnotationHub']])` which will be faster in general.
 
 ```{r 'obtain_annotation_hub'}
 ## Create the AnnotationHub object once and re-use it to speed up things
@@ -204,7 +198,7 @@ if (FALSE) {
 ```
 
 
-Next we load a series of related packages that use the objects we created with `r Biocpkg('GenomicState')` or downloaded from `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])`.
+Next we load a series of related packages that use the objects we created with `r Biocpkg('GenomicState')` or downloaded from `r Biocpkg('AnnotationHub')` `r Citep(bib[['AnnotationHub']])`.
 
 ```{r 'load_derfinder', messages = FALSE, warnings = FALSE}
 ## Load external packages
@@ -273,7 +267,7 @@ if (file.exists(interest$RDataPath)) {
 
 # Build objects
 
-The objects provided by `GenomicState` through `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])` were built using code like the one included below which is how the Gencode version 23 for hg19 files were built.
+The objects provided by `GenomicState` through `r Biocpkg('AnnotationHub')` `r Citep(bib[['AnnotationHub']])` were built using code like the one included below which is how the Gencode version 23 for hg19 files were built.
 
 ```{r 'build_local', eval = FALSE}
 outdir <- "gencode"
@@ -317,27 +311,27 @@ system.file("scripts", "generate_make_data_gencode_human.R",
 
 # Reproducibility
 
-The `r Biocpkg('GenomicState')` package `r citep(bib[['GenomicState']])` was made possible thanks to:
+The `r Biocpkg('GenomicState')` package `r Citep(bib[['GenomicState']])` was made possible thanks to:
 
-* R `r citep(bib[['R']])`
-* `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`
-* `r Biocpkg('GenomeInfoDb')` `r citep(bib[['GenomeInfoDb']])`
-* `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`
-* `r CRANpkg('knitr')` `r citep(bib[['knitr']])`
-* `r CRANpkg('rmarkdown')` `r citep(bib[['rmarkdown']])`
-* `r Biocpkg('rtracklayer')` `r citep(bib[['rtracklayer']])`
-* `r CRANpkg('sessioninfo')` `r citep(bib[['sessioninfo']])`
-* `r CRANpkg('testthat')` `r citep(bib[['testthat']])`
-* `r Biocpkg('GenomicFeatures')` `r citep(bib[['GenomicFeatures']])`
-* `r Biocpkg('bumphunter')` `r citep(bib[['bumphunter']])`
-* `r Biocpkg('derfinder')` `r citep(bib[['derfinder']])`
-* `r Biocpkg('AnnotationDbi')` `r citep(bib[['AnnotationDbi']])`
-* `r Biocpkg('IRanges')` `r citep(bib[['IRanges']])`
-* `r Biocpkg('org.Hs.eg.db')` `r citep(bib[['org.Hs.eg.db']])`
-* `r CRANpkg('glue')` `r citep(bib[['glue']])`
-* `r Biocpkg('AnnotationHub')` `r citep(bib[['AnnotationHub']])`
-* `r Biocpkg('AnnotationHubData')` `r citep(bib[['AnnotationHubData']])`
-* `r Biocpkg('GenomicRanges')` `r citep(bib[['GenomicRanges']])`
+* R `r Citep(bib[['R']])`
+* `r Biocpkg('BiocStyle')` `r Citep(bib[['BiocStyle']])`
+* `r Biocpkg('GenomeInfoDb')` `r Citep(bib[['GenomeInfoDb']])`
+* `r CRANpkg('knitr')` `r Citep(bib[['knitr']])`
+* `r CRANpkg("RefManageR")` `r Citep(bib[["RefManageR"]])`
+* `r CRANpkg('rmarkdown')` `r Citep(bib[['rmarkdown']])`
+* `r Biocpkg('rtracklayer')` `r Citep(bib[['rtracklayer']])`
+* `r CRANpkg('sessioninfo')` `r Citep(bib[['sessioninfo']])`
+* `r CRANpkg('testthat')` `r Citep(bib[['testthat']])`
+* `r Biocpkg('GenomicFeatures')` `r Citep(bib[['GenomicFeatures']])`
+* `r Biocpkg('bumphunter')` `r Citep(bib[['bumphunter']])`
+* `r Biocpkg('derfinder')` `r Citep(bib[['derfinder']])`
+* `r Biocpkg('AnnotationDbi')` `r Citep(bib[['AnnotationDbi']])`
+* `r Biocpkg('IRanges')` `r Citep(bib[['IRanges']])`
+* `r Biocpkg('org.Hs.eg.db')` `r Citep(bib[['org.Hs.eg.db']])`
+* `r CRANpkg('glue')` `r Citep(bib[['glue']])`
+* `r Biocpkg('AnnotationHub')` `r Citep(bib[['AnnotationHub']])`
+* `r Biocpkg('AnnotationHubData')` `r Citep(bib[['AnnotationHubData']])`
+* `r Biocpkg('GenomicRanges')` `r Citep(bib[['GenomicRanges']])`
     
 Code for creating the vignette
 
@@ -378,11 +372,11 @@ session_info()
 
 # Bibliography
 
-This vignette was generated using `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`, `r CRANpkg('knitr')` `r citep(bib[['knitr']])` and `r CRANpkg('rmarkdown')` `r citep(bib[['rmarkdown']])` running behind the scenes.
+This vignette was generated using `r Biocpkg('BiocStyle')` `r Citep(bib[['BiocStyle']])`, `r CRANpkg('knitr')` `r Citep(bib[['knitr']])` and `r CRANpkg('rmarkdown')` `r Citep(bib[['rmarkdown']])` running behind the scenes.
 
-Citations were made with `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`.
+Citations made with `r CRANpkg('RefManageR')` `r Citep(bib[['RefManageR']])`.
 
 ```{r vignetteBiblio, results = 'asis', echo = FALSE, warning = FALSE, message = FALSE}
 ## Print bibliography
-bibliography()
+PrintBibliography(bib, .opts = list(hyperlink = "to.doc", style = "html"))
 ```
