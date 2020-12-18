@@ -75,7 +75,7 @@ GenomicState object made with gencode_genomic_state()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GenomicState</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.13</span>
       </span>
     </div>
 
@@ -83,7 +83,7 @@ GenomicState object made with gencode_genomic_state()." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -100,7 +100,7 @@ GenomicState object made with gencode_genomic_state()." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/LieberInstitute/GenomicState/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -129,12 +129,12 @@ annotated genes object made with <code><a href='gencode_annotated_genes.html'>ge
 GenomicState object made with <code><a href='gencode_genomic_state.html'>gencode_genomic_state()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>GenomicStateHub</span>(
-  <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"31"</span>,
-  <span class='kw'>genome</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"hg38"</span>, <span class='st'>"hg19"</span>),
-  <span class='kw'>filetype</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"TxDb"</span>, <span class='st'>"AnnotatedGenes"</span>, <span class='st'>"GenomicState"</span>),
-  <span class='kw'>ah</span> <span class='kw'>=</span> <span class='kw pkg'>AnnotationHub</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationHub/man/AnnotationHub-class.html'>AnnotationHub</a></span>()
-)</pre>
+    <pre class="usage"><span class='fu'>GenomicStateHub</span><span class='op'>(</span>
+  version <span class='op'>=</span> <span class='st'>"31"</span>,
+  genome <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"hg38"</span>, <span class='st'>"hg19"</span><span class='op'>)</span>,
+  filetype <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"TxDb"</span>, <span class='st'>"AnnotatedGenes"</span>, <span class='st'>"GenomicState"</span><span class='op'>)</span>,
+  ah <span class='op'>=</span> <span class='fu'>AnnotationHub</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationHub/man/AnnotationHub-class.html'>AnnotationHub</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,17 +168,22 @@ for the file you requested.</p>
 
     <div class='dont-index'><p><code><a href='gencode_txdb.html'>gencode_txdb()</a></code> <code><a href='gencode_annotated_genes.html'>gencode_annotated_genes()</a></code>
 <code><a href='gencode_genomic_state.html'>gencode_genomic_state()</a></code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Query AnnotationHub for the GenomicState object for Gencode v31 on</span>
 <span class='co'>## hg19 coordinates</span>
-<span class='no'>hub_query_gs_gencode_v31_hg19</span> <span class='kw'>&lt;-</span> <span class='fu'>GenomicStateHub</span>(
-    <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"31"</span>,
-    <span class='kw'>genome</span> <span class='kw'>=</span> <span class='st'>"hg19"</span>,
-    <span class='kw'>filetype</span> <span class='kw'>=</span> <span class='st'>"GenomicState"</span>
-)</div><div class='output co'>#&gt; <span class='message'>using temporary cache /tmp/RtmpGEqOhp/BiocFileCache</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2020-05-23</span></div><div class='input'><span class='no'>hub_query_gs_gencode_v31_hg19</span></div><div class='output co'>#&gt; AnnotationHub with 1 record
-#&gt; # snapshotDate(): 2020-05-23
+<span class='va'>hub_query_gs_gencode_v31_hg19</span> <span class='op'>&lt;-</span> <span class='fu'>GenomicStateHub</span><span class='op'>(</span>
+    version <span class='op'>=</span> <span class='st'>"31"</span>,
+    genome <span class='op'>=</span> <span class='st'>"hg19"</span>,
+    filetype <span class='op'>=</span> <span class='st'>"GenomicState"</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>using temporary cache /tmp/Rtmpwxjv3t/BiocFileCache</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2020-10-27</span></div><div class='input'><span class='va'>hub_query_gs_gencode_v31_hg19</span>
+</div><div class='output co'>#&gt; AnnotationHub with 1 record
+#&gt; # snapshotDate(): 2020-10-27
 #&gt; # names(): AH75184
 #&gt; # $dataprovider: GENCODE
 #&gt; # $species: Homo sapiens
@@ -195,7 +200,8 @@ for the file you requested.</p>
 #&gt; # retrieve record with 'object[["AH75184"]]' </div><div class='input'>
 
 <span class='co'>## Check the metadata</span>
-<span class='fu'>mcols</span>(<span class='no'>hub_query_gs_gencode_v31_hg19</span>)</div><div class='output co'>#&gt; DataFrame with 1 row and 15 columns
+<span class='fu'>mcols</span><span class='op'>(</span><span class='va'>hub_query_gs_gencode_v31_hg19</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; DataFrame with 1 row and 15 columns
 #&gt;                          title dataprovider      species taxonomyid      genome
 #&gt;                    &lt;character&gt;  &lt;character&gt;  &lt;character&gt;  &lt;integer&gt; &lt;character&gt;
 #&gt; AH75184 GenomicState for Gen..      GENCODE Homo sapiens       9606      GRCh37
@@ -209,11 +215,12 @@ for the file you requested.</p>
 #&gt;                    &lt;character&gt;            &lt;character&gt; &lt;character&gt;
 #&gt; AH75184 GenomicState/gencode.. ftp://ftp.ebi.ac.uk/..         GTF</div><div class='input'>
 <span class='co'>## Access the file through AnnotationHub</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>hub_query_gs_gencode_v31_hg19</span>) <span class='kw'>==</span> <span class='fl'>1</span>) {
-    <span class='no'>hub_gs_gencode_v31_hg19</span> <span class='kw'>&lt;-</span> <span class='no'>hub_query_gs_gencode_v31_hg19</span><span class='kw'>[[</span><span class='fl'>1</span>]]
+<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>hub_query_gs_gencode_v31_hg19</span><span class='op'>)</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>hub_gs_gencode_v31_hg19</span> <span class='op'>&lt;-</span> <span class='va'>hub_query_gs_gencode_v31_hg19</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
 
-    <span class='no'>hub_gs_gencode_v31_hg19</span>
-}</div><div class='output co'>#&gt; <span class='message'>downloading 1 resources</span></div><div class='output co'>#&gt; <span class='message'>retrieving 1 resource</span></div><div class='output co'>#&gt; <span class='message'>loading from cache</span></div><div class='output co'>#&gt; $fullGenome</div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: stats4</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'></span>
+    <span class='va'>hub_gs_gencode_v31_hg19</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; <span class='message'>downloading 1 resources</span></div><div class='output co'>#&gt; <span class='message'>retrieving 1 resource</span></div><div class='output co'>#&gt; <span class='message'>loading from cache</span></div><div class='output co'>#&gt; $fullGenome</div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: stats4</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘S4Vectors’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    expand.grid</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: IRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; GRanges object with 659263 ranges and 5 metadata columns:
@@ -292,7 +299,7 @@ for the file you requested.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
