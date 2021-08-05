@@ -47,6 +47,8 @@ derfinderPlot." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -58,9 +60,15 @@ derfinderPlot." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -74,19 +82,13 @@ derfinderPlot." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GenomicState</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.14</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/GenomicState.html">Get started</a>
 </li>
 <li>
@@ -127,7 +129,7 @@ the genes. This information is then used by packages like <code>derfinder</code>
 <code>derfinderPlot</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gencode_annotated_genes</span><span class='op'>(</span><span class='va'>txdb</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>gencode_annotated_genes</span><span class='op'>(</span><span class='va'>txdb</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,86 +157,102 @@ the genes. This information is then used by packages like <code>derfinder</code>
     <p>Leonardo Collado-Torres.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>## Start from scratch if you want:</span>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>txdb_v31_hg19_chr21</span> <span class='op'>&lt;-</span> <span class='fu'><a href='gencode_txdb.html'>gencode_txdb</a></span><span class='op'>(</span><span class='st'>"31"</span>, <span class='st'>"hg19"</span>, chrs <span class='op'>=</span> <span class='st'>"chr21"</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-<span class='co'>## or read in the txdb object for hg19 chr21 from this package</span>
-<span class='va'>txdb_v31_hg19_chr21</span> <span class='op'>&lt;-</span> <span class='fu'>AnnotationDbi</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationDbi/man/AnnotationDb-class.html'>loadDb</a></span><span class='op'>(</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"extdata"</span>, <span class='st'>"txdb_v31_hg19_chr21.sqlite"</span>,
-        package <span class='op'>=</span> <span class='st'>"GenomicState"</span>
-    <span class='op'>)</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicFeatures</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: AnnotationDbi</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Biobase</span></div><div class='output co'>#&gt; <span class='message'>Welcome to Bioconductor</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    Vignettes contain introductory material; view with</span>
-#&gt; <span class='message'>    'browseVignettes()'. To cite Bioconductor, see</span>
-#&gt; <span class='message'>    'citation("Biobase")', and for packages 'citation("pkgname")'.</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘Biobase’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:AnnotationHub’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    cache</span></div><div class='input'>
-<span class='co'>## Obtain the annotated genes for the Gencode TxDb object</span>
-<span class='va'>genes_v31_hg19_chr21</span> <span class='op'>&lt;-</span> <span class='fu'>gencode_annotated_genes</span><span class='op'>(</span><span class='va'>txdb_v31_hg19_chr21</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>2020-12-18 00:02:18 annotating the transcripts</span></div><div class='output co'>#&gt; <span class='message'>No annotationPackage supplied. Trying org.Hs.eg.db.</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: org.Hs.eg.db</span></div><div class='output co'>#&gt; </div><div class='output co'>#&gt; <span class='message'>Getting TSS and TSE.</span></div><div class='output co'>#&gt; <span class='message'>Getting CSS and CSE.</span></div><div class='output co'>#&gt; <span class='message'>Getting exons.</span></div><div class='output co'>#&gt; <span class='message'>Annotating genes.</span></div><div class='output co'>#&gt; <span class='message'>'select()' returned 1:many mapping between keys and columns</span></div><div class='input'>
-<span class='co'>## Explore the result</span>
-<span class='va'>genes_v31_hg19_chr21</span>
-</div><div class='output co'>#&gt; GRanges object with 823 ranges and 8 metadata columns:
-#&gt;         seqnames            ranges strand |       CSS       CSE
-#&gt;            &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt; &lt;integer&gt;
-#&gt;     [1]    chr21 43218385-43299591      - |  43221400  43299480
-#&gt;     [2]    chr21 45719934-45747259      + |  45719989  45746745
-#&gt;     [3]    chr21 33245333-33416946      + |  33245988  33416425
-#&gt;     [4]    chr21 47401651-47424964      + |  47401765  47423927
-#&gt;     [5]    chr21 34696734-34732170      + |  34697361  34727855
-#&gt;     ...      ...               ...    ... .       ...       ...
-#&gt;   [819]    chr21 45188201-45191547      + |      &lt;NA&gt;      &lt;NA&gt;
-#&gt;   [820]    chr21 25229397-25261466      + |      &lt;NA&gt;      &lt;NA&gt;
-#&gt;   [821]    chr21 38709684-38739160      - |      &lt;NA&gt;      &lt;NA&gt;
-#&gt;   [822]    chr21 42108244-42126814      + |      &lt;NA&gt;      &lt;NA&gt;
-#&gt;   [823]    chr21 25076577-25081662      + |      &lt;NA&gt;      &lt;NA&gt;
-#&gt;                           Tx          Geneid         Gene
-#&gt;                  &lt;character&gt;           &lt;Rle&gt;        &lt;Rle&gt;
-#&gt;     [1] ENSG00000141956.13_3 ENSG00000141956       PRDM15
-#&gt;     [2] ENSG00000141959.17_2 ENSG00000141959         PFKL
-#&gt;     [3]  ENSG00000142149.9_4 ENSG00000142149         HUNK
-#&gt;     [4] ENSG00000142156.14_2 ENSG00000142156       COL6A1
-#&gt;     [5] ENSG00000142166.13_4 ENSG00000142166       IFNAR1
-#&gt;     ...                  ...             ...          ...
-#&gt;   [819]  ENSG00000287507.1_1 ENSG00000287507         &lt;NA&gt;
-#&gt;   [820]  ENSG00000287612.1_1 ENSG00000287612         &lt;NA&gt;
-#&gt;   [821]  ENSG00000287637.1_1 ENSG00000287637         &lt;NA&gt;
-#&gt;   [822]  ENSG00000288069.1_1 ENSG00000288069         &lt;NA&gt;
-#&gt;   [823]  ENSG00000288094.1_1 ENSG00000288094 LOC105372749
-#&gt;                         Refseq    Nexons
-#&gt;                          &lt;Rle&gt; &lt;integer&gt;
-#&gt;     [1] NM_001040424 NM_0012..        32
-#&gt;     [2] NM_001002021 NM_0026..        20
-#&gt;     [3] NM_014586 NP_055401 ..        12
-#&gt;     [4]    NM_001848 NP_001839        35
-#&gt;     [5] NM_000629 NM_0013844..        13
-#&gt;     ...                    ...       ...
-#&gt;   [819]                   &lt;NA&gt;         3
-#&gt;   [820]                   &lt;NA&gt;         4
-#&gt;   [821]                   &lt;NA&gt;         2
-#&gt;   [822]                   &lt;NA&gt;         2
-#&gt;   [823]              XR_937611         3
-#&gt;                                                             Exons
-#&gt;                                                     &lt;IRangesList&gt;
-#&gt;     [1] 43218385-43221882,43222872-43223278,43224694-43224883,...
-#&gt;     [2] 45719934-45720073,45724158-45724338,45725077-45725300,...
-#&gt;     [3] 33245333-33246248,33296780-33297072,33312477-33312532,...
-#&gt;     [4] 47401651-47401861,47402548-47402677,47404183-47404383,...
-#&gt;     [5] 34696734-34696943,34697209-34697436,34707830-34707953,...
-#&gt;     ...                                                       ...
-#&gt;   [819]     45188201-45188277,45189155-45189271,45190985-45191547
-#&gt;   [820] 25229397-25229860,25231273-25231484,25233548-25233655,...
-#&gt;   [821]                       38709684-38711756,38738974-38739160
-#&gt;   [822]                       42108244-42108309,42125644-42126814
-#&gt;   [823]     25076577-25076893,25077415-25077672,25080924-25081662
-#&gt;   -------
-#&gt;   seqinfo: 1 sequence from hg19 genome</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'></span>
+<span class='r-in'><span class='co'>## Start from scratch if you want:</span></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='va'>txdb_v31_hg19_chr21</span> <span class='op'>&lt;-</span> <span class='fu'><a href='gencode_txdb.html'>gencode_txdb</a></span><span class='op'>(</span><span class='st'>"31"</span>, <span class='st'>"hg19"</span>, chrs <span class='op'>=</span> <span class='st'>"chr21"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## or read in the txdb object for hg19 chr21 from this package</span></span>
+<span class='r-in'><span class='va'>txdb_v31_hg19_chr21</span> <span class='op'>&lt;-</span> <span class='fu'>AnnotationDbi</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationDbi/man/AnnotationDb-class.html'>loadDb</a></span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"extdata"</span>, <span class='st'>"txdb_v31_hg19_chr21.sqlite"</span>,</span>
+<span class='r-in'>        package <span class='op'>=</span> <span class='st'>"GenomicState"</span></span>
+<span class='r-in'>    <span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: GenomicFeatures</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: AnnotationDbi</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: Biobase</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Welcome to Bioconductor</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     Vignettes contain introductory material; view with</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     'browseVignettes()'. To cite Bioconductor, see</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     'citation("Biobase")', and for packages 'citation("pkgname")'.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: ‘Biobase’</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following object is masked from ‘package:AnnotationHub’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     cache</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Obtain the annotated genes for the Gencode TxDb object</span></span>
+<span class='r-in'><span class='va'>genes_v31_hg19_chr21</span> <span class='op'>&lt;-</span> <span class='fu'>gencode_annotated_genes</span><span class='op'>(</span><span class='va'>txdb_v31_hg19_chr21</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 2021-08-05 19:16:38 annotating the transcripts</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> No annotationPackage supplied. Trying org.Hs.eg.db.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: org.Hs.eg.db</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Getting TSS and TSE.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Getting CSS and CSE.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Getting exons.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Annotating genes.</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> 'select()' returned 1:many mapping between keys and columns</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Explore the result</span></span>
+<span class='r-in'><span class='va'>genes_v31_hg19_chr21</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> GRanges object with 823 ranges and 8 metadata columns:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         seqnames            ranges strand |       CSS       CSE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt; &lt;integer&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [1]    chr21 43218385-43299591      - |  43221400  43299480</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [2]    chr21 45719934-45747259      + |  45719989  45746745</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [3]    chr21 33245333-33416946      + |  33245988  33416425</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [4]    chr21 47401651-47424964      + |  47401765  47423927</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [5]    chr21 34696734-34732170      + |  34697361  34727855</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     ...      ...               ...    ... .       ...       ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [819]    chr21 45188201-45191547      + |      &lt;NA&gt;      &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [820]    chr21 25229397-25261466      + |      &lt;NA&gt;      &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [821]    chr21 38709684-38739160      - |      &lt;NA&gt;      &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [822]    chr21 42108244-42126814      + |      &lt;NA&gt;      &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [823]    chr21 25076577-25081662      + |      &lt;NA&gt;      &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                           Tx          Geneid         Gene</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                  &lt;character&gt;           &lt;Rle&gt;        &lt;Rle&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [1] ENSG00000141956.13_3 ENSG00000141956       PRDM15</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [2] ENSG00000141959.17_2 ENSG00000141959         PFKL</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [3]  ENSG00000142149.9_4 ENSG00000142149         HUNK</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [4] ENSG00000142156.14_2 ENSG00000142156       COL6A1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [5] ENSG00000142166.13_4 ENSG00000142166       IFNAR1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     ...                  ...             ...          ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [819]  ENSG00000287507.1_1 ENSG00000287507         &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [820]  ENSG00000287612.1_1 ENSG00000287612         &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [821]  ENSG00000287637.1_1 ENSG00000287637         &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [822]  ENSG00000288069.1_1 ENSG00000288069         &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [823]  ENSG00000288094.1_1 ENSG00000288094 LOC105372749</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                         Refseq    Nexons</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                          &lt;Rle&gt; &lt;integer&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [1] NM_001040424 NM_0012..        32</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [2] NM_001002021 NM_0026..        20</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [3] NM_014586 NP_055401 ..        12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [4]    NM_001848 NP_001839        35</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [5] NM_000629 NM_0013844..        13</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     ...                    ...       ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [819]                   &lt;NA&gt;         3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [820]                   &lt;NA&gt;         4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [821]                   &lt;NA&gt;         2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [822]                   &lt;NA&gt;         2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [823]              XR_937611         3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                             Exons</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                     &lt;IRangesList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [1] 43218385-43221882,43222872-43223278,43224694-43224883,...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [2] 45719934-45720073,45724158-45724338,45725077-45725300,...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [3] 33245333-33246248,33296780-33297072,33312477-33312532,...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [4] 47401651-47401861,47402548-47402677,47404183-47404383,...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     [5] 34696734-34696943,34697209-34697436,34707830-34707953,...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     ...                                                       ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [819]     45188201-45188277,45189155-45189271,45190985-45191547</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [820] 25229397-25229860,25231273-25231484,25233548-25233655,...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [821]                       38709684-38711756,38738974-38739160</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [822]                       42108244-42108309,42125644-42126814</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   [823]     25076577-25076893,25077415-25077672,25080924-25081662</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   -------</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   seqinfo: 1 sequence from hg19 genome</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -246,11 +264,11 @@ the genes. This information is then used by packages like <code>derfinder</code>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Leonardo Collado-Torres.</p>
+  <p><p>Developed by Leonardo Collado-Torres.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -258,6 +276,8 @@ the genes. This information is then used by packages like <code>derfinder</code>
 
   
 
+
+  
 
   </body>
 </html>

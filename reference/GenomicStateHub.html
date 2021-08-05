@@ -48,6 +48,8 @@ GenomicState object made with gencode_genomic_state()." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -59,9 +61,15 @@ GenomicState object made with gencode_genomic_state()." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -75,19 +83,13 @@ GenomicState object made with gencode_genomic_state()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GenomicState</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.14</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/GenomicState.html">Get started</a>
 </li>
 <li>
@@ -129,23 +131,23 @@ annotated genes object made with <code><a href='gencode_annotated_genes.html'>ge
 GenomicState object made with <code><a href='gencode_genomic_state.html'>gencode_genomic_state()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>GenomicStateHub</span><span class='op'>(</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>GenomicStateHub</span><span class='op'>(</span>
   version <span class='op'>=</span> <span class='st'>"31"</span>,
   genome <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"hg38"</span>, <span class='st'>"hg19"</span><span class='op'>)</span>,
   filetype <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"TxDb"</span>, <span class='st'>"AnnotatedGenes"</span>, <span class='st'>"GenomicState"</span><span class='op'>)</span>,
   ah <span class='op'>=</span> <span class='fu'>AnnotationHub</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/AnnotationHub/man/AnnotationHub-class.html'>AnnotationHub</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>)</span></pre>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>version</th>
-      <td><p>A <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> with the Gencode version number.</p></td>
+      <td><p>A <code>character(1)</code> with the Gencode version number.</p></td>
     </tr>
     <tr>
       <th>genome</th>
-      <td><p>A <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> with the human genome version number. Valid
+      <td><p>A <code>character(1)</code> with the human genome version number. Valid
 options are <code>'hg38'</code> or <code>'hg19'</code>.</p></td>
     </tr>
     <tr>
@@ -173,117 +175,130 @@ for the file you requested.</p>
     <p>Leonardo Collado-Torres</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>## Query AnnotationHub for the GenomicState object for Gencode v31 on</span>
-<span class='co'>## hg19 coordinates</span>
-<span class='va'>hub_query_gs_gencode_v31_hg19</span> <span class='op'>&lt;-</span> <span class='fu'>GenomicStateHub</span><span class='op'>(</span>
-    version <span class='op'>=</span> <span class='st'>"31"</span>,
-    genome <span class='op'>=</span> <span class='st'>"hg19"</span>,
-    filetype <span class='op'>=</span> <span class='st'>"GenomicState"</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>using temporary cache /tmp/Rtmpwxjv3t/BiocFileCache</span></div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2020-10-27</span></div><div class='input'><span class='va'>hub_query_gs_gencode_v31_hg19</span>
-</div><div class='output co'>#&gt; AnnotationHub with 1 record
-#&gt; # snapshotDate(): 2020-10-27
-#&gt; # names(): AH75184
-#&gt; # $dataprovider: GENCODE
-#&gt; # $species: Homo sapiens
-#&gt; # $rdataclass: list
-#&gt; # $rdatadateadded: 2019-10-22
-#&gt; # $title: GenomicState for Gencode v31 on hg19 coordinates
-#&gt; # $description: Gencode v31 GenomicState from derfinder::makeGenomicState() ...
-#&gt; # $taxonomyid: 9606
-#&gt; # $genome: GRCh37
-#&gt; # $sourcetype: GTF
-#&gt; # $sourceurl: ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/releas...
-#&gt; # $sourcesize: NA
-#&gt; # $tags: c("Gencode", "GenomicState", "hg19", "v31") 
-#&gt; # retrieve record with 'object[["AH75184"]]' </div><div class='input'>
-
-<span class='co'>## Check the metadata</span>
-<span class='fu'>mcols</span><span class='op'>(</span><span class='va'>hub_query_gs_gencode_v31_hg19</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; DataFrame with 1 row and 15 columns
-#&gt;                          title dataprovider      species taxonomyid      genome
-#&gt;                    &lt;character&gt;  &lt;character&gt;  &lt;character&gt;  &lt;integer&gt; &lt;character&gt;
-#&gt; AH75184 GenomicState for Gen..      GENCODE Homo sapiens       9606      GRCh37
-#&gt;                    description coordinate_1_based             maintainer
-#&gt;                    &lt;character&gt;          &lt;integer&gt;            &lt;character&gt;
-#&gt; AH75184 Gencode v31 GenomicS..                  1 Leonardo Collado-Tor..
-#&gt;         rdatadateadded preparerclass                          tags  rdataclass
-#&gt;            &lt;character&gt;   &lt;character&gt;                        &lt;list&gt; &lt;character&gt;
-#&gt; AH75184     2019-10-22  GenomicState Gencode,GenomicState,hg19,...        list
-#&gt;                      rdatapath              sourceurl  sourcetype
-#&gt;                    &lt;character&gt;            &lt;character&gt; &lt;character&gt;
-#&gt; AH75184 GenomicState/gencode.. ftp://ftp.ebi.ac.uk/..         GTF</div><div class='input'>
-<span class='co'>## Access the file through AnnotationHub</span>
-<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>hub_query_gs_gencode_v31_hg19</span><span class='op'>)</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>{</span>
-    <span class='va'>hub_gs_gencode_v31_hg19</span> <span class='op'>&lt;-</span> <span class='va'>hub_query_gs_gencode_v31_hg19</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
-
-    <span class='va'>hub_gs_gencode_v31_hg19</span>
-<span class='op'>}</span>
-</div><div class='output co'>#&gt; <span class='message'>downloading 1 resources</span></div><div class='output co'>#&gt; <span class='message'>retrieving 1 resource</span></div><div class='output co'>#&gt; <span class='message'>loading from cache</span></div><div class='output co'>#&gt; $fullGenome</div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomicRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: stats4</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘S4Vectors’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    expand.grid</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: IRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; GRanges object with 659263 ranges and 5 metadata columns:
-#&gt;          seqnames            ranges strand |   theRegion         tx_id
-#&gt;             &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;IntegerList&gt;
-#&gt;        1     chr1       11869-12227      + |        exon           1,2
-#&gt;        2     chr1       12228-12612      + |      intron           1,2
-#&gt;        3     chr1       12613-12721      + |        exon           1,2
-#&gt;        4     chr1       12722-12974      + |      intron           1,2
-#&gt;        5     chr1       12975-13052      + |        exon             2
-#&gt;      ...      ...               ...    ... .         ...           ...
-#&gt;   659259     chrY 59208555-59214013      * |  intergenic              
-#&gt;   659260     chrY 59276440-59311662      * |  intergenic              
-#&gt;   659261     chrY 59311997-59318040      * |  intergenic              
-#&gt;   659262     chrY 59318921-59330251      * |  intergenic              
-#&gt;   659263     chrY 59360549-59373566      * |  intergenic              
-#&gt;                                          tx_name          gene          symbol
-#&gt;                                  &lt;CharacterList&gt; &lt;IntegerList&gt; &lt;CharacterList&gt;
-#&gt;        1 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1
-#&gt;        2 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1
-#&gt;        3 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1
-#&gt;        4 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1
-#&gt;        5                     ENST00000450305.2_1         26085         DDX11L1
-#&gt;      ...                                     ...           ...             ...
-#&gt;   659259                                                                      
-#&gt;   659260                                                                      
-#&gt;   659261                                                                      
-#&gt;   659262                                                                      
-#&gt;   659263                                                                      
-#&gt;   -------
-#&gt;   seqinfo: 24 sequences from hg19 genome
-#&gt; 
-#&gt; $codingGenome
-#&gt; GRanges object with 878954 ranges and 5 metadata columns:
-#&gt;          seqnames            ranges strand |   theRegion         tx_id
-#&gt;             &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;IntegerList&gt;
-#&gt;        1     chr1        9869-11868      + |    promoter           1,2
-#&gt;        2     chr1       11869-12227      + |        exon           1,2
-#&gt;        3     chr1       12228-12612      + |      intron           1,2
-#&gt;        4     chr1       12613-12721      + |        exon           1,2
-#&gt;        5     chr1       12722-12974      + |      intron           1,2
-#&gt;      ...      ...               ...    ... .         ...           ...
-#&gt;   878950     chrY 59208555-59212013      * |  intergenic              
-#&gt;   878951     chrY 59276440-59311662      * |  intergenic              
-#&gt;   878952     chrY 59313997-59318040      * |  intergenic              
-#&gt;   878953     chrY 59320921-59328251      * |  intergenic              
-#&gt;   878954     chrY 59362549-59373566      * |  intergenic              
-#&gt;                                          tx_name          gene          symbol
-#&gt;                                  &lt;CharacterList&gt; &lt;IntegerList&gt; &lt;CharacterList&gt;
-#&gt;        1 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1
-#&gt;        2 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1
-#&gt;        3 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1
-#&gt;        4 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1
-#&gt;        5 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1
-#&gt;      ...                                     ...           ...             ...
-#&gt;   878950                                                                      
-#&gt;   878951                                                                      
-#&gt;   878952                                                                      
-#&gt;   878953                                                                      
-#&gt;   878954                                                                      
-#&gt;   -------
-#&gt;   seqinfo: 24 sequences from hg19 genome
-#&gt; </div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'></span>
+<span class='r-in'><span class='co'>## Query AnnotationHub for the GenomicState object for Gencode v31 on</span></span>
+<span class='r-in'><span class='co'>## hg19 coordinates</span></span>
+<span class='r-in'><span class='va'>hub_query_gs_gencode_v31_hg19</span> <span class='op'>&lt;-</span> <span class='fu'>GenomicStateHub</span><span class='op'>(</span></span>
+<span class='r-in'>    version <span class='op'>=</span> <span class='st'>"31"</span>,</span>
+<span class='r-in'>    genome <span class='op'>=</span> <span class='st'>"hg19"</span>,</span>
+<span class='r-in'>    filetype <span class='op'>=</span> <span class='st'>"GenomicState"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> snapshotDate(): 2021-08-03</span>
+<span class='r-in'><span class='va'>hub_query_gs_gencode_v31_hg19</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> AnnotationHub with 1 record</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # snapshotDate(): 2021-08-03</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # names(): AH75184</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # $dataprovider: GENCODE</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # $species: Homo sapiens</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # $rdataclass: list</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # $rdatadateadded: 2019-10-22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # $title: GenomicState for Gencode v31 on hg19 coordinates</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # $description: Gencode v31 GenomicState from derfinder::makeGenomicState() ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # $taxonomyid: 9606</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # $genome: GRCh37</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # $sourcetype: GTF</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # $sourceurl: ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/releas...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # $sourcesize: NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # $tags: c("Gencode", "GenomicState", "hg19", "v31") </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> # retrieve record with 'object[["AH75184"]]' </span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Check the metadata</span></span>
+<span class='r-in'><span class='fu'>mcols</span><span class='op'>(</span><span class='va'>hub_query_gs_gencode_v31_hg19</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> DataFrame with 1 row and 15 columns</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                          title dataprovider      species taxonomyid      genome</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                    &lt;character&gt;  &lt;character&gt;  &lt;character&gt;  &lt;integer&gt; &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> AH75184 GenomicState for Gen..      GENCODE Homo sapiens       9606      GRCh37</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                    description coordinate_1_based             maintainer</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                    &lt;character&gt;          &lt;integer&gt;            &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> AH75184 Gencode v31 GenomicS..                  1 Leonardo Collado-Tor..</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>         rdatadateadded preparerclass                          tags  rdataclass</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>            &lt;character&gt;   &lt;character&gt;                        &lt;list&gt; &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> AH75184     2019-10-22  GenomicState Gencode,GenomicState,hg19,...        list</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                      rdatapath              sourceurl  sourcetype</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                    &lt;character&gt;            &lt;character&gt; &lt;character&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> AH75184 GenomicState/gencode.. ftp://ftp.ebi.ac.uk/..         GTF</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Access the file through AnnotationHub</span></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>hub_query_gs_gencode_v31_hg19</span><span class='op'>)</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>    <span class='va'>hub_gs_gencode_v31_hg19</span> <span class='op'>&lt;-</span> <span class='va'>hub_query_gs_gencode_v31_hg19</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span></span>
+<span class='r-in'></span>
+<span class='r-in'>    <span class='va'>hub_gs_gencode_v31_hg19</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> loading from cache</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $fullGenome</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: GenomicRanges</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: stats4</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: S4Vectors</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: ‘S4Vectors’</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from ‘package:base’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     I, expand.grid, unname</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: IRanges</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: GenomeInfoDb</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> GRanges object with 659263 ranges and 5 metadata columns:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          seqnames            ranges strand |   theRegion         tx_id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>             &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;IntegerList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        1     chr1       11869-12227      + |        exon           1,2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        2     chr1       12228-12612      + |      intron           1,2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        3     chr1       12613-12721      + |        exon           1,2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        4     chr1       12722-12974      + |      intron           1,2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        5     chr1       12975-13052      + |        exon             2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      ...      ...               ...    ... .         ...           ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   659259     chrY 59208555-59214013      * |  intergenic              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   659260     chrY 59276440-59311662      * |  intergenic              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   659261     chrY 59311997-59318040      * |  intergenic              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   659262     chrY 59318921-59330251      * |  intergenic              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   659263     chrY 59360549-59373566      * |  intergenic              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                          tx_name          gene          symbol</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                  &lt;CharacterList&gt; &lt;IntegerList&gt; &lt;CharacterList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        1 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        2 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        3 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        4 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        5                     ENST00000450305.2_1         26085         DDX11L1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      ...                                     ...           ...             ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   659259                                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   659260                                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   659261                                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   659262                                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   659263                                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   -------</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   seqinfo: 24 sequences from hg19 genome</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $codingGenome</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> GRanges object with 878954 ranges and 5 metadata columns:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          seqnames            ranges strand |   theRegion         tx_id</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>             &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;character&gt; &lt;IntegerList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        1     chr1        9869-11868      + |    promoter           1,2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        2     chr1       11869-12227      + |        exon           1,2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        3     chr1       12228-12612      + |      intron           1,2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        4     chr1       12613-12721      + |        exon           1,2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        5     chr1       12722-12974      + |      intron           1,2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      ...      ...               ...    ... .         ...           ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   878950     chrY 59208555-59212013      * |  intergenic              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   878951     chrY 59276440-59311662      * |  intergenic              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   878952     chrY 59313997-59318040      * |  intergenic              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   878953     chrY 59320921-59328251      * |  intergenic              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   878954     chrY 59362549-59373566      * |  intergenic              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                          tx_name          gene          symbol</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                  &lt;CharacterList&gt; &lt;IntegerList&gt; &lt;CharacterList&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        1 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        2 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        3 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        4 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>        5 ENST00000450305.2_1,ENST00000456328.2_1         26085         DDX11L1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      ...                                     ...           ...             ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   878950                                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   878951                                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   878952                                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   878953                                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   878954                                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   -------</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   seqinfo: 24 sequences from hg19 genome</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -295,11 +310,11 @@ for the file you requested.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Leonardo Collado-Torres.</p>
+  <p><p>Developed by Leonardo Collado-Torres.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -307,6 +322,8 @@ for the file you requested.</p>
 
   
 
+
+  
 
   </body>
 </html>
