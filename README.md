@@ -42,8 +42,8 @@ Bioconductor](http://bioconductor.org/packages/GenomicState) or at the
 ## Installation instructions
 
 Get the latest stable `R` release from
-[CRAN](http://cran.r-project.org/). Then install `GenomicState` using
-from [Bioconductor](http://bioconductor.org/) the following code:
+[CRAN](http://cran.r-project.org/). Then install `GenomicState` from
+[Bioconductor](http://bioconductor.org/) using the following code:
 
 ``` r
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
