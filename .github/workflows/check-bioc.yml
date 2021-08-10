@@ -136,7 +136,7 @@ jobs:
 
           ## For installing usethis's dependency gert
           brew install libgit2
-          
+
           ## Required for tcltk
           brew install xquartz --cask
 
@@ -233,7 +233,7 @@ jobs:
           rcmdcheck::rcmdcheck(
               args = c("--no-build-vignettes", "--no-manual", "--timings"),
               build_args = c("--no-manual", "--no-resave-data"),
-              error_on = "error",
+              error_on = "warning",
               check_dir = "check"
           )
         shell: Rscript {0}

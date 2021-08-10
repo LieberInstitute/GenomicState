@@ -42,6 +42,23 @@ gencode_txdb <- function(version = "31", genome = c("hg38", "hg19"),
     ## Locate file
     gtf_file <- gencode_source_url(version = version, genome = genome)
 
+    ## Didn't used to work because of the different seqlevels
+    ## but it seems like it got fixed at
+    ## https://github.com/Bioconductor/GenomicFeatures/commit/c1e3fb92203e25a67bdb66a009f51671c6b4ab9e#diff-77f1643770f92337f4ddc3b37f4860dd7f6b50bdf1cef5bca3e0b60e7189002d
+    ## or related commits
+    #
+    ## Actually, it doesn't work with
+    # gencode_txdb("31", "hg19", chrs = "chr21")
+    ## though it works with
+    # gencode_txdb("31", "hg18")
+    # txdb <- GenomicFeatures::makeTxDbFromGFF(
+    #     gtf_file,
+    #     organism = 'Homo sapiens',
+    #     chrominfo = GenomeInfoDb::Seqinfo(genome = genome)
+    # )
+    #
+    # return(GenomeInfoDb::keepSeqlevels(txdb, chrs, pruning.mode = "coarse"))
+
     ## Import the data
     message(paste(Sys.time(), "importing", gtf_file))
     gencode_gtf <- rtracklayer::import(gtf_file)
@@ -52,14 +69,7 @@ gencode_txdb <- function(version = "31", genome = c("hg38", "hg19"),
         pruning.mode = "coarse"
     )
 
-    # Doesn't work because of the different seqlevels
-    # txdb <- makeTxDbFromGFF(
-    #     gtf_file,
-    #     organism = 'Homo sapiens',
-    #     chrominfo = Seqinfo(genome="hg19")
-    # )
-
-    message(paste(Sys.time(), "preparing metadata"))
+    # message(paste(Sys.time(), "preparing metadata"))
     metadata <- GenomicFeatures:::.prepareGFFMetadata(
         file = gtf_file,
         dataSource = NA, organism = "Homo sapiens",
@@ -69,7 +79,6 @@ gencode_txdb <- function(version = "31", genome = c("hg38", "hg19"),
     message(paste(Sys.time(), "building the txdb object"))
     gr <- GenomicFeatures:::.tidy_seqinfo(
         gr = gencode_gtf,
-        circ_seqs = GenomicFeatures::DEFAULT_CIRC_SEQS,
         chrominfo = GenomeInfoDb::Seqinfo(genome = genome)
     )
 
