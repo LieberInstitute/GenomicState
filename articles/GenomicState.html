@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GenomicState</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.15</span>
       </span>
     </div>
 
@@ -127,7 +127,7 @@
 <span class="co">#&gt; 10.18129/B9.bioc.GenomicState (URL:</span>
 <span class="co">#&gt; https://doi.org/10.18129/B9.bioc.GenomicState),</span>
 <span class="co">#&gt; https://github.com/LieberInstitute/GenomicState - R package version</span>
-<span class="co">#&gt; 0.99.14, &lt;URL: http://www.bioconductor.org/packages/GenomicState&gt;.</span>
+<span class="co">#&gt; 0.99.15, &lt;URL: http://www.bioconductor.org/packages/GenomicState&gt;.</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
 <span class="co">#&gt; </span>
@@ -136,7 +136,7 @@
 <span class="co">#&gt;     author = {Leonardo Collado-Torres},</span>
 <span class="co">#&gt;     year = {2021},</span>
 <span class="co">#&gt;     url = {http://www.bioconductor.org/packages/GenomicState},</span>
-<span class="co">#&gt;     note = {https://github.com/LieberInstitute/GenomicState - R package version 0.99.14},</span>
+<span class="co">#&gt;     note = {https://github.com/LieberInstitute/GenomicState - R package version 0.99.15},</span>
 <span class="co">#&gt;     doi = {10.18129/B9.bioc.GenomicState},</span>
 <span class="co">#&gt;   }</span></code></pre></div>
 </div>
@@ -306,7 +306,7 @@
 
 <span class="co">## Build the GenomicState and annotated genes</span>
 <span class="va">genes_v31_hg19_chr21</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gencode_annotated_genes.html">gencode_annotated_genes</a></span><span class="op">(</span><span class="va">txdb_v31_hg19_chr21</span><span class="op">)</span>
-<span class="co">#&gt; 2021-08-10 00:32:53 annotating the transcripts</span>
+<span class="co">#&gt; 2021-08-10 02:31:35 annotating the transcripts</span>
 <span class="co">#&gt; No annotationPackage supplied. Trying org.Hs.eg.db.</span>
 <span class="co">#&gt; Loading required package: org.Hs.eg.db</span>
 <span class="co">#&gt; </span>
@@ -316,12 +316,12 @@
 <span class="co">#&gt; Annotating genes.</span>
 <span class="co">#&gt; 'select()' returned 1:many mapping between keys and columns</span>
 <span class="va">gs_v31_hg19_chr21</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gencode_genomic_state.html">gencode_genomic_state</a></span><span class="op">(</span><span class="va">txdb_v31_hg19_chr21</span><span class="op">)</span>
-<span class="co">#&gt; 2021-08-10 00:33:13 making the GenomicState object</span>
+<span class="co">#&gt; 2021-08-10 02:31:54 making the GenomicState object</span>
 <span class="co">#&gt; extendedMapSeqlevels: sequence names mapped from NCBI to UCSC for species homo_sapiens</span>
 <span class="co">#&gt; 'select()' returned 1:1 mapping between keys and columns</span>
-<span class="co">#&gt; 2021-08-10 00:33:24 finding gene symbols</span>
+<span class="co">#&gt; 2021-08-10 02:32:05 finding gene symbols</span>
 <span class="co">#&gt; 'select()' returned 1:many mapping between keys and columns</span>
-<span class="co">#&gt; 2021-08-10 00:33:24 adding gene symbols to the GenomicState</span></code></pre></div>
+<span class="co">#&gt; 2021-08-10 02:32:05 adding gene symbols to the GenomicState</span></code></pre></div>
 <p>You can alternatively use the files hosted in <em><a href="https://bioconductor.org/packages/3.14/AnnotationHub" class="external-link">AnnotationHub</a></em> (Morgan and Shepherd, 2021) which will be faster in general.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Create the AnnotationHub object once and re-use it to speed up things</span>
@@ -436,14 +436,14 @@
     regions <span class="op">=</span> <span class="va">regions</span>,
     genomicState <span class="op">=</span> <span class="va">gs_v31_hg19_chr21</span><span class="op">$</span><span class="va">fullGenome</span>, minoverlap <span class="op">=</span> <span class="fl">1</span>
 <span class="op">)</span>
-<span class="co">#&gt; 2021-08-10 00:33:39 annotateRegions: counting</span>
-<span class="co">#&gt; 2021-08-10 00:33:40 annotateRegions: annotating</span>
+<span class="co">#&gt; 2021-08-10 02:32:20 annotateRegions: counting</span>
+<span class="co">#&gt; 2021-08-10 02:32:20 annotateRegions: annotating</span>
 
 <span class="co">## Obtain fullCov object</span>
 <span class="va">fullCov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"chr21"</span> <span class="op">=</span> <span class="va">genomeDataRaw</span><span class="op">$</span><span class="va">coverage</span><span class="op">)</span>
 <span class="va">regionCov</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/derfinder/man/getRegionCoverage.html" class="external-link">getRegionCoverage</a></span><span class="op">(</span>fullCov <span class="op">=</span> <span class="va">fullCov</span>, regions <span class="op">=</span> <span class="va">regions</span><span class="op">)</span>
-<span class="co">#&gt; 2021-08-10 00:33:40 getRegionCoverage: processing chr21</span>
-<span class="co">#&gt; 2021-08-10 00:33:40 getRegionCoverage: done processing chr21</span></code></pre></div>
+<span class="co">#&gt; 2021-08-10 02:32:20 getRegionCoverage: processing chr21</span>
+<span class="co">#&gt; 2021-08-10 02:32:20 getRegionCoverage: done processing chr21</span></code></pre></div>
 <p>And now we can make the example plot as shown below.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## now make the plot</span>
@@ -570,9 +570,9 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://yihui.org/knitr/" class="external-link">"knitr"</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/knit.html" class="external-link">knit</a></span><span class="op">(</span><span class="st">"GenomicState.Rmd"</span>, tangle <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>Date the vignette was generated.</p>
-<pre><code>#&gt; [1] "2021-08-10 00:33:41 UTC"</code></pre>
+<pre><code>#&gt; [1] "2021-08-10 02:32:22 UTC"</code></pre>
 <p>Wallclock time spent generating the vignette.</p>
-<pre><code>#&gt; Time difference of 1.284 mins</code></pre>
+<pre><code>#&gt; Time difference of 1.213 mins</code></pre>
 <p><code>R</code> session information.</p>
 <pre><code>#&gt; ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #&gt;  setting  value                       
@@ -650,7 +650,7 @@
 #&gt;  GenomicFeatures        * 1.45.0     2021-05-19 [1] Bioconductor                  
 #&gt;  GenomicFiles             1.29.0     2021-05-19 [1] Bioconductor                  
 #&gt;  GenomicRanges          * 1.45.0     2021-05-19 [1] Bioconductor                  
-#&gt;  GenomicState           * 0.99.14    2021-08-10 [1] Bioconductor                  
+#&gt;  GenomicState           * 0.99.15    2021-08-10 [1] Bioconductor                  
 #&gt;  GGally                   2.1.2      2021-06-21 [1] RSPM (R 4.1.0)                
 #&gt;  ggbio                    1.41.0     2021-05-19 [1] Bioconductor                  
 #&gt;  ggplot2                  3.3.5      2021-06-25 [1] RSPM (R 4.1.0)                
@@ -771,7 +771,7 @@
 <a id="bib-carlson2021genome"></a><a href="#cite-carlson2021genome">[4]</a><cite> M. Carlson. <em>org.Hs.eg.db: Genome wide annotation for Human</em>. R package version 3.13.0. 2021.</cite>
 </p>
 <p>
-<a id="bib-colladotorres2021build"></a><a href="#cite-colladotorres2021build">[5]</a><cite> L. Collado-Torres. <em>Build and access GenomicState objects for use with derfinder tools from sources like Gencode</em>. <a href="https://github.com/LieberInstitute/GenomicState" class="external-link uri">https://github.com/LieberInstitute/GenomicState</a> - R package version 0.99.14. 2021. DOI: <a href="https://doi.org/10.18129/B9.bioc.GenomicState" class="external-link">10.18129/B9.bioc.GenomicState</a>. URL: <a href="http://www.bioconductor.org/packages/GenomicState" class="external-link">http://www.bioconductor.org/packages/GenomicState</a>.</cite>
+<a id="bib-colladotorres2021build"></a><a href="#cite-colladotorres2021build">[5]</a><cite> L. Collado-Torres. <em>Build and access GenomicState objects for use with derfinder tools from sources like Gencode</em>. <a href="https://github.com/LieberInstitute/GenomicState" class="external-link uri">https://github.com/LieberInstitute/GenomicState</a> - R package version 0.99.15. 2021. DOI: <a href="https://doi.org/10.18129/B9.bioc.GenomicState" class="external-link">10.18129/B9.bioc.GenomicState</a>. URL: <a href="http://www.bioconductor.org/packages/GenomicState" class="external-link">http://www.bioconductor.org/packages/GenomicState</a>.</cite>
 </p>
 <p>
 <a id="bib-colladotorres2017flexible"></a><a href="#cite-colladotorres2017flexible">[6]</a><cite> L. Collado-Torres, A. Nellore, A. C. Frazee, et al. “Flexible expressed region analysis for RNA-seq with derfinder”. In: <em>Nucl. Acids Res.</em> (2017). DOI: <a href="https://doi.org/10.1093/nar/gkw852" class="external-link">10.1093/nar/gkw852</a>. URL: <a href="http://nar.oxfordjournals.org/content/early/2016/09/29/nar.gkw852" class="external-link">http://nar.oxfordjournals.org/content/early/2016/09/29/nar.gkw852</a>.</cite>
