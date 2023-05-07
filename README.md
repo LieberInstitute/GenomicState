@@ -7,18 +7,10 @@
 
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
-[![Bioc release
-status](http://www.bioconductor.org/shields/build/release/data-experiment/GenomicState.svg)](https://bioconductor.org/checkResults/release/data-experiment-LATEST/GenomicState)
-[![Bioc devel
-status](http://www.bioconductor.org/shields/build/devel/data-experiment/GenomicState.svg)](https://bioconductor.org/checkResults/devel/data-experiment-LATEST/GenomicState)
 [![Bioc downloads
-rank](https://bioconductor.org/shields/downloads/release/GenomicState.svg)](http://bioconductor.org/packages/stats/bioc/GenomicState/)
+rank](https://bioconductor.org/shields/downloads/release/GenomicState.svg)](http://bioconductor.org/packages/stats/data-annotation/GenomicState)
 [![Bioc
 support](https://bioconductor.org/shields/posts/GenomicState.svg)](https://support.bioconductor.org/tag/GenomicState)
-[![Bioc last
-commit](https://bioconductor.org/shields/lastcommit/devel/data-experiment/GenomicState.svg)](http://bioconductor.org/checkResults/devel/data-experiment-LATEST/GenomicState/)
-[![Bioc
-dependencies](https://bioconductor.org/shields/dependencies/release/GenomicState.svg)](https://bioconductor.org/packages/release/data-experiment/html/GenomicState.html#since)
 [![Codecov test
 coverage](https://codecov.io/gh/LieberInstitute/GenomicState/branch/devel/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/GenomicState?branch=devel)
 [![R build
