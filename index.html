@@ -89,8 +89,8 @@
 <p>Get the latest stable <code>R</code> release from <a href="http://cran.r-project.org/" class="external-link">CRAN</a>. Then install <code>GenomicState</code> from <a href="http://bioconductor.org/" class="external-link">Bioconductor</a> using the following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>      <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"GenomicState"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -100,22 +100,23 @@
 <p>Below is the citation output from using <code>citation('GenomicState')</code> in R. Please run this yourself to check for any updates on how to cite <strong>GenomicState</strong>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"GenomicState"</span><span class="op">)</span>, bibtex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; To cite package 'GenomicState' in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Collado-Torres L (2020). _Build and access GenomicState objects for use</span></span>
-<span><span class="co">#&gt; with derfinder tools from sources like Gencode_. doi:</span></span>
-<span><span class="co">#&gt; 10.18129/B9.bioc.GenomicState (URL:</span></span>
-<span><span class="co">#&gt; https://doi.org/10.18129/B9.bioc.GenomicState),</span></span>
-<span><span class="co">#&gt; https://github.com/LieberInstitute/GenomicState - R package version</span></span>
-<span><span class="co">#&gt; 0.99.13, &lt;URL: http://www.bioconductor.org/packages/GenomicState&gt;.</span></span>
+<span><span class="co">#&gt;   Collado-Torres L (2023). _Build and access GenomicState objects for</span></span>
+<span><span class="co">#&gt;   use with derfinder tools from sources like Gencode_.</span></span>
+<span><span class="co">#&gt;   doi:10.18129/B9.bioc.GenomicState</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.18129/B9.bioc.GenomicState&gt;,</span></span>
+<span><span class="co">#&gt;   https://github.com/LieberInstitute/GenomicState - R package version</span></span>
+<span><span class="co">#&gt;   0.99.15, &lt;http://www.bioconductor.org/packages/GenomicState&gt;.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   @Manual{,</span></span>
 <span><span class="co">#&gt;     title = {Build and access GenomicState objects for use with derfinder tools from sources like Gencode},</span></span>
 <span><span class="co">#&gt;     author = {Leonardo Collado-Torres},</span></span>
-<span><span class="co">#&gt;     year = {2020},</span></span>
+<span><span class="co">#&gt;     year = {2023},</span></span>
 <span><span class="co">#&gt;     url = {http://www.bioconductor.org/packages/GenomicState},</span></span>
-<span><span class="co">#&gt;     note = {https://github.com/LieberInstitute/GenomicState - R package version 0.99.13},</span></span>
+<span><span class="co">#&gt;     note = {https://github.com/LieberInstitute/GenomicState - R package version 0.99.15},</span></span>
 <span><span class="co">#&gt;     doi = {10.18129/B9.bioc.GenomicState},</span></span>
 <span><span class="co">#&gt;   }</span></span></code></pre></div>
 <p>Please note that the <code>GenomicState</code> was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.</p>
@@ -129,14 +130,14 @@
 <h2 id="development-tools">Development tools<a class="anchor" aria-label="anchor" href="#development-tools"></a>
 </h2>
 <ul>
-<li>Continuous code testing is possible thanks to <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/" class="external-link">GitHub actions</a> through <em><a href="https://CRAN.R-project.org/package=usethis" class="external-link">usethis</a></em>, <em><a href="https://CRAN.R-project.org/package=remotes" class="external-link">remotes</a></em>, <em><a href="https://github.com/r-hub/sysreqs" class="external-link">sysreqs</a></em> and <em><a href="https://CRAN.R-project.org/package=rcmdcheck" class="external-link">rcmdcheck</a></em> customized to use <a href="https://www.bioconductor.org/help/docker/" class="external-link">Bioconductor’s docker containers</a> and <em><a href="https://bioconductor.org/packages/3.12/BiocCheck" class="external-link">BiocCheck</a></em>.</li>
+<li>Continuous code testing is possible thanks to <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/" class="external-link">GitHub actions</a> through <em><a href="https://CRAN.R-project.org/package=usethis" class="external-link">usethis</a></em>, <em><a href="https://CRAN.R-project.org/package=remotes" class="external-link">remotes</a></em>, <em><a href="https://github.com/r-hub/sysreqs" class="external-link">sysreqs</a></em> and <em><a href="https://CRAN.R-project.org/package=rcmdcheck" class="external-link">rcmdcheck</a></em> customized to use <a href="https://www.bioconductor.org/help/docker/" class="external-link">Bioconductor’s docker containers</a> and <em><a href="https://bioconductor.org/packages/3.17/BiocCheck" class="external-link">BiocCheck</a></em>.</li>
 <li>Code coverage assessment is possible thanks to <a href="https://codecov.io/gh" class="external-link">codecov</a> and <em><a href="https://CRAN.R-project.org/package=covr" class="external-link">covr</a></em>.</li>
 <li>The <a href="http://lieberinstitute.github.io/GenomicState" class="external-link">documentation website</a> is automatically updated thanks to <em><a href="https://CRAN.R-project.org/package=pkgdown" class="external-link">pkgdown</a></em>.</li>
 <li>The code is styled automatically thanks to <em><a href="https://CRAN.R-project.org/package=styler" class="external-link">styler</a></em>.</li>
 <li>The documentation is formatted thanks to <em><a href="https://CRAN.R-project.org/package=devtools" class="external-link">devtools</a></em> and <em><a href="https://CRAN.R-project.org/package=roxygen2" class="external-link">roxygen2</a></em>.</li>
 </ul>
 <p>For more details, check the <code>dev</code> directory.</p>
-<p>This package was developed using <em><a href="https://bioconductor.org/packages/3.12/biocthis" class="external-link">biocthis</a></em>.</p>
+<p>This package was developed using <em><a href="https://bioconductor.org/packages/3.17/biocthis" class="external-link">biocthis</a></em>.</p>
 </div>
 </div>
   </div>
@@ -185,11 +186,12 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
-<li><a href="http://bioconductor.org/packages/release/data/annotation/html/GenomicState.html#archives" class="external-link"><img src="http://bioconductor.org/images/shields/availability/all.svg" alt="BioC status"></a></li>
-<li><a href="https://codecov.io/gh/LieberInstitute/GenomicState?branch=master" class="external-link"><img src="https://codecov.io/gh/LieberInstitute/GenomicState/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="http://bioconductor.org/packages/stats/data-annotation/GenomicState" class="external-link"><img src="https://bioconductor.org/shields/downloads/release/GenomicState.svg" alt="Bioc downloads rank"></a></li>
+<li><a href="https://support.bioconductor.org/tag/GenomicState" class="external-link"><img src="https://bioconductor.org/shields/posts/GenomicState.svg" alt="Bioc support"></a></li>
+<li><a href="https://codecov.io/gh/LieberInstitute/GenomicState?branch=devel" class="external-link"><img src="https://codecov.io/gh/LieberInstitute/GenomicState/branch/devel/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://github.com/LieberInstitute/GenomicState/actions" class="external-link"><img src="https://github.com/LieberInstitute/GenomicState/workflows/R-CMD-check-bioc/badge.svg" alt="R build status"></a></li>
-<li><a href="https://support.bioconductor.org/t/GenomicState/" class="external-link"><img src="http://www.bioconductor.org/shields/posts/GenomicState.svg" alt="Support site activity, last 6 months: tagged questions/avg. answers per question/avg. comments per question/accepted answers, or 0 if no tagged posts."></a></li>
 <li><a href="https://github.com/LieberInstitute/GenomicState/issues" class="external-link"><img src="https://img.shields.io/github/issues/LieberInstitute/GenomicState" alt="GitHub issues"></a></li>
+<li><a href="https://github.com/LieberInstitute/GenomicState/pulls" class="external-link"><img src="https://img.shields.io/github/issues-pr/LieberInstitute/GenomicState" alt="GitHub pulls"></a></li>
 </ul>
 </div>
 
