@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">GenomicState</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.99.15</span>
       </span>
     </div>
 
@@ -55,7 +55,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/LieberInstitute/GenomicState/">
+  <a href="https://github.com/LieberInstitute/GenomicState/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -72,62 +72,62 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="genomicstate" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#genomicstate" class="anchor" aria-hidden="true"></a>GenomicState</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="genomicstate">GenomicState<a class="anchor" aria-label="anchor" href="#genomicstate"></a>
+</h1></div>
 <!-- badges: start -->
 
 <p>This package provides functions for building <code>GenomicState</code> objects from diverse annotation sources such as <a href="https://www.gencodegenes.org/human/releases.html" class="external-link"><code>Gencode</code></a>. It also provides a way to load pre-computed <code>GenomicState</code> objects if you are working at <a href="https://jhpce.jhu.edu/" class="external-link">JHPCE</a>. These <code>GenomicState</code> objects are normally created using <a href="http://lcolladotor.github.io/derfinder/reference/makeGenomicState.html" class="external-link">derfinder::makeGenomicState()</a> and can be used for annotating regions with <a href="http://lcolladotor.github.io/derfinder/reference/annotateRegions.html" class="external-link">derfinder::annotateRegions()</a> which are in turn used by <a href="http://leekgroup.github.io/derfinderPlot/reference/plotRegionCoverage.html" class="external-link">derfinderPlot::plotRegionCoverage()</a>.</p>
-<div id="documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#documentation" class="anchor" aria-hidden="true"></a>Documentation</h2>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
 <p>For more information about <code>GenomicState</code> check the vignettes <a href="http://bioconductor.org/packages/GenomicState" class="external-link">through Bioconductor</a> or at the <a href="http://lieberinstitute.github.io/GenomicState" class="external-link">documentation website</a>.</p>
 </div>
-<div id="installation-instructions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation-instructions" class="anchor" aria-hidden="true"></a>Installation instructions</h2>
+<div class="section level2">
+<h2 id="installation-instructions">Installation instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a>
+</h2>
 <p>Get the latest stable <code>R</code> release from <a href="http://cran.r-project.org/" class="external-link">CRAN</a>. Then install <code>GenomicState</code> from <a href="http://bioconductor.org/" class="external-link">Bioconductor</a> using the following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-      <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span>
-  <span class="op">}</span>
-
-<span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"GenomicState"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"GenomicState"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="citation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation" class="anchor" aria-hidden="true"></a>Citation</h2>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
 <p>Below is the citation output from using <code>citation('GenomicState')</code> in R. Please run this yourself to check for any updates on how to cite <strong>GenomicState</strong>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"GenomicState"</span><span class="op">)</span>, bibtex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Collado-Torres L (2020). _Build and access GenomicState objects for use</span>
-<span class="co">#&gt; with derfinder tools from sources like Gencode_. doi:</span>
-<span class="co">#&gt; 10.18129/B9.bioc.GenomicState (URL:</span>
-<span class="co">#&gt; https://doi.org/10.18129/B9.bioc.GenomicState),</span>
-<span class="co">#&gt; https://github.com/LieberInstitute/GenomicState - R package version</span>
-<span class="co">#&gt; 0.99.13, &lt;URL: http://www.bioconductor.org/packages/GenomicState&gt;.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;   @Manual{,</span>
-<span class="co">#&gt;     title = {Build and access GenomicState objects for use with derfinder tools from sources like Gencode},</span>
-<span class="co">#&gt;     author = {Leonardo Collado-Torres},</span>
-<span class="co">#&gt;     year = {2020},</span>
-<span class="co">#&gt;     url = {http://www.bioconductor.org/packages/GenomicState},</span>
-<span class="co">#&gt;     note = {https://github.com/LieberInstitute/GenomicState - R package version 0.99.13},</span>
-<span class="co">#&gt;     doi = {10.18129/B9.bioc.GenomicState},</span>
-<span class="co">#&gt;   }</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"GenomicState"</span><span class="op">)</span>, bibtex <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Collado-Torres L (2020). _Build and access GenomicState objects for use</span></span>
+<span><span class="co">#&gt; with derfinder tools from sources like Gencode_. doi:</span></span>
+<span><span class="co">#&gt; 10.18129/B9.bioc.GenomicState (URL:</span></span>
+<span><span class="co">#&gt; https://doi.org/10.18129/B9.bioc.GenomicState),</span></span>
+<span><span class="co">#&gt; https://github.com/LieberInstitute/GenomicState - R package version</span></span>
+<span><span class="co">#&gt; 0.99.13, &lt;URL: http://www.bioconductor.org/packages/GenomicState&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Manual{,</span></span>
+<span><span class="co">#&gt;     title = {Build and access GenomicState objects for use with derfinder tools from sources like Gencode},</span></span>
+<span><span class="co">#&gt;     author = {Leonardo Collado-Torres},</span></span>
+<span><span class="co">#&gt;     year = {2020},</span></span>
+<span><span class="co">#&gt;     url = {http://www.bioconductor.org/packages/GenomicState},</span></span>
+<span><span class="co">#&gt;     note = {https://github.com/LieberInstitute/GenomicState - R package version 0.99.13},</span></span>
+<span><span class="co">#&gt;     doi = {10.18129/B9.bioc.GenomicState},</span></span>
+<span><span class="co">#&gt;   }</span></span></code></pre></div>
 <p>Please note that the <code>GenomicState</code> was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.</p>
 </div>
-<div id="code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor" aria-hidden="true"></a>Code of Conduct</h2>
+<div class="section level2">
+<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h2>
 <p>Please note that the derfinderPlot project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
-<div id="development-tools" class="section level2">
-<h2 class="hasAnchor">
-<a href="#development-tools" class="anchor" aria-hidden="true"></a>Development tools</h2>
+<div class="section level2">
+<h2 id="development-tools">Development tools<a class="anchor" aria-label="anchor" href="#development-tools"></a>
+</h2>
 <ul>
 <li>Continuous code testing is possible thanks to <a href="https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/" class="external-link">GitHub actions</a> through <em><a href="https://CRAN.R-project.org/package=usethis" class="external-link">usethis</a></em>, <em><a href="https://CRAN.R-project.org/package=remotes" class="external-link">remotes</a></em>, <em><a href="https://github.com/r-hub/sysreqs" class="external-link">sysreqs</a></em> and <em><a href="https://CRAN.R-project.org/package=rcmdcheck" class="external-link">rcmdcheck</a></em> customized to use <a href="https://www.bioconductor.org/help/docker/" class="external-link">Bioconductor’s docker containers</a> and <em><a href="https://bioconductor.org/packages/3.12/BiocCheck" class="external-link">BiocCheck</a></em>.</li>
 <li>Code coverage assessment is possible thanks to <a href="https://codecov.io/gh" class="external-link">codecov</a> and <em><a href="https://CRAN.R-project.org/package=covr" class="external-link">covr</a></em>.</li>
@@ -145,19 +145,16 @@
     <div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from BIOC at <br><a href="https://www.bioconductor.org/packages/GenomicState">https://​www.bioconductor.org/​packages/​GenomicState</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/LieberInstitute/GenomicState/">https://​github.com/​LieberInstitute/​GenomicState/​</a>
-</li>
-<li>Report a bug at <br><a href="https://support.bioconductor.org/t/GenomicState">https://​support.bioconductor.org/​t/​GenomicState</a>
-</li>
+<li><a href="https://www.bioconductor.org/packages/GenomicState" class="external-link">View on Bioconductor</a></li>
+<li><a href="https://github.com/LieberInstitute/GenomicState/" class="external-link">Browse source code</a></li>
+<li><a href="https://support.bioconductor.org/t/GenomicState" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
 <div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/Artistic-2.0">Artistic-2.0</a></li>
+<li><a href="https://www.r-project.org/Licenses/Artistic-2.0" class="external-link">Artistic-2.0</a></li>
 </ul>
 </div>
 
@@ -166,20 +163,21 @@
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+<li><a href="SUPPORT.html">Getting help</a></li>
 </ul>
 </div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html">Citing GenomicState</a></li>
+<li><a href="authors.html#citation">Citing GenomicState</a></li>
 </ul>
 </div>
 
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Leonardo Collado-Torres <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2140-308X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Leonardo Collado-Torres <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2140-308X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
@@ -206,7 +204,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
