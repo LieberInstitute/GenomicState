@@ -32,8 +32,7 @@
 #'     gencode_v31_hg19_txdb
 #' }
 local_metadata <- function(
-    local_path = "/dcl01/lieber/ajaffe/lab/GenomicState/data-raw") {
-
+        local_path = "/dcl01/lieber/ajaffe/lab/GenomicState/data-raw") {
     ## Locate and read AnnotationHub csv files
     csv_files <- dir(system.file("extdata", package = "GenomicState"),
         pattern = "^metadata.*\\.csv$", full.names = TRUE

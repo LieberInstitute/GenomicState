@@ -15,7 +15,7 @@
 #' @export
 #' @author Leonardo Collado-Torres
 #' @references Based on code for the `brainflowprobes` package at:
-#' <https://github.com/LieberInstitute/brainflowprobes/blob/master/data-raw/create_sysdata.R>
+#' <https://github.com/LieberInstitute/brainflowprobes/blob/devel/data-raw/create_sysdata.R>
 #'
 #' @seealso [gencode_annotated_genes()] [gencode_genomic_state()]
 #'
@@ -35,8 +35,9 @@
 #'
 #' ## Explore the result
 #' txdb_v31_hg19_chr21
-gencode_txdb <- function(version = "31", genome = c("hg38", "hg19"),
-    chrs = paste0("chr", c(seq_len(22), "X", "Y", "M"))) {
+gencode_txdb <- function(
+        version = "31", genome = c("hg38", "hg19"),
+        chrs = paste0("chr", c(seq_len(22), "X", "Y", "M"))) {
     genome <- match.arg(genome)
 
     ## Locate file

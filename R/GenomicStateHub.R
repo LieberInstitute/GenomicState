@@ -41,10 +41,10 @@
 #'
 #'     hub_gs_gencode_v31_hg19
 #' }
-GenomicStateHub <- function(version = "31", genome = c("hg38", "hg19"),
-    filetype = c("TxDb", "AnnotatedGenes", "GenomicState"),
-    ah = AnnotationHub::AnnotationHub()) {
-
+GenomicStateHub <- function(
+        version = "31", genome = c("hg38", "hg19"),
+        filetype = c("TxDb", "AnnotatedGenes", "GenomicState"),
+        ah = AnnotationHub::AnnotationHub()) {
     ## Inputs
     version <- as.character(version)
     genome <- match.arg(genome)

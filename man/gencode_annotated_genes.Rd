@@ -41,7 +41,7 @@ genes_v31_hg19_chr21
 }
 \references{
 Based on code for the \code{brainflowprobes} package at:
-\url{https://github.com/LieberInstitute/brainflowprobes/blob/master/data-raw/create_sysdata.R}
+\url{https://github.com/LieberInstitute/brainflowprobes/blob/devel/data-raw/create_sysdata.R}
 }
 \seealso{
 \code{\link[=gencode_txdb]{gencode_txdb()}} \code{\link[=gencode_genomic_state]{gencode_genomic_state()}}

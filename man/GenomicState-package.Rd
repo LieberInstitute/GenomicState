@@ -4,12 +4,9 @@
 \name{GenomicState-package}
 \alias{GenomicState}
 \alias{GenomicState-package}
-\title{GenomicState: Build and access GenomicState objects for use with derfinder tools from
-    sources like Gencode}
+\title{GenomicState: Build and access GenomicState objects for use with derfinder tools from sources like Gencode}
 \description{
-This package contains functions for building GenomicState objects
-    from different annotation sources such as Gencode. It also provides access
-    to these files at JHPCE.
+This package contains functions for building GenomicState objects from different annotation sources such as Gencode. It also provides access to these files at JHPCE.
 }
 \seealso{
 Useful links:

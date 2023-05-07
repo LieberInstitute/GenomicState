@@ -12,7 +12,7 @@
 #' @export
 #' @author Leonardo Collado-Torres.
 #' @references Based on code for the `brainflowprobes` package at:
-#' <https://github.com/LieberInstitute/brainflowprobes/blob/master/data-raw/create_sysdata.R>
+#' <https://github.com/LieberInstitute/brainflowprobes/blob/devel/data-raw/create_sysdata.R>
 #'
 #' @seealso [gencode_txdb()] [gencode_genomic_state()]
 #'

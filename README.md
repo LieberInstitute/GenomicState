@@ -7,18 +7,26 @@
 
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
-[![BioC
-status](http://bioconductor.org/images/shields/availability/all.svg)](http://bioconductor.org/packages/release/data/annotation/html/GenomicState.html#archives)
+[![Bioc release
+status](http://www.bioconductor.org/shields/build/release/data-experiment/GenomicState.svg)](https://bioconductor.org/checkResults/release/data-experiment-LATEST/GenomicState)
+[![Bioc devel
+status](http://www.bioconductor.org/shields/build/devel/data-experiment/GenomicState.svg)](https://bioconductor.org/checkResults/devel/data-experiment-LATEST/GenomicState)
+[![Bioc downloads
+rank](https://bioconductor.org/shields/downloads/release/GenomicState.svg)](http://bioconductor.org/packages/stats/bioc/GenomicState/)
+[![Bioc
+support](https://bioconductor.org/shields/posts/GenomicState.svg)](https://support.bioconductor.org/tag/GenomicState)
+[![Bioc last
+commit](https://bioconductor.org/shields/lastcommit/devel/data-experiment/GenomicState.svg)](http://bioconductor.org/checkResults/devel/data-experiment-LATEST/GenomicState/)
+[![Bioc
+dependencies](https://bioconductor.org/shields/dependencies/release/GenomicState.svg)](https://bioconductor.org/packages/release/data-experiment/html/GenomicState.html#since)
 [![Codecov test
-coverage](https://codecov.io/gh/LieberInstitute/GenomicState/branch/master/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/GenomicState?branch=master)
+coverage](https://codecov.io/gh/LieberInstitute/GenomicState/branch/devel/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/GenomicState?branch=devel)
 [![R build
 status](https://github.com/LieberInstitute/GenomicState/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/GenomicState/actions)
-[![Support site activity, last 6 months: tagged questions/avg. answers
-per question/avg. comments per question/accepted answers, or 0 if no
-tagged
-posts.](http://www.bioconductor.org/shields/posts/GenomicState.svg)](https://support.bioconductor.org/t/GenomicState/)
 [![GitHub
 issues](https://img.shields.io/github/issues/LieberInstitute/GenomicState)](https://github.com/LieberInstitute/GenomicState/issues)
+[![GitHub
+pulls](https://img.shields.io/github/issues-pr/LieberInstitute/GenomicState)](https://github.com/LieberInstitute/GenomicState/pulls)
 <!-- badges: end -->
 
 This package provides functions for building `GenomicState` objects from
@@ -47,8 +55,8 @@ Get the latest stable `R` release from
 
 ``` r
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
-      install.packages("BiocManager")
-  }
+    install.packages("BiocManager")
+}
 
 BiocManager::install("GenomicState")
 ```
@@ -61,22 +69,23 @@ Please run this yourself to check for any updates on how to cite
 
 ``` r
 print(citation("GenomicState"), bibtex = TRUE)
+#> To cite package 'GenomicState' in publications use:
 #> 
-#> Collado-Torres L (2020). _Build and access GenomicState objects for use
-#> with derfinder tools from sources like Gencode_. doi:
-#> 10.18129/B9.bioc.GenomicState (URL:
-#> https://doi.org/10.18129/B9.bioc.GenomicState),
-#> https://github.com/LieberInstitute/GenomicState - R package version
-#> 0.99.13, <URL: http://www.bioconductor.org/packages/GenomicState>.
+#>   Collado-Torres L (2023). _Build and access GenomicState objects for
+#>   use with derfinder tools from sources like Gencode_.
+#>   doi:10.18129/B9.bioc.GenomicState
+#>   <https://doi.org/10.18129/B9.bioc.GenomicState>,
+#>   https://github.com/LieberInstitute/GenomicState - R package version
+#>   0.99.15, <http://www.bioconductor.org/packages/GenomicState>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {Build and access GenomicState objects for use with derfinder tools from sources like Gencode},
 #>     author = {Leonardo Collado-Torres},
-#>     year = {2020},
+#>     year = {2023},
 #>     url = {http://www.bioconductor.org/packages/GenomicState},
-#>     note = {https://github.com/LieberInstitute/GenomicState - R package version 0.99.13},
+#>     note = {https://github.com/LieberInstitute/GenomicState - R package version 0.99.15},
 #>     doi = {10.18129/B9.bioc.GenomicState},
 #>   }
 ```
@@ -94,29 +103,29 @@ By contributing to this project, you agree to abide by its terms.
 
 ## Development tools
 
--   Continuous code testing is possible thanks to [GitHub
-    actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)
-    through *[usethis](https://CRAN.R-project.org/package=usethis)*,
-    *[remotes](https://CRAN.R-project.org/package=remotes)*,
-    *[sysreqs](https://github.com/r-hub/sysreqs)* and
-    *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)*
-    customized to use [Bioconductor’s docker
-    containers](https://www.bioconductor.org/help/docker/) and
-    *[BiocCheck](https://bioconductor.org/packages/3.12/BiocCheck)*.
--   Code coverage assessment is possible thanks to
-    [codecov](https://codecov.io/gh) and
-    *[covr](https://CRAN.R-project.org/package=covr)*.
--   The [documentation
-    website](http://lieberinstitute.github.io/GenomicState) is
-    automatically updated thanks to
-    *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
--   The code is styled automatically thanks to
-    *[styler](https://CRAN.R-project.org/package=styler)*.
--   The documentation is formatted thanks to
-    *[devtools](https://CRAN.R-project.org/package=devtools)* and
-    *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.
+- Continuous code testing is possible thanks to [GitHub
+  actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)
+  through *[usethis](https://CRAN.R-project.org/package=usethis)*,
+  *[remotes](https://CRAN.R-project.org/package=remotes)*,
+  *[sysreqs](https://github.com/r-hub/sysreqs)* and
+  *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)* customized
+  to use [Bioconductor’s docker
+  containers](https://www.bioconductor.org/help/docker/) and
+  *[BiocCheck](https://bioconductor.org/packages/3.17/BiocCheck)*.
+- Code coverage assessment is possible thanks to
+  [codecov](https://codecov.io/gh) and
+  *[covr](https://CRAN.R-project.org/package=covr)*.
+- The [documentation
+  website](http://lieberinstitute.github.io/GenomicState) is
+  automatically updated thanks to
+  *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
+- The code is styled automatically thanks to
+  *[styler](https://CRAN.R-project.org/package=styler)*.
+- The documentation is formatted thanks to
+  *[devtools](https://CRAN.R-project.org/package=devtools)* and
+  *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.
 
 For more details, check the `dev` directory.
 
 This package was developed using
-*[biocthis](https://bioconductor.org/packages/3.12/biocthis)*.
+*[biocthis](https://bioconductor.org/packages/3.17/biocthis)*.
